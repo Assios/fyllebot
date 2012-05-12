@@ -8,6 +8,7 @@ import string
 import time
 import datetime
 import os
+import urllib
 import shlex
 from time import sleep
 
@@ -108,6 +109,23 @@ def sjekketriks():
    string = sjekketriks[tall]
    return string
 
+def imdb(filmnavn):
+   ting = filmnavn
+
+   ting2 = ting[6:]
+
+   filehandle = urllib.urlopen('http://www.imdbapi.com/?t=' + ting2)
+
+   string=''
+   for lines in filehandle.readlines():
+      string+=lines
+
+   stringen = string.split('imdbRating')[1][3:6]
+
+   score = float(stringen)
+
+   send('Score: ' + str(score))
+
 def randomReply():
    f = open('reply.txt', 'r+')
    string = ''
@@ -148,6 +166,8 @@ def filmz():
       if (filmerz[i].lower() in message):
          return True
    return False
+
+
 
 def no():
    f = open('no.txt', 'r+')
@@ -308,6 +328,12 @@ while True:
       pass
 
    try:
+      if ('!imdb' in message):
+         imdb(message)
+   except:
+      send('Lol, gidder ikke si no om den filmen asss')
+
+   try:
       if (shlex.split(message)[0]=='!op') and (admins()):
          opUser(shlex.split(message)[1])
    except:
@@ -356,7 +382,7 @@ while True:
       send(['Du burde se den ass!', 'Den er braaa, men du burde ikke se traileren. Inneholder massse spoilers. HATER SPOILERS'][random.randint(0,1)] + smiley())
       filmLevel=0
 
-   if filmz():
+   if filmz() and ('!imdb' not in message):
       send(['Jeg elsker den filmen!', 'DEN filmen er bra den!', 'Den filmen der er nesten like bra som ' + film()][random.randint(0, 2)])
 
    if no() and (filmLevel==2):

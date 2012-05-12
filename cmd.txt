@@ -1,4 +1,5 @@
 !polet - tid til polet stenger
+!imdb filmnavn - gir IMDB-scoren til filmen
 !sjekketriks - tilfeldig sjekketriks
 !promille - kalkulerer promillen din
 !film - tilfeldig film
