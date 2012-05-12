@@ -388,6 +388,10 @@ while True:
    if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
 
+   if ('gitistheshit' in message):
+      send('Dette burde fungere')
+
+
    rhapsody()
    Commands()
 
