@@ -1,0 +1,6 @@
+!polet - tid til polet stenger
+!sjekketriks - tilfeldig sjekketriks
+!promille - kalkulerer promillen din
+!film - tilfeldig film
+!middag - tilfeldig matrett
+!drikke - tilfeldig drikke
