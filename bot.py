@@ -382,19 +382,11 @@ while True:
    if ( 'slaps fyllebot' ) in message:
       send('WELL FUCK YOU.')
 
-      #WELL THIS IS AWKWARD HÅPE DET IKKE DØR
-
    if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
 
    if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
-
-   if ('gitistheshit' in message):
-      send('Dette burde fungere')
-
-   if ('abcdefg' in message):
-      send('funker fortsatt')
 
 
    rhapsody()
