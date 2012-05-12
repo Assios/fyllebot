@@ -382,6 +382,8 @@ while True:
    if ( 'slaps fyllebot' ) in message:
       send('WELL FUCK YOU.')
 
+      #WELL THIS IS AWKWARD HÅPE DET IKKE DØR
+
    if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
 
