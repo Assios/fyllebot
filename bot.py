@@ -391,6 +391,9 @@ while True:
    if ('gitistheshit' in message):
       send('Dette burde fungere')
 
+   if ('abcdefg' in message):
+      send('funker fortsatt')
+
 
    rhapsody()
    Commands()
