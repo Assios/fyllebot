@@ -1,16 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-def send(melding):
-   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
-def privsend(melding):
-   irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
-
 import socket, random, re, string, time, datetime, os, urllib, shlex
 from time import sleep
-from imdb import *
-from mat import *
-from admins import *
 
 network = 'irc.quakenet.org'
 port = 6667
@@ -21,6 +13,15 @@ irc.send ( 'NICK fyllebot\r\n' )
 irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
 irc.send ( 'JOIN #fyllechat\r\n' )
 irc.send ( 'PRIVMSG #fyllechat :HEI ASS.\r\n' )
+
+def send(melding):
+   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
+def privsend(melding):
+   irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
+
+from imdb import *
+from mat import *
+from admins import *
 
 dato = str(datetime.datetime.now())
 aar = int(dato[0:4])
