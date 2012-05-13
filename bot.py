@@ -1,18 +1,11 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import socket
-import random
-import re
-import string
-import time
-import datetime
-import os
-import urllib
-import shlex
+import socket, random, re, string, time, datetime, os, urllib, shlex
 from time import sleep
 from imdb import *
 from mat import *
+from admins import *
 
 network = 'irc.quakenet.org'
 port = 6667
@@ -158,9 +151,6 @@ def meld():
          return True
    return False
 
-
-
-
 def filmene():
    f = open('film.txt', 'r+')
    string = ''
@@ -169,17 +159,6 @@ def filmene():
    film = string.splitlines()
    for i in range(0, len(film)):
       if (film[i] in message):
-         return True
-   return False
-
-def admins():
-   f = open('admins.txt', 'r+')
-   string = ''
-   for linje in f:
-      string+= linje
-   admin = string.splitlines()
-   for i in range(0, len(admin)):
-      if (admin[i].lower() == user.lower()):
          return True
    return False
 
@@ -224,13 +203,6 @@ def Commands():
          irc.send('NOTICE ' + mottaker + ' :' + str(nr) + ': ' + linje + '\r\n')
          nr=nr+1
          sleep(0.2)
-
-
-def kickUser(username, melding):
-   irc.send('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
-
-def opUser(username):
-   irc.send('OP ' + " #fyllechat " + username + '\r\n')
 
 def randomGreet():
    greetings = ['hei', 'hallo', 'heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
