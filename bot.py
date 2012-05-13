@@ -267,6 +267,12 @@ while True:
       pass
 
    try:
+      if (shlex.split(message)[0]=='!msg') and (admins()):
+         send(message[4:].strip())
+   except:
+      pass
+
+   try:
       if ('!imdb' in message):
          imdbNavn(message)
    except:
