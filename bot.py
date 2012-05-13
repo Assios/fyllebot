@@ -125,8 +125,8 @@ def imdben(filmnavn):
    string=''
    for lines in filehandle.readlines():
       string+=lines
-   stringen = string.split('imdbRating')[1][3:6]
-   return int(round(float(stringen)))
+   stringen = string.split('imdbRating')[1][3]
+   return int(stringen)
 
 def filmScore(filmen):
    score = ['Verste filmen ever!', 'FILMEN SUGER!!!', 'Veldig dårlig film!', 'OK film da...', 'Grei film..', 'Ganske bra film :)', 'Bra film ass!! :D', 'VELDIG BRA FILM!!!', 'En av de beste filmene jeg har sett! :O']
@@ -181,7 +181,7 @@ def filmReturn():
       string+=linje
    filmerz = string.splitlines()
    for i in range(0, len(filmerz)):
-      if (filmerz[i].lower() in message):
+      if (filmerz[i].lower() in message.lower()):
          thefilm = filmerz[i].lower()
          return thefilm
    return ''
@@ -336,7 +336,7 @@ while True:
       send('\'The Room\' sucks!')
 
    if ('parently' in message):
-      send('Mente du APparently?')
+      send('Mente du APparently, Christian?')
 
    try:
       if (shlex.split(message)[0]=='!kick') and (admins()):
