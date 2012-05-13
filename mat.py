@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import random
+
 middag = {'laks': ['eburger', 'sitronmarinert -', 'egrandis', ' i fiskesuppe', 'vegetar-'], 'grandis':[''], 'burger':['tallerken', ' med cornflakes', 'kylling-'], 'kylling':[' og chips', ' og ris', 'gryte', 'vinger'], 'pyttipanne':['fløtegratinert -'], 'kebab':[' i pita', 'rulle-', 'vegetar-'], 'lasagne':['tysk -', 'fransk -'], 'spagetti':[' bolognaise', ' carbonara'], 'tomatsuppe':[' og biff', 'gratinert -'], 'taco':['mexikansk -', 'spansk -', 'svensk -'], 'pølse':['blod-','grise-','kjøtt-', ' og potetmos'], 'pannekaker':['bacon-',' med sirup'], 'shake':['protein-', 'kebab-']}
 drikke = {'shots': ['jäger-', 'vodka-', 'minttu-', 'tequila-'], 'vin':['rød-', 'hvit-'], 'martini':['shaken -', 'stirred -', ', shaken, not stirred'], 'whiskey':['scottish -', 'irish -'], 'akevitt':['', 'jule-']}
 

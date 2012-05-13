@@ -1,6 +1,11 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+def send(melding):
+   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
+def privsend(melding):
+   irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
+
 import socket, random, re, string, time, datetime, os, urllib, shlex
 from time import sleep
 from imdb import *
@@ -85,10 +90,6 @@ def randomReply():
    string = reply[tall]
    return string
 
-def send(melding):
-   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
-def privsend(melding):
-   irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 def smiley():
    smileys=[' :D', ' :)', ' :>', ' €:', ';*']
    nr = random.randint(0, len(smileys)-1)
