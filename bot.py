@@ -111,20 +111,26 @@ def sjekketriks():
 
 def imdb(filmnavn):
    ting = filmnavn
-
    ting2 = ting[6:]
-
    filehandle = urllib.urlopen('http://www.imdbapi.com/?t=' + ting2)
-
    string=''
    for lines in filehandle.readlines():
       string+=lines
-
    stringen = string.split('imdbRating')[1][3:6]
-
    score = float(stringen)
+   return(str(score))
 
-   send('Score: ' + str(score))
+def imdben(filmnavn):
+   filehandle = urllib.urlopen('http://www.imdbapi.com/?t=' + filmnavn)
+   string=''
+   for lines in filehandle.readlines():
+      string+=lines
+   stringen = string.split('imdbRating')[1][3:6]
+   return int(round(float(stringen)))
+
+def filmScore(filmen):
+   score = ['Verste filmen ever!', 'FILMEN SUGER!!!', 'Veldig dårlig film!', 'OK film da...', 'Grei film..', 'Ganske bra film :)', 'Bra film ass!! :D', 'VELDIG BRA FILM!!!', 'En av de beste filmene jeg har sett! :O']
+   send(score[imdben(filmen)-1])
 
 def randomReply():
    f = open('reply.txt', 'r+')
@@ -167,7 +173,18 @@ def filmz():
          return True
    return False
 
-
+def filmReturn():
+   f = open('film.txt', 'r+')
+   thefilm = ''
+   string = ''
+   for linje in f:
+      string+=linje
+   filmerz = string.splitlines()
+   for i in range(0, len(filmerz)):
+      if (filmerz[i].lower() in message):
+         thefilm = filmerz[i].lower()
+         return thefilm
+   return ''
 
 def no():
    f = open('no.txt', 'r+')
@@ -329,7 +346,7 @@ while True:
 
    try:
       if ('!imdb' in message):
-         imdb(message)
+         send('Score: ' + imdb(message))
    except:
       send('Lol, gidder ikke si no om den filmen asss')
 
@@ -382,8 +399,11 @@ while True:
       send(['Du burde se den ass!', 'Den er braaa, men du burde ikke se traileren. Inneholder massse spoilers. HATER SPOILERS'][random.randint(0,1)] + smiley())
       filmLevel=0
 
+
+
    if filmz() and ('!imdb' not in message):
-      send(['Jeg elsker den filmen!', 'DEN filmen er bra den!', 'Den filmen der er nesten like bra som ' + film()][random.randint(0, 2)])
+      filmScore(filmReturn())
+      
 
    if no() and (filmLevel==2):
       send(['WHATTHEFUCK? :C', 'Hadde tenkt å be deg med på kino, men IKKE NÅ LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])

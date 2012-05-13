@@ -19,3 +19,5 @@ stfu
 mening
 livet
 film
+prevent
+table
