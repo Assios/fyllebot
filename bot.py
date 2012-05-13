@@ -120,6 +120,20 @@ def imdb(filmnavn):
    score = float(stringen)
    return(str(score))
 
+def imdbNavn(filmnavn):
+   fulltnavn = ''
+   ting = filmnavn
+   ting2 = ting[6:]
+   filehandle = urllib.urlopen('http://www.imdbapi.com/?t=' + ting2)
+   string=''
+   for lines in filehandle.readlines():
+      string+=lines
+   stringen = string.split('imdbRating')[1][3:6]
+   score = str(float(stringen))
+   fulltnavn = string.split('Title')[1].split(',', 1)[0][2:]
+   aar = string.split('Year')[1].split(',', 1)[0][3:7]
+   send('Filmen ' + fulltnavn + ' fra ' + aar + ' har scoren ' + score)
+
 def imdben(filmnavn):
    filehandle = urllib.urlopen('http://www.imdbapi.com/?t=' + filmnavn)
    string=''
@@ -346,7 +360,7 @@ while True:
 
    try:
       if ('!imdb' in message):
-         send('Score: ' + imdb(message))
+         imdbNavn(message)
    except:
       send('Lol, gidder ikke si no om den filmen asss')
 
