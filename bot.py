@@ -14,11 +14,6 @@ irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
 irc.send ( 'JOIN #fyllechat\r\n' )
 irc.send ( 'PRIVMSG #fyllechat :HEI ASS.\r\n' )
 
-def send(melding):
-   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
-def privsend(melding):
-   irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
-
 from imdb import *
 from mat import *
 from admins import *
@@ -55,6 +50,11 @@ def stengetidpolet():
     if aapent==1:
         send (str(polsteng)+' timer og '+str(polmin) + 'min til stengetid')
     return ''
+
+def send(melding):
+   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
+def privsend(melding):
+   irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 
 def randomSupSvar():
 	nr = random.randint(0, 7)
@@ -175,6 +175,8 @@ def yes():
          return True
    return False
 
+
+
 def Commands():
    if (message == '!sjekketriks'):
       send(sjekketriks()+'\r\n')
@@ -189,10 +191,10 @@ def Commands():
    if ('!polet' in message):
       stengetidpolet()
    if ('!middag' == message):
-      maat()
+      send(maat())
 
    if ('!drikke' == message):
-      drikkee()
+      send(drikkee())
 
    if ('!commands' == message):
       mottaker = user;
@@ -233,13 +235,24 @@ mld=0
 while True:
    data = irc.recv(1024)
    msg = data.split(' ')
-   mess = ' '.join(msg[3:])
-   messa = mess.lower()
-   messag = messa.strip()
-   message = messag[1:]
+   message = ' '.join(msg[3:]).lower().strip()[1:]
+   #Legger til en "kopi" av message uten lower, slik at man kan sende capslock-sensitive meldinger gjennom fyllebot
+   fyllemessage = ' '.join(msg[3:]).strip()[1:]
 
    user = msg[0].split("!")
    user = user[0].replace(":", "")
+
+   #Denne admins()-funksjonen skal flyttes over senere. Får feilmeldinge "user not defined" når den er plassert i egen fil...
+   def admins():
+      f = open('adminz.txt', 'r+')
+      string = ''
+      for linje in f:
+         string+= linje
+      admin = string.splitlines()
+      for i in range(0, len(admin)):
+         if (admin[i].lower() == user.lower()):
+            return True
+      return False
 
    #Melding når folk joiner
    try: 
@@ -264,19 +277,18 @@ while True:
 
    try:
       if (shlex.split(message)[0]=='!kick') and (admins()):
-         kickUser(shlex.split(message)[1],shlex.split(message)[2])
+         send(kickUser(shlex.split(message)[1],shlex.split(message)[2]))
    except:
       pass
 
-   try:
-      if (shlex.split(message)[0]=='!msg') and (admins()):
-         send(message[4:].strip())
-   except:
-      pass
+
+   if (message[0:4] == '!msg' and admins()):
+      send(fyllemessage[4:].strip())
+
 
    try:
       if ('!imdb' in message):
-         imdbNavn(message)
+         send(imdbNavn(message))
    except:
       send('Lol, gidder ikke si no om den filmen asss')
 
@@ -332,7 +344,7 @@ while True:
 
 
    if filmz() and ('!imdb' not in message):
-      filmScore(filmReturn())
+      send(filmScore(filmReturn()))
       
 
    if no() and (filmLevel==2):

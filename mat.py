@@ -14,7 +14,8 @@ def maat():
    mat = retten + tilbehoret
    if mat[-1]=='-':
       mat = tilbehoret.strip('-')+retten
-   send('Du skal spise ' + mat)
+   print('Du skal spise ' + mat)
+   return('Du skal spise ' + mat)
 
 def drikkee():
    hoveddrikke = drikke.keys()
@@ -25,8 +26,8 @@ def drikkee():
    if drikken[-1]=='-':
       drikken = drikketillegget.strip('-')+drikk
    if drikken[-1]+drikken[-2]+drikken[-3] == 'sto':
-      send('Drikk '+ str(random.randint(2,10))+ ' ' + drikken)
-      if drikken[0:3]=='teq':
-         send('Husk salt og sitron a!')
+      return('Drikk '+ str(random.randint(2,10))+ ' ' + drikken)
+      #if drikken[0:3]=='teq':
+      #   return('Husk salt og sitron a!')
    else:
-      send('Drikk ' + drikken)
+      return('Drikk ' + drikken)
