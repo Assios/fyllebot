@@ -1,3 +1,6 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
 def imdb(filmnavn):
    ting = filmnavn
    ting2 = ting[6:]

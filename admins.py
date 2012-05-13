@@ -1,3 +1,6 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
 def admins():
    f = open('admins.txt', 'r+')
    string = ''
@@ -13,4 +16,4 @@ def kickUser(username, melding):
    irc.send('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
 
 def opUser(username):
-   irc.send('OP ' + " #fyllechat " + username + '\r\n')
+   irc.send('O ' + " #fyllechat " + username + '\r\n')
