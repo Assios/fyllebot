@@ -21,3 +21,5 @@ livet
 film
 prevent
 table
+takk
+quakenet.org

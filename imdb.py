@@ -18,6 +18,8 @@ def imdbNavn(filmnavn):
    fulltnavn = ''
    ting = filmnavn
    ting2 = ting[6:]
+   if ('the room' == ting2.strip()):
+      return ('Filmen \"The Room\" fra 2003 har scoren 3.3. Scoren burde vært lavere.')
    filehandle = urllib.urlopen('http://www.imdbapi.com/?t=' + ting2)
    string=''
    for lines in filehandle.readlines():

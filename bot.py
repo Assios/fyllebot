@@ -208,17 +208,21 @@ def Commands():
          nr=nr+1
          sleep(0.2)
 
-def lang(string):
-    link = string[6:].strip()
-    length = 3
+def long(string):
+   link = string[6:].strip()
+   length = 3
 
-    url = 'http://tidla.us/py/' 
-    values = {'shorturl':link, 'length':length }
-    data = urllib.urlencode(values)
-    req = urllib2.Request(url,data)
-    response = urllib2.urlopen(req)
-    the_page = response.read()
-    return the_page.split(" ")[0]
+   url = 'http://tidla.us/py/' 
+   values = {'shorturl':link, 'length':length }
+   data = urllib.urlencode(values)
+   req = urllib2.Request(url,data)
+   response = urllib2.urlopen(req)
+   the_page = response.read()
+   thepage = the_page.split(" ")[0]
+   if (thepage != "<!DOCTYPE"):
+      return thepage
+   else:
+      return "Ikke gyldig link, skløtte."
 
 def randomGreet():
    greetings = ['hei', 'hallo', 'heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
@@ -382,17 +386,23 @@ while True:
    if ( 'slaps fyllebot' ) in message:
       send('WELL FUCK YOU.')
 
+   if ('fyllebot' in message) and ('takk' in message):
+      send(['care.', 'værsågod' + smiley(), 'np, ' + user, 'awww, ' + user + smiley()][random.randint(0,3)])
+
    if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
 
    if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
    
-    try:
-        if ('!long' in message):
-            send(long(message))
-    except:
-        pass
+   try:
+      if ('!long' in message):
+         xmelding = ""
+         if (long(message) != 'Ikke gyldig link, skløtte.'):
+            xmelding = "Lang link: "
+         send(xmelding + long(message))
+   except:
+      pass
 
     
 
