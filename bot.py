@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import socket, random, re, string, time, datetime, os, urllib, shlex
+import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2
 from time import sleep
 
 network = 'irc.quakenet.org'
@@ -208,6 +208,18 @@ def Commands():
          nr=nr+1
          sleep(0.2)
 
+def lang(string):
+    link = string[6:].strip()
+    length = 3
+
+    url = 'http://tidla.us/py/' 
+    values = {'shorturl':link, 'length':length }
+    data = urllib.urlencode(values)
+    req = urllib2.Request(url,data)
+    response = urllib2.urlopen(req)
+    the_page = response.read()
+    return the_page.split(" ")[0]
+
 def randomGreet():
    greetings = ['hei', 'hallo', 'heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
    nr = random.randint(0, len(greetings)-1)
@@ -375,7 +387,14 @@ while True:
 
    if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
+   
+    try:
+        if ('!long' in message):
+            send(long(message))
+    except:
+        pass
 
+    
 
    rhapsody()
    Commands()
