@@ -379,7 +379,7 @@ while True:
       irc.send ( 'PRIVMSG #fyllechat :ok FU!\r\n' )
       irc.send ( 'QUIT\r\n' )
 
-   if ((message.endswith('fyllebot?')) and (len(message)>10)):
+   if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
       send('ER DRITA :D')
    if (message=="sup fyllebot"):
       send(randomSupSvar())
