@@ -387,22 +387,27 @@ while True:
       send('WELL FUCK YOU.')
 
    if ('fyllebot' in message) and ('takk' in message):
-      send(['care.', 'vårsågod' + smiley(), 'np, ' + user, 'awww, ' + user + smiley()][random.randint(0,3)])
+      send(['care.', 'værsågod' + smiley(), 'np, ' + user, 'awww, ' + user + smiley()][random.randint(0,3)])
 
    if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
 
    if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
-   
+
    try:
       if ('!long' in message):
          xmelding = ""
          if (long(message) != 'Ikke gyldig link, sklåtte.'):
             xmelding = "Lang link: "
          send(xmelding + long(message))
+         continue
    except:
       pass
+
+   if ('url' in message) or ('link' in message) or ("www." in message) or (".com" in message) and (not meld()):
+      send('Ler jentene av URLen din fordi den er for liten? Prøv !long <URL>')
+
 
     
 
