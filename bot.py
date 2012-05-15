@@ -29,7 +29,7 @@ def stengetidpolet():
     aapent = 1
     poltid = polet[dato.weekday()]
     tiden = str(datetime.datetime.now())
-    timer = int(tiden[11:13])+1
+    timer = int(tiden[11:13])+1 #OH GOD DU TRENGER DA IIKKE BRUKE SLICE PÅ DATETIME OBJEKTER THE FUCK man bruker tidem.hour() etc, tiden..minute()
     minutt = int(tiden[14:16])
     if (dato.weekday() >= 0) and (dato.weekday() <= 3):
         if timer<10:
@@ -225,7 +225,7 @@ def long(string):
       return "Ikke gyldig link, skløtte."
 
 def randomGreet():
-   greetings = ['hei', 'hallo', 'heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
+   greetings = ['hei', 'hallo', 'HJELP JEG ER LAAST INNI KJELLEREN TIL ASBJORN VAER SAA SNILL OOH GUD HAN KOMMER TILBAKE','heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
    nr = random.randint(0, len(greetings)-1)
    string = greetings[nr]
    return string.strip()
@@ -314,6 +314,10 @@ while True:
    except:
       pass
 
+   if ('cockfight' in message):
+       send('Elsker når haner fighter ass!')
+   if (('sove' in message) or ('søvn' in message)):
+       send('HAR IKKE SOVET P� 35 TIMER Nå ASS!!')
    if ('bærsj' in message):
       send('Det skrives ikke med r, julie >:(')
 
