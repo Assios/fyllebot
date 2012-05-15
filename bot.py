@@ -4,7 +4,7 @@
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2
 from time import sleep
 
-network = 'chessclub.com'
+network = 'irc.quakenet.org'
 port = 5023
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
