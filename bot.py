@@ -5,7 +5,7 @@ import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2
 from time import sleep
 
 network = 'irc.quakenet.org'
-port = 5023
+port = 6667
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
 print irc.recv ( 1024 )
