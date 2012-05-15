@@ -4,8 +4,8 @@
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2
 from time import sleep
 
-network = 'irc.quakenet.org'
-port = 6667
+network = 'chessclub.com'
+port = 5023
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
 print irc.recv ( 1024 )
@@ -29,23 +29,23 @@ def stengetidpolet():
     aapent = 1
     poltid = polet[dato.weekday()]
     tiden = str(datetime.datetime.now())
-    timer = int(tiden[11:13])+1 #OH GOD DU TRENGER DA IIKKE BRUKE SLICE PÃ… DATETIME OBJEKTER THE FUCK man bruker tidem.hour() etc, tiden..minute()
+    timer = int(tiden[11:13])+1
     minutt = int(tiden[14:16])
     if (dato.weekday() >= 0) and (dato.weekday() <= 3):
         if timer<10:
             aapent = 0
-            send('Polet er stengt. Aapner om ' + str(10-timer) + ' timer og ' + str(59-minutt) + ' min')
+            send('Polet er stengt. �pner om ' + str(10-timer) + ' timer og ' + str(59-minutt) + ' min')
     elif (dato.weekday() == 4) or (dato.weekday() == 5):
         if timer<9:
             aapent = 0
-            send('Polet er stengt. Aapner om ' + str(9-timer) + ' timer og ' + str(59-minutt) + ' min')
+            send('Polet er stengt. �pner om ' + str(9-timer) + ' timer og ' + str(59-minutt) + ' min')
     elif (dato.weekday() == 6):
         aapent = 0
         send('Polet er stengt i dag, sjekk barskapet')
     polsteng = poltid - timer
     polmin = 59-minutt
     if polsteng < 0:
-      send('Polet er stengt for i dag :( Sjekk barskapet og prÃ¸v igjen i morra!')
+      send('Polet er stengt for i dag :( Sjekk barskapet og pr�v igjen i morra!')
       return ''
     if aapent==1:
         send (str(polsteng)+' timer og '+str(polmin) + 'min til stengetid')
@@ -57,9 +57,9 @@ def privsend(melding):
    irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 
 def randomSupSvar():
-   nr = random.randint(0, 7)
-   mld = ["Drikker tequila!", "Shotter vodka ass.", "Drikker rista martini. Ikke stirra", "leker batman. I'M BATMAN!", "NANANANANA BATMAAAN!", "LOLOLOLO SUPERMAAN!", "zzZZZzZZZZSOVNER ASS", "ssshhhhh, prÃ¸ver Ã¥ gjemme meg!"]
-   return mld[nr]
+	nr = random.randint(0, 7)
+	mld = ["Drikker tequila!", "Shotter vodka ass.", "Drikker rista martini. Ikke stirra", "leker batman. I'M BATMAN!", "NANANANANA BATMAAAN!", "LOLOLOLO SUPERMAAN!", "zzZZZzZZZZSOVNER ASS", "ssshhhhh, pr�ver � gjemme meg!"]
+	return mld[nr]
  
 def rhapsody():
    f = open('lyrics.txt', 'r+')
@@ -92,7 +92,7 @@ def randomReply():
    return string
 
 def smiley():
-   smileys=[' :D', ' :)', ' :>', ' â‚¬:', ';*']
+   smileys=[' :D', ' :)', ' :>', ' �:', ';*']
    nr = random.randint(0, len(smileys)-1)
    return smileys[nr]
 
@@ -222,10 +222,10 @@ def long(string):
    if (thepage != "<!DOCTYPE"):
       return thepage
    else:
-      return "Ikke gyldig link, sklÃ¸tte."
+      return "Ikke gyldig link, skl�tte."
 
 def randomGreet():
-   greetings = ['hei', 'hallo', 'HJELP JEG ER LAAST INNI KJELLEREN TIL ASBJORN VAER SAA SNILL OOH GUD HAN KOMMER TILBAKE','heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
+   greetings = ['hei', 'hallo', 'heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
    nr = random.randint(0, len(greetings)-1)
    string = greetings[nr]
    return string.strip()
@@ -242,8 +242,8 @@ def film():
 
 today = datetime.date.today()
 day = today.weekday()
-dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "LÃ¸rdag", "SÃ¸ndag"]
-dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon Ã¤r det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
+dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "L�rdag", "S�ndag"]
+dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon �r det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
 
 filmLevel = 0
 mld=0
@@ -258,7 +258,7 @@ while True:
    user = msg[0].split("!")
    user = user[0].replace(":", "")
 
-   #Denne admins()-funksjonen skal flyttes over senere. FÃ¥r feilmeldinge "user not defined" nÃ¥r den er plassert i egen fil...
+   #Denne admins()-funksjonen skal flyttes over senere. F�r feilmeldinge "user not defined" n�r den er plassert i egen fil...
    def admins():
       f = open('adminz.txt', 'r+')
       string = ''
@@ -270,7 +270,7 @@ while True:
             return True
       return False
 
-   #Melding nÃ¥r folk joiner
+   #Melding n�r folk joiner
    try: 
       if msg[1] == 'JOIN' and ('fyllebot' not in user):
          send(user + ' joina kanalen! VELKOMMEN ASS')
@@ -314,11 +314,7 @@ while True:
    except:
       pass
 
-   if ('cockfight' in message):
-       send('Elsker nÃ¥r haner fighter ass!')
-   if (('sove' in message) or ('sÃ¸vn' in message)):
-       send('HAR IKKE SOVET PÃ 35 TIMER NÃ¥ ASS!!')
-   if ('bÃ¦rsj' in message):
+   if ('b�rsj' in message):
       send('Det skrives ikke med r, julie >:(')
 
    if (('wood' in message) and ('woodchuck' in message)):
@@ -338,8 +334,8 @@ while True:
       tiden = now.strftime("%I:%M %p")
       send('Klokka er ' + tiden + '!')
 
-   if ('vÃ¦r' in message):
-      send('DET ER DRITFINT VÃ†R I DAG. SOL N SHIT')
+   if ('v�r' in message):
+      send('DET ER DRITFINT V�R I DAG. SOL N SHIT')
 
    if (('hvilken' in message) and ('dag' in message)):
       send('Det er ' + dag[day] + ' i dag! ' + dagstatus[day])
@@ -354,7 +350,7 @@ while True:
       filmLevel=2
 
    if yes() and (filmLevel==2):
-      send(['Jeg likte den ogsÃ¥', 'vil se den igjen ass, joinerru kino?'][random.randint(0,1)] + smiley())
+      send(['Jeg likte den ogs�', 'vil se den igjen ass, joinerru kino?'][random.randint(0,1)] + smiley())
       filmLevel=0
 
    if no() and (filmLevel==1):
@@ -368,7 +364,7 @@ while True:
       
 
    if no() and (filmLevel==2):
-      send(['WHATTHEFUCK? :C', 'Hadde tenkt Ã¥ be deg med pÃ¥ kino, men IKKE NÃ… LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])
+      send(['WHATTHEFUCK? :C', 'Hadde tenkt � be deg med p� kino, men IKKE N� LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])
       filmLevel=3
       message=''
 
@@ -391,7 +387,7 @@ while True:
       send('WELL FUCK YOU.')
 
    if ('fyllebot' in message) and ('takk' in message):
-      send(['care.', 'vÃ¦rsÃ¥god' + smiley(), 'np, ' + user, 'awww, ' + user + smiley()][random.randint(0,3)])
+      send(['care.', 'v�rs�god' + smiley(), 'np, ' + user, 'awww, ' + user + smiley()][random.randint(0,3)])
 
    if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
@@ -402,7 +398,7 @@ while True:
    try:
       if ('!long' in message):
          xmelding = ""
-         if (long(message) != 'Ikke gyldig link, sklÃ¸tte.'):
+         if (long(message) != 'Ikke gyldig link, skl�tte.'):
             xmelding = "Lang link: "
          send(xmelding + long(message))
    except:
