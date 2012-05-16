@@ -81,6 +81,15 @@ def sjekketriks():
    string = sjekketriks[tall]
    return string
 
+def count(tall):
+   tallet = int(tall)
+   if (tallet > 60):
+      send("kanke telle så langt")
+      return
+   for i in range(0, tallet+1):
+      send(str(tallet-i))
+      sleep(1.1)
+
 def randomReply():
    f = open('reply.txt', 'r+')
    string = ''
@@ -357,7 +366,11 @@ while True:
       send(['Du burde se den ass!', 'Den er braaa, men du burde ikke se traileren. Inneholder massse spoilers. HATER SPOILERS'][random.randint(0,1)] + smiley())
       filmLevel=0
 
-
+   if ("count" in message):
+      try:
+         count(message[6:len(message)])
+      except:
+         pass
 
    if filmz() and ('!imdb' not in message):
       send(filmScore(filmReturn()))
@@ -406,7 +419,7 @@ while True:
       pass
 
    if ('url' in message) or ('link' in message) or ("www." in message) or (".com" in message) and (not meld()):
-      send('Ler jentene av URLen din fordi den er for liten? Prøv !long <URL>')
+      send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
 
 
     
