@@ -4,5 +4,7 @@
 !long <URL> - genererer lengre URL
 !promille - kalkulerer promillen din
 !film - tilfeldig film
+!beer - ØL
 !middag - tilfeldig matrett
 !drikke - tilfeldig drikke
+!ukenummer - gir ukenummeret

@@ -1,8 +1,11 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2
+import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
 from time import sleep
+from pprint import pprint
+from xml.dom.minidom import parseString
+
 
 network = 'irc.quakenet.org'
 port = 6667
@@ -90,6 +93,20 @@ def count(tall):
       send(str(tallet-i))
       sleep(1.1)
 
+def beer():
+   mottaker = user;
+   f = open('beer.txt', 'r+')
+   for linje in f:
+      irc.send('NOTICE ' + mottaker +  ' :' + linje + '\r\n')
+      sleep(0.2)
+
+def fylla():
+   mottaker = user;
+   f = open('fylla.txt', 'r+')
+   for linje in f:
+      send('   ' + linje)
+      sleep(0.2)
+
 def randomReply():
    f = open('reply.txt', 'r+')
    string = ''
@@ -101,7 +118,7 @@ def randomReply():
    return string
 
 def smiley():
-   smileys=[' :D', ' :)', ' :>', ' å:', ';*']
+   smileys=[' :D', ' :)', ' :>', ' €:', ';*']
    nr = random.randint(0, len(smileys)-1)
    return smileys[nr]
 
@@ -184,8 +201,6 @@ def yes():
          return True
    return False
 
-
-
 def Commands():
    if (message == '!sjekketriks'):
       send(sjekketriks()+'\r\n')
@@ -201,6 +216,9 @@ def Commands():
       stengetidpolet()
    if ('!middag' == message):
       send(maat())
+
+   if ('!beer' in message):
+      beer()
 
    if ('!drikke' == message):
       send(drikkee())
@@ -231,7 +249,48 @@ def long(string):
    if (thepage != "<!DOCTYPE"):
       return thepage
    else:
-      return "Ikke gyldig link, sklåtte."
+      return "Ikke gyldig link, skløtte."
+
+def imdb(filmnavn):
+   ting = filmnavn
+   ting2 = ting[6:]
+   filehandle = urllib.urlopen('http://www.imdbapi.com/?t=' + ting2)
+   string=''
+   for lines in filehandle.readlines():
+      string+=lines
+   stringen = string.split('imdbRating')[1][3:6]
+   score = float(stringen)
+   return(str(score))
+
+def ukenummer():
+   filehandle = urllib.urlopen("http://ukenummer.no/json")
+   json_data= urllib.urlopen("http://ukenummer.no/json")
+
+   data = json.load(json_data)
+   pprint(data)
+   json_data.close()
+   return "Uke " + data["weekno"] + " varer fra " + data["dates"]["fromdate"] + " til " + data["dates"]["todate"]
+
+def weather():
+   file = urllib2.urlopen('http://api.met.no/weatherapi/textforecast/1.5/?forecast=land;language=nb')
+   #convert to string:
+   data = file.read()
+   #close file because we dont need it anymore:
+   file.close()
+   #parse the xml you downloaded
+   dom = parseString(data)
+   #retrieve the first xml tag (<tag>data</tag>) that the parser finds with name tagName:
+   xmlTag = dom.getElementsByTagName('title')[0].toxml()
+   #strip off the tag (<tag>data</tag>  --->   data):
+   xmlData=xmlTag.replace('<title>','').replace('</title>','')
+   #print out the xml tag and data in this format: <tag>data</tag>
+   print xmlTag
+   #just print the data
+   send(xmlData)
+   print xmlData
+
+
+
 
 def randomGreet():
    greetings = ['hei', 'hallo', 'heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
@@ -248,15 +307,15 @@ def film():
    string = filmer[nr]
    return "\""+string+"\""
 
-
 today = datetime.date.today()
 day = today.weekday()
 dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lårdag", "Såndag"]
 dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
 
+samtaleLvl = 0
 filmLevel = 0
 mld=0
-
+finishedLoading = 0
 while True:
    data = irc.recv(1024)
    msg = data.split(' ')
@@ -266,6 +325,21 @@ while True:
 
    user = msg[0].split("!")
    user = user[0].replace(":", "")
+   if ("End of /NAMES list" in fyllemessage):
+      finishedLoading = 1
+
+   #Liste med brukere
+   try:
+      brukerliste = data.split('= #fyllechat ')[1]
+      bruker2 = brukerliste.split(' ')
+      fyllechatIndex = bruker2.index(':End')
+      listOfUsers = bruker2[1:(fyllechatIndex-3)]
+      listOfUsers.remove('@Q')
+      for i in range(0, len(listOfUsers)):
+         if (listOfUsers[i][0] == '@'):
+            listOfUsers[i] = listOfUsers[i][1:]
+   except:
+      pass
 
    #Denne admins()-funksjonen skal flyttes over senere. Får feilmeldinge "user not defined" når den er plassert i egen fil...
    def admins():
@@ -280,11 +354,7 @@ while True:
       return False
 
    #Melding når folk joiner
-   try: 
-      if msg[1] == 'JOIN' and ('fyllebot' not in user):
-         send(user + ' joina kanalen! VELKOMMEN ASS')
-   except:
-      pass
+
 
    if data.find ( 'PING' ) != -1:
       irc.send ( 'PONG ' + data.split() [ 1 ] + '\r\n' )
@@ -323,7 +393,10 @@ while True:
    except:
       pass
 
-   if ('bårsj' in message):
+   if ('x78437c' in message):
+      syng()
+
+   if ('bærsj' in message):
       send('Det skrives ikke med r, julie >:(')
 
    if (('wood' in message) and ('woodchuck' in message)):
@@ -342,6 +415,15 @@ while True:
       now = datetime.datetime.now() 
       tiden = now.strftime("%I:%M %p")
       send('Klokka er ' + tiden + '!')
+
+   if ('!wiki' in message):
+      send(wiki())   
+
+   if ('!ukenummer' in message):
+      send(ukenummer())
+
+   if ('!fylla' in message) and (admins()):
+      fylla()
 
    if ('vår' in message):
       send('DET ER DRITFINT VåR I DAG. SOL N SHIT')
@@ -375,6 +457,8 @@ while True:
    if filmz() and ('!imdb' not in message):
       send(filmScore(filmReturn()))
       
+   if ("!vær" in message):
+      weather()
 
    if no() and (filmLevel==2):
       send(['WHATTHEFUCK? :C', 'Hadde tenkt å be deg med på kino, men IKKE Nå LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])
@@ -388,7 +472,7 @@ while True:
    if ('fuck' in message) and ('fyllebot' in message):
       send('>:C')
 
-   if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot'):
+   if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot') and (admins()):
       irc.send ( 'PRIVMSG #fyllechat :ok FU!\r\n' )
       irc.send ( 'QUIT\r\n' )
 
@@ -404,6 +488,13 @@ while True:
 
    if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
+      brukerSvar = user;
+      samtaleLvl = 1
+
+   if (" " in message) and (samtaleLvl==1) and (user == brukerSvar):
+      send(['HAHAH, du ass!', 'fu.', 'hater deg ' + user + '.', 'elsker deg, ' + user, 'idiot ass, ' + user + smiley(), 'du må jo være drita da, ' + user + '.'][random.randint(0,5)])
+      samtaleLvl=0
+      brukerSvar = ""
 
    if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
@@ -411,18 +502,47 @@ while True:
    try:
       if ('!long' in message):
          xmelding = ""
-         if (long(message) != 'Ikke gyldig link, sklåtte.'):
+         if (long(message) != 'Ikke gyldig link, skløtte.'):
             xmelding = "Lang link: "
          send(xmelding + long(message))
          continue
    except:
       pass
 
-   if ('url' in message) or ('link' in message) or ("www." in message) or (".com" in message) and (not meld()):
-      send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
+   if ('url' in message) or ("www." in message) and not (user == "fyllebot"):
+      if (finishedLoading == 1):
+         send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
 
+   if ("!bruker" in message):
+      for i in range(0, len(listOfUsers)):
+         send(listOfUsers[i])
 
-    
+   try: 
+      if 'JOIN' in msg[1] and ('fyllebot' not in user):
+         listOfUsers.append(user)
+         send(user + ' joina kanalen! VELKOMMEN ASS')
+   except:
+      pass
+
+   try:
+      if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('fyllebot' not in user):
+         send(user)
+         listOfUsers.remove(user)
+   except:
+      pass
+
+   try:
+      if ('NICK' in msg[1]):
+         listOfUsers.remove(user)
+         listOfUsers.append(msg[2][1:])
+         send(user + ' bytta til ' + msg[2][1:])
+   except:
+      pass
+
+   #kræsjgreie
+   if ('!kræsj' in message):
+      send(jfriojfro)
+   
 
    rhapsody()
    Commands()
