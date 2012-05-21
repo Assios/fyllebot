@@ -134,7 +134,7 @@ def pong():
             gameOver = 1
             pong = 0
          else:
-            continue()
+            continue
 
 
 
