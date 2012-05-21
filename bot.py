@@ -110,7 +110,7 @@ def fylla():
 
 def randomPong():
    pongstr = ['|    .', '|         .', '| .', '|  .', '|   .', '|  .', '|     .', '|  .', '. |   ', '|    .']
-   tall = random.randint(0, len(pongstr))
+   tall = random.randint(0, len(pongstr)-1)
    return pongstr[tall]
 
 def randomReply():
@@ -326,6 +326,9 @@ def film():
    string = filmer[nr]
    return "\""+string+"\""
 
+def kickUser(username, melding):
+   irc.send('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
+
 listOfUsers = []
 today = datetime.date.today()
 day = today.weekday()
@@ -394,7 +397,7 @@ while True:
 
    try:
       if (shlex.split(message)[0]=='!kick') and (admins()):
-         send(kickUser(shlex.split(message)[1],shlex.split(message)[2]))
+         (kickUser(shlex.split(message)[1],shlex.split(message)[2]))
    except:
       pass
 
@@ -407,20 +410,11 @@ while True:
       f = open('ponghead.txt', 'r+')
       for line in f:
          send(line)
-         sleep(0.8)
+         sleep(1.0)
       gameOver = 0
-      while (gameOver == 0):
-         send('Din tur!')
-         pong == 1
-         if (pong==1) and ('.' in message) and ('|' in message):
-            sendPong = randomPong()
-            send(sendPong())
-            if (sendPong() == '. |   '):
-               send('DU SLO MEG :( GRATULERER!')
-               gameOver = 1
-               pong = 0
-            else:
-               continue
+      sleep(0.2)
+      send('Din tur! Sjekk http://bash.org/?9322 for regler! Du skyter mot venstre.')
+      pong = 1
 
    try:
       if ('!imdb' in message):
@@ -433,6 +427,20 @@ while True:
          opUser(shlex.split(message)[1])
    except:
       pass
+
+   if (pong==1) and ('.' in message) and ('|' in message) and ('fyllebot' not in user):
+      if (message[0] != '.'):
+         send('DU TAPTE! :D')
+         gameOver = 1
+         pong = 0
+         sendPong= ''
+      else:
+         sendPong = randomPong()
+         send(sendPong)
+      if (sendPong == '. |   '):
+         send('DU SLO MEG :( GRATULERER!')
+         gameOver = 1
+         pong = 0
 
    if ('x78437c' in message):
       syng()
@@ -576,7 +584,7 @@ while True:
          listOfUsers.remove(user)
          thisUser = msg[2][1:].strip()
          listOfUsers.append(thisUser)
-         send(thisUser)
+         send('Bra navnevalg, ' +  thisUser + '!')
    except:
       pass
 
