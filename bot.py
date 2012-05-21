@@ -113,32 +113,6 @@ def randomPong():
    tall = random.randint(0, len(pongstr))
    return pongstr[tall]
 
-
-
-def pong():
-   mottaker = user
-   f = open('ponghead.txt', 'r+')
-   string = ""
-   for line in f:
-      string+= line
-   send(string)
-   gameOver = 0
-   while (gameOver == 0):
-      send('Din tur!')
-      pong == 1
-      if (pong==1) and ('.' in message) and ('|' in message):
-         sendPong = randomPong()
-         send(sendPong())
-         if (sendPong() == '. |   '):
-            send('DU SLO MEG :( GRATULERER!')
-            gameOver = 1
-            pong = 0
-         else:
-            continue
-
-
-
-
 def randomReply():
    f = open('reply.txt', 'r+')
    string = ''
@@ -429,7 +403,25 @@ while True:
       send(fyllemessage[4:].strip())
 
    if ('!pong' in message):
-      pong()
+      mottaker = user
+      f = open('ponghead.txt', 'r+')
+      string = ""
+      for line in f:
+         string+= line
+      send(string)
+      gameOver = 0
+      while (gameOver == 0):
+         send('Din tur!')
+         pong == 1
+         if (pong==1) and ('.' in message) and ('|' in message):
+            sendPong = randomPong()
+            send(sendPong())
+            if (sendPong() == '. |   '):
+               send('DU SLO MEG :( GRATULERER!')
+               gameOver = 1
+               pong = 0
+            else:
+               continue
 
    try:
       if ('!imdb' in message):
