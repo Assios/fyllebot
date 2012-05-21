@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-def kickUser(username, melding):
+def kickUsers(username, melding):
    return('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
 
 def opUser(username):
