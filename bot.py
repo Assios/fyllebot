@@ -101,12 +101,43 @@ def beer():
       sleep(0.2)
 
 def fylla():
-   mottaker = user;
+   mottaker = user
    f = open('fylla.txt', 'r+')
    string = ""
    for line in f:
       string+= line
    send(string)
+
+def randomPong():
+   pongstr = ['|    .', '|         .', '| .', '|  .', '|   .', '|  .', '|     .', '|  .', '. |   ', '|    .']
+   tall = random.randint(0, len(pongstr))
+   return pongstr[tall]
+
+
+
+def pong():
+   mottaker = user
+   f = open('ponghead.txt', 'r+')
+   string = ""
+   for line in f:
+      string+= line
+   send(string)
+   gameOver = 0
+   while (gameOver == 0):
+      send('Din tur!')
+      pong == 1
+      if (pong==1) and ('.' in message) and ('|' in message):
+         sendPong = randomPong()
+         send(sendPong())
+         if (sendPong() == '. |   '):
+            send('DU SLO MEG :( GRATULERER!')
+            gameOver = 1
+            pong = 0
+         else:
+            continue()
+
+
+
 
 def randomReply():
    f = open('reply.txt', 'r+')
@@ -220,7 +251,6 @@ def Commands():
 
    if ('!beer' in message):
       beer()
-      send("test")
 
    if ('!pingall' in message):
       send(', '.join(listOfUsers))
@@ -330,6 +360,7 @@ dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det fre
 
 samtaleLvl = 0
 filmLevel = 0
+pong = 0
 mld=0
 finishedLoading = 0
 while True:
@@ -397,6 +428,8 @@ while True:
    if (message[0:4] == '!msg' and admins()):
       send(fyllemessage[4:].strip())
 
+   if ('!pong' in message):
+      pong()
 
    try:
       if ('!imdb' in message):
@@ -557,7 +590,7 @@ while True:
       pass
 
    #kræsjgreie
-   if ('!kræsj' in message):
+   if ('!kræsj' in message) and (user=="Assios"):
       send(jfriojfro)
    
 
