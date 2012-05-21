@@ -103,9 +103,10 @@ def beer():
 def fylla():
    mottaker = user;
    f = open('fylla.txt', 'r+')
-   for linje in f:
-      send('   ' + linje)
-      sleep(0.2)
+   string = ""
+   for line in f:
+      string+= line
+   send(string)
 
 def randomReply():
    f = open('reply.txt', 'r+')
@@ -219,6 +220,10 @@ def Commands():
 
    if ('!beer' in message):
       beer()
+      send("test")
+
+   if ('!pingall' in message):
+      send(', '.join(listOfUsers))
 
    if ('!bruker' in message):
       for i in range(0, len(listOfUsers)):
@@ -519,7 +524,7 @@ while True:
          send(xmelding + long(message))
          continue
    except:
-      pass
+      send('Er for full til å forlenge URLer atm :( Prøv igjen senere')
 
    if ('url' in message) or ("www." in message) and not (user == "fyllebot"):
       if (finishedLoading == 1):
