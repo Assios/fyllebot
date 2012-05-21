@@ -407,7 +407,7 @@ while True:
       f = open('ponghead.txt', 'r+')
       for line in f:
          send(line)
-         sleep(0.2)
+         sleep(0.5)
       gameOver = 0
       while (gameOver == 0):
          send('Din tur!')
