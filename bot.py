@@ -405,10 +405,9 @@ while True:
    if ('!pong' in message):
       mottaker = user
       f = open('ponghead.txt', 'r+')
-      string = ""
       for line in f:
-         string+= line
-      send(string)
+         send(line)
+         sleep(0.2)
       gameOver = 0
       while (gameOver == 0):
          send('Din tur!')
