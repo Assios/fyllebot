@@ -118,7 +118,7 @@ def randomReply():
    return string
 
 def smiley():
-   smileys=[' :D', ' :)', ' :>', ' €:', ';*']
+   smileys=[' :D', ' :)', ' :>', ' €:', ' ;*']
    nr = random.randint(0, len(smileys)-1)
    return smileys[nr]
 
@@ -220,6 +220,10 @@ def Commands():
    if ('!beer' in message):
       beer()
 
+   if ('!bruker' in message):
+      for i in range(0, len(listOfUsers)):
+         send(listOfUsers[i])
+
    if ('!drikke' == message):
       send(drikkee())
 
@@ -262,6 +266,11 @@ def imdb(filmnavn):
    score = float(stringen)
    return(str(score))
 
+def randomUser():
+   lengden = len(listOfUsers)-1
+   tallet = random.randint(0, lengden)
+   return string
+
 def ukenummer():
    filehandle = urllib.urlopen("http://ukenummer.no/json")
    json_data= urllib.urlopen("http://ukenummer.no/json")
@@ -297,6 +306,7 @@ def randomGreet():
    nr = random.randint(0, len(greetings)-1)
    string = greetings[nr]
    return string.strip()
+
 def film():
    f = open('film.txt', 'r+')
    string = ''
@@ -307,6 +317,7 @@ def film():
    string = filmer[nr]
    return "\""+string+"\""
 
+listOfUsers = []
 today = datetime.date.today()
 day = today.weekday()
 dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lårdag", "Såndag"]
@@ -334,12 +345,13 @@ while True:
       bruker2 = brukerliste.split(' ')
       fyllechatIndex = bruker2.index(':End')
       listOfUsers = bruker2[1:(fyllechatIndex-3)]
-      listOfUsers.remove('@Q')
       for i in range(0, len(listOfUsers)):
          if (listOfUsers[i][0] == '@'):
             listOfUsers[i] = listOfUsers[i][1:]
+      listOfUsers.remove('Q')
    except:
       pass
+
 
    #Denne admins()-funksjonen skal flyttes over senere. Får feilmeldinge "user not defined" når den er plassert i egen fil...
    def admins():
@@ -513,9 +525,8 @@ while True:
       if (finishedLoading == 1):
          send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
 
-   if ("!bruker" in message):
-      for i in range(0, len(listOfUsers)):
-         send(listOfUsers[i])
+   if ("!random") in message:
+      send(randomGreet() +  ", " +  randomUser() + smiley)
 
    try: 
       if 'JOIN' in msg[1] and ('fyllebot' not in user):
@@ -534,8 +545,9 @@ while True:
    try:
       if ('NICK' in msg[1]):
          listOfUsers.remove(user)
-         listOfUsers.append(msg[2][1:])
-         send(user + ' bytta til ' + msg[2][1:])
+         thisUser = msg[2][1:].strip()
+         listOfUsers.append(thisUser)
+         send(thisUser)
    except:
       pass
 
