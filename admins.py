@@ -16,4 +16,4 @@ def kickUser(username, melding):
    irc.send('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
 
 def opUser(username):
-   irc.send('O ' + " #fyllechat " + username + '\r\n')
+   irc.send('MODE ' + " #fyllechat +o " + username + '\r\n')
