@@ -14,8 +14,8 @@ irc.connect ( ( network, port ) )
 print irc.recv ( 1024 )
 irc.send ( 'NICK fyllebot\r\n' )
 irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
-irc.send ( 'JOIN #fyllechat\r\n' )
-irc.send ( 'PRIVMSG #fyllechat :HEI ASS.\r\n' )
+irc.send ( 'JOIN #gamereactor.no\r\n' )
+irc.send ( 'PRIVMSG #gamereactor.no :HEI ASS.\r\n' )
 
 from imdb import *
 from mat import *
@@ -55,7 +55,7 @@ def stengetidpolet():
     return ''
 
 def send(melding):
-   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
+   irc.send ( 'PRIVMSG #gamereactor.no :' + melding + '\r\n' )
 def privsend(melding):
    irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 
@@ -72,7 +72,7 @@ def rhapsody():
    lyrics = string.splitlines()
    for i in range(len(lyrics)):
       if (lyrics[i].lower() in message):
-         irc.send ( 'PRIVMSG #fyllechat :'+lyrics[i+1]+'\r\n' )
+         irc.send ( 'PRIVMSG #gamereactor.no :'+lyrics[i+1]+'\r\n' )
 
 def sjekketriks():
    f = open('sjekketriks.txt', 'r+')
@@ -226,9 +226,6 @@ def Commands():
    if ('!beer' in message):
       beer()
 
-   if ('!pingall' in message):
-      send(', '.join(listOfUsers))
-
    if ('!bruker' in message):
       for i in range(0, len(listOfUsers)):
          send(listOfUsers[i])
@@ -276,9 +273,8 @@ def imdb(filmnavn):
    return(str(score))
 
 def randomUser():
-   lengden = len(listOfUsers)-1
-   tallet = random.randint(0, lengden)
-   return string
+   tallet = random.randint(0, len(listOfUsers)-1)
+   return listOfUsers[tallet]
 
 def ukenummer():
    filehandle = urllib.urlopen("http://ukenummer.no/json")
@@ -327,7 +323,7 @@ def film():
    return "\""+string+"\""
 
 def kickUser(username, melding):
-   irc.send('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
+   irc.send('KICK ' + " #gamereactor.no " + username + " :" + melding + '\r\n')
 
 listOfUsers = []
 today = datetime.date.today()
@@ -354,7 +350,7 @@ while True:
 
    #Liste med brukere
    try:
-      brukerliste = data.split('= #fyllechat ')[1]
+      brukerliste = data.split('= #gamereactor.no ')[1]
       bruker2 = brukerliste.split(' ')
       fyllechatIndex = bruker2.index(':End')
       listOfUsers = bruker2[1:(fyllechatIndex-3)]
@@ -384,7 +380,7 @@ while True:
    if data.find ( 'PING' ) != -1:
       irc.send ( 'PONG ' + data.split() [ 1 ] + '\r\n' )
    if data.find ( 'KICK' ) != -1:
-      irc.send ( 'JOIN #fyllechat\r\n' )
+      irc.send ( 'JOIN #gamereactor.no\r\n' )
 
    if greet() and ('fyllebot' in message):
       send(randomGreet() + ', ' + user + smiley())
@@ -522,7 +518,7 @@ while True:
       send('>:C')
 
    if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot') and (admins()):
-      irc.send ( 'PRIVMSG #fyllechat :ok FU!\r\n' )
+      irc.send ( 'PRIVMSG #gamereactor.no :ok FU!\r\n' )
       irc.send ( 'QUIT\r\n' )
 
    if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
@@ -540,13 +536,19 @@ while True:
       brukerSvar = user;
       samtaleLvl = 1
 
+   if ('hvem' in message) and ('er' in message):
+      send(['Jeg vil snakke med ' + randomUser() + '!', 'Hvorfor er ikke ' + randomUser() + ' her?', 'Hvafaeeeeen. ' + randomUser() + '!?!?!'][random.randint(0, 2)])
+
    if (" " in message) and (samtaleLvl==1) and (user == brukerSvar):
-      send(['HAHAH, du ass!', 'fu.', 'hater deg ' + user + '.', 'elsker deg, ' + user, 'idiot ass, ' + user + smiley(), 'du må jo være drita da, ' + user + '.'][random.randint(0,5)])
+      send(['HAHAH, du ass!', 'Hvor er ' + randomUser() + '?', 'fu.', 'hater deg ' + user + '.', 'elsker deg, ' + user, 'idiot ass, ' + user + smiley(), 'du må jo være drita da, ' + user + '.'][random.randint(0,5)])
       samtaleLvl=0
       brukerSvar = ""
 
    if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
+
+   if ('hvor' in message):
+      send('Hvor er ' + randomUser() + '?')
 
    try:
       if ('!long' in message):
@@ -574,7 +576,7 @@ while True:
 
    try:
       if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('fyllebot' not in user):
-         send(user)
+         send('Hadet bra, ' + user + smiley())
          listOfUsers.remove(user)
    except:
       pass
