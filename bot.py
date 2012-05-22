@@ -12,10 +12,11 @@ port = 6667
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
 print irc.recv ( 1024 )
+channel = '#fyllechat'
 irc.send ( 'NICK fyllebot\r\n' )
 irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
-irc.send ( 'JOIN #gamereactor.no\r\n' )
-irc.send ( 'PRIVMSG #gamereactor.no :HEI ASS.\r\n' )
+irc.send ( 'JOIN '+channel+'\r\n' )
+irc.send ( 'PRIVMSG '+channel+ ' :HEI ASS.\r\n' )
 
 from imdb import *
 from mat import *
@@ -55,7 +56,7 @@ def stengetidpolet():
     return ''
 
 def send(melding):
-   irc.send ( 'PRIVMSG #gamereactor.no :' + melding + '\r\n' )
+   irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
 def privsend(melding):
    irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 
@@ -72,7 +73,7 @@ def rhapsody():
    lyrics = string.splitlines()
    for i in range(len(lyrics)):
       if (lyrics[i].lower() in message):
-         irc.send ( 'PRIVMSG #gamereactor.no :'+lyrics[i+1]+'\r\n' )
+         irc.send ( 'PRIVMSG ' + channel + ' :'+lyrics[i+1]+'\r\n' )
 
 def sjekketriks():
    f = open('sjekketriks.txt', 'r+')
@@ -323,7 +324,7 @@ def film():
    return "\""+string+"\""
 
 def kickUser(username, melding):
-   irc.send('KICK ' + " #gamereactor.no " + username + " :" + melding + '\r\n')
+   irc.send('KICK ' + channel + ' ' + username + " :" + melding + '\r\n')
 
 listOfUsers = []
 today = datetime.date.today()
@@ -350,7 +351,7 @@ while True:
 
    #Liste med brukere
    try:
-      brukerliste = data.split('= #gamereactor.no ')[1]
+      brukerliste = data.split('= ' + channel + ' ')[1]
       bruker2 = brukerliste.split(' ')
       fyllechatIndex = bruker2.index(':End')
       listOfUsers = bruker2[1:(fyllechatIndex-3)]
@@ -380,7 +381,7 @@ while True:
    if data.find ( 'PING' ) != -1:
       irc.send ( 'PONG ' + data.split() [ 1 ] + '\r\n' )
    if data.find ( 'KICK' ) != -1:
-      irc.send ( 'JOIN #gamereactor.no\r\n' )
+      irc.send ( 'JOIN ' + channel + '\r\n' )
 
    if greet() and ('fyllebot' in message):
       send(randomGreet() + ', ' + user + smiley())
@@ -518,7 +519,7 @@ while True:
       send('>:C')
 
    if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot') and (admins()):
-      irc.send ( 'PRIVMSG #gamereactor.no :ok FU!\r\n' )
+      irc.send ( 'PRIVMSG ' + channel + ' :ok FU!\r\n' )
       irc.send ( 'QUIT\r\n' )
 
    if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
