@@ -1,11 +1,12 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
+import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json, math, time
+import sys
+import select
 from time import sleep
 from pprint import pprint
 from xml.dom.minidom import parseString
-
 
 network = 'irc.quakenet.org'
 port = 6667
@@ -227,7 +228,7 @@ def Commands():
       beer()
 
    if ('!pingall' in message):
-      send(', '.join(listOfUsers))
+      send(':'.join(listOfUsers))
 
    if ('!bruker' in message):
       for i in range(0, len(listOfUsers)):
@@ -383,8 +384,6 @@ while True:
 
    if data.find ( 'PING' ) != -1:
       irc.send ( 'PONG ' + data.split() [ 1 ] + '\r\n' )
-   if data.find ( 'KICK' ) != -1:
-      irc.send ( 'JOIN #fyllechat\r\n' )
 
    if greet() and ('fyllebot' in message):
       send(randomGreet() + ', ' + user + smiley())
@@ -398,6 +397,12 @@ while True:
    try:
       if (shlex.split(message)[0]=='!kick') and (admins()):
          (kickUser(shlex.split(message)[1],shlex.split(message)[2]))
+   except:
+      pass
+
+   try:
+      if (shlex.split(message)[0]== '!deleteFromUsers') and (admins()):
+         (listOfUsers.remove(shlex.split(message)[1]))
    except:
       pass
 
@@ -467,6 +472,9 @@ while True:
 
    if ('!wiki' in message):
       send(wiki())   
+
+   if ('!sjakk' in message):
+      gameLoop()
 
    if ('!ukenummer' in message):
       send(ukenummer())
@@ -557,6 +565,7 @@ while True:
          continue
    except:
       send('Er for full til å forlenge URLer atm :( Prøv igjen senere')
+      continue
 
    if ('url' in message) or ("www." in message) and not (user == "fyllebot"):
       if (finishedLoading == 1):
@@ -568,13 +577,13 @@ while True:
    try: 
       if 'JOIN' in msg[1] and ('fyllebot' not in user):
          listOfUsers.append(user)
-         send(user + ' joina kanalen! VELKOMMEN ASS')
+         send(user + ' joina kanalen! VELKOMMEN ASS. Dagens film: http://www.youtube.com/watch?v=gRFJvRb4A9c')
    except:
       pass
 
    try:
       if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('fyllebot' not in user):
-         send(user)
+         send('Snakkes da, ' + user + smiley())
          listOfUsers.remove(user)
    except:
       pass
