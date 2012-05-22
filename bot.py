@@ -834,8 +834,8 @@ while True:
    try:
       brukerliste = data.split('= #fyllechat ')[1]
       bruker2 = brukerliste.split(' ')
-      #fyllechatIndex = bruker2.index(':End')
-      listOfUsers = bruker2[1:(#fyllechatIndex-3)]
+      fyllechatIndex = bruker2.index(':End')
+      listOfUsers = bruker2[1:(fyllechatIndex-3)]
       for i in range(0, len(listOfUsers)):
          if (listOfUsers[i][0] == '@'):
             listOfUsers[i] = listOfUsers[i][1:]
