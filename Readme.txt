@@ -1,0 +1,1 @@
+This is the repository for the open-source Fyllebot, an alcoholic irc chatbot designed by students at NTNU.
