@@ -13,10 +13,10 @@ port = 6667
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
 print irc.recv ( 1024 )
-irc.send ( 'NICK hjfkdhjsg8\r\n' )
-irc.send ( 'USER hjfkdhjsg8 hjfkdhjsg8 hjfkdhjsg8 :FylleBOOOT\r\n' )
-irc.send ( 'JOIN fyllechat\r\n' )
-irc.send ( 'PRIVMSG fyllechat :HEI ASS.\r\n' )
+irc.send ( 'NICK fyllebot\r\n' )
+irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
+irc.send ( 'JOIN #fyllechat\r\n' )
+irc.send ( 'PRIVMSG #fyllechat :HEI ASS.\r\n' )
 
 from imdb import *
 from mat import *
@@ -533,7 +533,7 @@ def stengetidpolet():
     return ''
 
 def send(melding):
-   irc.send ( 'PRIVMSG fyllechat :' + melding + '\r\n' )
+   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
 def privsend(melding):
    irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 
@@ -550,7 +550,7 @@ def rhapsody():
    lyrics = string.splitlines()
    for i in range(len(lyrics)):
       if (lyrics[i].lower() in message):
-         irc.send ( 'PRIVMSG fyllechat :'+lyrics[i+1]+'\r\n' )
+         irc.send ( 'PRIVMSG #fyllechat :'+lyrics[i+1]+'\r\n' )
 
 def sjekketriks():
    f = open('sjekketriks.txt', 'r+')
@@ -805,7 +805,7 @@ def film():
    return "\""+string+"\""
 
 def kickUser(username, melding):
-   irc.send('KICK ' + " fyllechat " + username + " :" + melding + '\r\n')
+   irc.send('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
 
 listOfUsers = []
 today = datetime.date.today()
@@ -822,7 +822,7 @@ while True:
    data = irc.recv(1024)
    msg = data.split(' ')
    message = ' '.join(msg[3:]).lower().strip()[1:]
-   #Legger til en "kopi" av message uten lower, slik at man kan sende capslock-sensitive meldinger gjennom hjfkdhjsg8
+   #Legger til en "kopi" av message uten lower, slik at man kan sende capslock-sensitive meldinger gjennom fyllebot
    fyllemessage = ' '.join(msg[3:]).strip()[1:]
 
    user = msg[0].split("!")
@@ -832,10 +832,10 @@ while True:
 
    #Liste med brukere
    try:
-      brukerliste = data.split('= fyllechat ')[1]
+      brukerliste = data.split('= #fyllechat ')[1]
       bruker2 = brukerliste.split(' ')
-      fyllechatIndex = bruker2.index(':End')
-      listOfUsers = bruker2[1:(fyllechatIndex-3)]
+      #fyllechatIndex = bruker2.index(':End')
+      listOfUsers = bruker2[1:(#fyllechatIndex-3)]
       for i in range(0, len(listOfUsers)):
          if (listOfUsers[i][0] == '@'):
             listOfUsers[i] = listOfUsers[i][1:]
@@ -862,7 +862,7 @@ while True:
    if data.find ( 'PING' ) != -1:
       irc.send ( 'PONG ' + data.split() [ 1 ] + '\r\n' )
 
-   if greet() and ('hjfkdhjsg8' in message):
+   if greet() and ('fyllebot' in message):
       send(randomGreet() + ', ' + user + smiley())
 
    if ('hi doggie' in message):
@@ -910,7 +910,7 @@ while True:
    except:
       pass
 
-   if (pong==1) and ('.' in message) and ('|' in message) and ('hjfkdhjsg8' not in user):
+   if (pong==1) and ('.' in message) and ('|' in message) and ('fyllebot' not in user):
       if (message[0] != '.'):
          send('DU TAPTE! :D')
          gameOver = 1
@@ -1003,24 +1003,24 @@ while True:
       send(['Fuck deg. FUCK DEG!', 'fu.', 'hater deg.'][random.randint(0,2)])
       filmLevel=0
 
-   if ('fuck' in message) and ('hjfkdhjsg8' in message):
+   if ('fuck' in message) and ('fyllebot' in message):
       send('>:C')
 
-   if (message=="ingen liker deg, hjfkdhjsg8") or (message=='stikk a, hjfkdhjsg8') and (admins()):
-      irc.send ( 'PRIVMSG fyllechat :ok FU!\r\n' )
+   if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot') and (admins()):
+      irc.send ( 'PRIVMSG #fyllechat :ok FU!\r\n' )
       irc.send ( 'QUIT\r\n' )
 
-   if ((message.endswith('hjfkdhjsg8?')) and (len(message)>10)) and (not filmz()):
+   if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
       send('ER DRITA :D')
-   if (message=="sup hjfkdhjsg8"):
+   if (message=="sup fyllebot"):
       send(randomSupSvar())
-   if ( 'slaps hjfkdhjsg8' ) in message:
+   if ( 'slaps fyllebot' ) in message:
       send('WELL FUCK YOU.')
 
-   if ('hjfkdhjsg8' in message) and ('takk' in message):
+   if ('fyllebot' in message) and ('takk' in message):
       send(['care.', 'værsågod' + smiley(), 'np, ' + user, 'awww, ' + user + smiley()][random.randint(0,3)])
 
-   if (message == 'hjfkdhjsg8') or (message == 'hjfkdhjsg8?'):
+   if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
       brukerSvar = user;
       samtaleLvl = 1
@@ -1030,7 +1030,7 @@ while True:
       samtaleLvl=0
       brukerSvar = ""
 
-   if ('hjfkdhjsg8' in message) and (not greet()) and (not meld()):
+   if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
 
    try:
@@ -1044,7 +1044,7 @@ while True:
       send('Er for full til å forlenge URLer atm :( Prøv igjen senere')
       continue
 
-   if ('url' in message) or ("www." in message) and not (user == "hjfkdhjsg8"):
+   if ('url' in message) or ("www." in message) and not (user == "fyllebot"):
       if (finishedLoading == 1):
          send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
 
@@ -1052,14 +1052,14 @@ while True:
       send(randomGreet() +  ", " +  randomUser() + smiley)
 
    try: 
-      if 'JOIN' in msg[1] and ('hjfkdhjsg8' not in user):
+      if 'JOIN' in msg[1] and ('fyllebot' not in user):
          listOfUsers.append(user)
          send(user + ' joina kanalen! VELKOMMEN ASS. Dagens film: http://www.youtube.com/watch?v=gRFJvRb4A9c')
    except:
       pass
 
    try:
-      if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('hjfkdhjsg8' not in user):
+      if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('fyllebot' not in user):
          send('Snakkes da, ' + user + smiley())
          listOfUsers.remove(user)
    except:
