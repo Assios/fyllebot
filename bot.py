@@ -124,6 +124,16 @@ def randomReply():
    string = reply[tall]
    return string
 
+def youtube():
+   f = open('youtube.txt', 'r+')
+   string = ''
+   for linje in f:
+      string+=linje
+   reply = string.splitlines()
+   tall = random.randint(0, len(reply)-1)
+   string = reply[tall]
+   return string
+
 def smiley():
    smileys=[' :D', ' :)', ' :>', ' €:', ' ;*']
    nr = random.randint(0, len(smileys)-1)
@@ -385,6 +395,9 @@ while True:
       send(randomGreet() + ', ' + user + smiley())
       smallTalk = 1
       brukerTalk = user
+
+   if ('!youtube' in message):
+      send(youtube())
 
    if (smallTalk == 1) and (user == brukerTalk):
       send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
