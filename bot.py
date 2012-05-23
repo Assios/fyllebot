@@ -12,7 +12,7 @@ port = 6667
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
 print irc.recv ( 1024 )
-channel = '#fyllechat'
+channel = '#gamereactor.no'
 irc.send ( 'NICK fyllebot\r\n' )
 irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
 irc.send ( 'JOIN '+channel+'\r\n' )
@@ -304,9 +304,6 @@ def weather():
    send(xmlData)
    print xmlData
 
-
-
-
 def randomGreet():
    greetings = ['hei', 'hallo', 'heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
    nr = random.randint(0, len(greetings)-1)
@@ -336,6 +333,7 @@ samtaleLvl = 0
 filmLevel = 0
 pong = 0
 mld=0
+smallTalk = 0
 finishedLoading = 0
 while True:
    data = irc.recv(1024)
@@ -385,6 +383,11 @@ while True:
 
    if greet() and ('fyllebot' in message):
       send(randomGreet() + ', ' + user + smiley())
+      smallTalk = 1
+      brukerTalk = user
+
+   if (smallTalk == 1) and (user == brukerTalk):
+      send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
 
    if ('hi doggie' in message):
       send('\'The Room\' sucks!')
