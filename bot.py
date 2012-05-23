@@ -12,7 +12,7 @@ port = 6667
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
 print irc.recv ( 1024 )
-channel = '#gamereactor.no'
+channel = '#fyllechat'
 irc.send ( 'NICK fyllebot\r\n' )
 irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
 irc.send ( 'JOIN '+channel+'\r\n' )
