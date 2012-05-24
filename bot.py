@@ -100,9 +100,6 @@ def count(tall):
       send(str(tallet-i))
       sleep(1.1)
 
-def spamFilter(user):
-
-
 def beer():
    mottaker = user;
    f = open('beer.txt', 'r+')
