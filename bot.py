@@ -4,6 +4,7 @@
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
 from time import sleep
 from pprint import pprint
+import BeautifulSoup
 from xml.dom.minidom import parseString
 
 
@@ -85,6 +86,10 @@ def sjekketriks():
    string = sjekketriks[tall]
    return string
 
+def urlTitle(urL):
+   soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
+   return soup.title.string
+
 def count(tall):
    tallet = int(tall)
    if (tallet > 60):
@@ -93,6 +98,8 @@ def count(tall):
    for i in range(0, tallet+1):
       send(str(tallet-i))
       sleep(1.1)
+
+
 
 def beer():
    mottaker = user;
@@ -398,12 +405,13 @@ while True:
       continue
 
    if ('!youtube' in message):
-      send(youtube())
+      thisURL = youtube()
+      send(thisURL)
+      send(urlTitle(thisURL))
 
-   if (smallTalk == 1) and (user == brukerTalk):
-      send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
-      smalltalk = 0
-      continue
+   #if (smallTalk == 1) and (user == brukerTalk):
+   #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
+   #   smalltalk = 0
 
    if ('hi doggie' in message):
       send('\'The Room\' sucks!')
