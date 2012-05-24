@@ -410,9 +410,9 @@ while True:
       continue
 
    if ('http://' in message) and not (user == 'fyllebot'):
-      urlen = s[s.find("http://"):]
-      urlen = t[:t.find(" ")]
-      send(urlTitle(urlen))
+      urlen = message[message.find("http://"):]
+      urlto = urlen[:urlen.find(" ")]
+      send(urlTitle(urlto))
 
    #if (smallTalk == 1) and (user == brukerTalk):
    #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
