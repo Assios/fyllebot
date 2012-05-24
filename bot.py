@@ -88,7 +88,7 @@ def sjekketriks():
 
 
 def returnURLs(message):
-   urlen=message[message.find("http://")+1:message.find(" ")]
+   urlen=message[message.find("http://")+7:message.find(" ")]
    return "http://" + urlen
 
 
