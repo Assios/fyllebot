@@ -418,7 +418,7 @@ while True:
       continue
 
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
-      firstURL = returnURLs(message)[0]
+      firstURL = returnURLs(message)[0].strip()
       send(urlTitle(firstURL))
       
 
