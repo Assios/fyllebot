@@ -87,7 +87,7 @@ def sjekketriks():
    return string
 
 
-def returnURLs():
+def returnURLs(message):
    urls = []
    urls = re.findall('(?:http://|www.)[^"\' ]+', message)
    return urls
@@ -418,7 +418,7 @@ while True:
       continue
 
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
-      send(urlTitle(returnURLs[0]))
+      send(urlTitle(returnURLs(message)[0]))
       
 
    #if (smallTalk == 1) and (user == brukerTalk):
