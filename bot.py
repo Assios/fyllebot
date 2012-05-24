@@ -89,7 +89,7 @@ def sjekketriks():
 def urlTitle(url):
    soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
    string = str(soup.title.string)
-   return ' '.join(string.strip().splitlines())
+   return string.strip().splitlines()[0]
 
 def count(tall):
    tallet = int(tall)
@@ -99,6 +99,9 @@ def count(tall):
    for i in range(0, tallet+1):
       send(str(tallet-i))
       sleep(1.1)
+
+def spamFilter(user):
+
 
 def beer():
    mottaker = user;
@@ -405,8 +408,8 @@ while True:
 
    if ('!youtube' in message):
       thisURL = youtube()
+      send("Youtubefilm: " + urlTitle(thisURL))
       send(thisURL)
-      send("Tittel: " + urlTitle(thisURL))
       continue
 
    #if (smallTalk == 1) and (user == brukerTalk):
