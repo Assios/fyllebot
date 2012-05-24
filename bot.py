@@ -410,7 +410,8 @@ while True:
       continue
 
    if ('http://' in message) and not (user == 'fyllebot'):
-      urlen = re.search("(?P<url>https?://[^\s]+)", message).group("url")
+      urlen = s[s.find("http://"):]
+      urlen = t[:t.find(" ")]
       send(urlTitle(urlen))
 
    #if (smallTalk == 1) and (user == brukerTalk):
