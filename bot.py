@@ -395,12 +395,15 @@ while True:
       send(randomGreet() + ', ' + user + smiley())
       smallTalk = 1
       brukerTalk = user
+      continue
 
    if ('!youtube' in message):
       send(youtube())
 
    if (smallTalk == 1) and (user == brukerTalk):
       send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
+      smalltalk = 0
+      continue
 
    if ('hi doggie' in message):
       send('\'The Room\' sucks!')
@@ -496,19 +499,23 @@ while True:
    if ((('hvilken film' in message) or ('se film' in message) or (' film' in message and 'anbefal' in message) or (' film' in message and 'sett' in message) or ('hvilke film' in message)) and ('hva' not in message)):
       send('Har du sett filmen ' + film() + '?' + smiley())
       filmLevel=1
+      continue
 
    if yes() and (filmLevel==1):
       send(['Den filmen er veldig bra, ikke sant?', 'DEN FILMEN ER HELT KONGE, RIGHT?!', 'Det er en av favorittfilmene mine ass. Likte du den?'][random.randint(0, 2)])
       message=" "
       filmLevel=2
+      continue
 
    if yes() and (filmLevel==2):
       send(['Jeg likte den også', 'vil se den igjen ass, joinerru kino?'][random.randint(0,1)] + smiley())
       filmLevel=0
+      continue
 
    if no() and (filmLevel==1):
       send(['Du burde se den ass!', 'Den er braaa, men du burde ikke se traileren. Inneholder massse spoilers. HATER SPOILERS'][random.randint(0,1)] + smiley())
       filmLevel=0
+      continue
 
    if ("count" in message):
       try:
@@ -533,6 +540,7 @@ while True:
 
    if ('fuck' in message) and ('fyllebot' in message):
       send('>:C')
+      continue
 
    if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot') and (admins()):
       irc.send ( 'PRIVMSG ' + channel + ' :ok FU!\r\n' )
@@ -540,13 +548,16 @@ while True:
 
    if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
       send('ER DRITA :D')
+      continue
    if (message=="sup fyllebot"):
       send(randomSupSvar())
+      continue
    if ( 'slaps fyllebot' ) in message:
       send('WELL FUCK YOU.')
 
    if ('fyllebot' in message) and ('takk' in message):
       send(['care.', 'værsågod' + smiley(), 'np, ' + user, 'awww, ' + user + smiley()][random.randint(0,3)])
+      continue
 
    if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
@@ -560,6 +571,7 @@ while True:
       send(['HAHAH, du ass!', 'Hvor er ' + randomUser() + '?', 'fu.', 'hater deg ' + user + '.', 'elsker deg, ' + user, 'idiot ass, ' + user + smiley(), 'du må jo være drita da, ' + user + '.'][random.randint(0,5)])
       samtaleLvl=0
       brukerSvar = ""
+      continue
 
    if ('fyllebot' in message) and (not greet()) and (not meld()):
          send(randomReply())
@@ -577,9 +589,11 @@ while True:
    except:
       send('Er for full til å forlenge URLer atm :( Prøv igjen senere')
 
-   if ('url' in message) or ("www." in message) and not (user == "fyllebot"):
+   if ("www." in message) and not (user == "fyllebot"):
       if (finishedLoading == 1):
+         if (len(message) < 22)
          send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
+         continue
 
    if ("!random") in message:
       send(randomGreet() +  ", " +  randomUser() + smiley)
