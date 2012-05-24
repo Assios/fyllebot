@@ -86,8 +86,10 @@ def sjekketriks():
    string = sjekketriks[tall]
    return string
 
-def urlTitle(urL):
-   soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
+def urlTitle(urLen):
+   urla = ""
+   urla = urlen
+   soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(urla))
    return soup.title.string
 
 
