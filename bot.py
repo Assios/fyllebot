@@ -89,7 +89,7 @@ def sjekketriks():
 
 def returnURLs(message):
    urls = []
-   urls = re.findall('(?:http://|www.)[^"\' ]+', message)
+   urls = re.findall('(?:http://)[^"/\' ]+', message)
    return urls
 
 
@@ -413,13 +413,16 @@ while True:
 
    if ('!youtube' in message):
       thisURL = youtube()
-      send("Youtubefilm: " + urlTitle(thisURL))
+      try:
+         send("Youtubefilm: " + urlTitle(thisURL))
+      except:
+         pass
       send(thisURL)
       continue
 
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
       firstURL = returnURLs(message)[0].strip()
-      send(urlTitle(firstURL))
+      send(firstURL)
       
 
    #if (smallTalk == 1) and (user == brukerTalk):
