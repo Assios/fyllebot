@@ -89,7 +89,7 @@ def sjekketriks():
 def urlTitle(url):
    soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
    string = str(soup.title.string)
-   return string.strip().splitlines().join(' ')
+   return ' '.join(string.strip().splitlines())
 
 def count(tall):
    tallet = int(tall)
