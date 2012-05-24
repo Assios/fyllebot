@@ -592,8 +592,8 @@ while True:
    if ("www." in message) and not (user == "fyllebot"):
       if (finishedLoading == 1):
          if (len(message) < 22):
-         send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
-         continue
+            send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
+            continue
 
    if ("!random") in message:
       send(randomGreet() +  ", " +  randomUser() + smiley)
