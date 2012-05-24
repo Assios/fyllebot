@@ -418,8 +418,8 @@ while True:
       continue
 
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
-      send(urlTitle(returnURLs(message)[0]))
-      send(returnURLs(message)[0])
+      firstURL = returnURLs(message)[0]
+      send urlTitle(firstURL)
       
 
    #if (smallTalk == 1) and (user == brukerTalk):
