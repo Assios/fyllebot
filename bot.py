@@ -89,7 +89,7 @@ def sjekketriks():
 
 def returnURLs(message):
    urls = []
-   urls = re.findall('(?:http://)[^"\' ]+', message)
+   urls = re.findall('((mailto\:|(news|(ht|f)tp(s?))\://){1}\S+)', message)
    return urls
 
 
@@ -414,7 +414,7 @@ while True:
    if ('!youtube' in message):
       thisURL = youtube()
       try:
-         send("Youtubefilm: " + urlTitle(thisURL))
+         send(urlTitle(thisURL) + ": ")
       except:
          pass
       send(thisURL)
@@ -423,8 +423,11 @@ while True:
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
       firstURL = returnURLs(message)[0].strip()
       send(firstURL)
-      tittelen = urlTitle(firstURL)
-      send(tittelen)
+      try:
+         tittelen = urlTitle(firstURL)
+         send(tittelen)
+      except:
+         pass
 
    #if (smallTalk == 1) and (user == brukerTalk):
    #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
