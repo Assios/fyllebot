@@ -89,9 +89,7 @@ def sjekketriks():
 def urlTitle(url):
    soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
    string = str(soup.title.string)
-   print string.strip().splitlines()[0]
-   return string.strip().splitlines()[0]
-
+   return string.strip().splitlines().join(' ')
 
 def count(tall):
    tallet = int(tall)
@@ -409,6 +407,7 @@ while True:
       thisURL = youtube()
       send(thisURL)
       send("Tittel: " + urlTitle(thisURL))
+      continue
 
    #if (smallTalk == 1) and (user == brukerTalk):
    #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
@@ -582,8 +581,9 @@ while True:
       brukerSvar = ""
       continue
 
-   if ('fyllebot' in message) and (not greet()) and (not meld()):
+   if ('fyllebot' in message) and (not greet()) and (not meld()) and not (user=="fyllebot"):
          send(randomReply())
+         continue
 
    if ('hvor' in message):
       send('Hvor er ' + randomUser() + '?')
