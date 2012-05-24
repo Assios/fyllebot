@@ -89,7 +89,7 @@ def sjekketriks():
 
 def returnURLs(message):
    urls = []
-   urls = re.findall('((mailto\:|(news|(ht|f)tp(s?))\://){1}\S+)', message)
+   urls = re.findall('^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*[^\.\,\)\(\s]$', message)
    return urls
 
 
