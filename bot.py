@@ -90,6 +90,7 @@ def sjekketriks():
 def returnURLs():
    urls = []
    urls = re.findall('(?:http://|www.)[^"\' ]+', message)
+   return urls
 
 
 
