@@ -86,10 +86,8 @@ def sjekketriks():
    string = sjekketriks[tall]
    return string
 
-def urlTitle(urLen):
-   urla = ""
-   urla = urlen
-   soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(urla))
+def urlTitle(url):
+   soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
    return soup.title.string
 
 
@@ -101,8 +99,6 @@ def count(tall):
    for i in range(0, tallet+1):
       send(str(tallet-i))
       sleep(1.1)
-
-
 
 def beer():
    mottaker = user;
