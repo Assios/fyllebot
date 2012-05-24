@@ -4,7 +4,7 @@
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
 from time import sleep
 from pprint import pprint
-import lxml.html
+import BeautifulSoup
 from xml.dom.minidom import parseString
 
 
@@ -87,8 +87,9 @@ def sjekketriks():
    return string
 
 def urlTitle(urL):
-   t = lxml.html.parse(url)
-   return t.find(".//title").text
+   soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
+   return soup.title.string
+
 
 def count(tall):
    tallet = int(tall)
