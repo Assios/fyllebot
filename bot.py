@@ -409,7 +409,7 @@ while True:
       send(thisURL)
       continue
 
-   if ('http://' in message):
+   if ('http://' in message) and not (user == 'fyllebot'):
       urlen = re.search("(?P<url>https?://[^\s]+)", myString).group("url")
       send(urlTitle(urlen))
 
@@ -607,8 +607,6 @@ while True:
          if (len(message) < 22):
             send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
             continue
-
-   if ('http://' in message) and not (user == "fyllebot"):
       
 
    if ("!random") in message:
