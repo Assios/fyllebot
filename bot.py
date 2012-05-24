@@ -409,7 +409,7 @@ while True:
       send(thisURL)
       continue
 
-   if ('http://' in message) and not (user == 'fyllebot'):
+   if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
       urlen = message[message.find("http://"):]
       urlto = urlen[:urlen.find(" ")]
       send(urlTitle(urlto))
