@@ -406,10 +406,7 @@ while True:
    if ('!youtube' in message):
       thisURL = youtube()
       send(thisURL)
-      try:
-         send("Tittel: " + urlTitle(thisURL))
-      except:
-         pass
+      send("Tittel: " + urlTitle(thisURL))
       continue
 
    #if (smallTalk == 1) and (user == brukerTalk):
