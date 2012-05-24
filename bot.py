@@ -89,8 +89,8 @@ def sjekketriks():
 def urlTitle(url):
    soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
    string = str(soup.title.string)
-   print string
-   return string
+   print string.strip().splitlines[0]
+   return string.strip().splitlines[0]
 
 
 def count(tall):
