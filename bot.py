@@ -409,6 +409,10 @@ while True:
       send(thisURL)
       continue
 
+   if ('http://' in message):
+      urlen = re.search("(?P<url>https?://[^\s]+)", myString).group("url")
+      send(urlTitle(urlen))
+
    #if (smallTalk == 1) and (user == brukerTalk):
    #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
    #   smalltalk = 0
@@ -603,6 +607,9 @@ while True:
          if (len(message) < 22):
             send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
             continue
+
+   if ('http://' in message) and not (user == "fyllebot"):
+      
 
    if ("!random") in message:
       send(randomGreet() +  ", " +  randomUser() + smiley)
