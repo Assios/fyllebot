@@ -88,9 +88,9 @@ def sjekketriks():
 
 
 def returnURLs(message):
-   urls = []
-   urls = re.findall('^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*[^\.\,\)\(\s]$', message)
-   return urls
+   urlen=message[message.find("http://")+1:message.find(" ")]
+   return "http://" + urlen
+
 
 
 
@@ -423,11 +423,9 @@ while True:
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
       firstURL = returnURLs(message)[0].strip()
       send(firstURL)
-      try:
-         tittelen = urlTitle(firstURL)
-         send(tittelen)
-      except:
-         pass
+      tittelen = urlTitle(firstURL)
+      send(tittelen)
+
 
    #if (smallTalk == 1) and (user == brukerTalk):
    #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
