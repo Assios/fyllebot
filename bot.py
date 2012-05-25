@@ -420,11 +420,10 @@ while True:
       continue
 
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
-      firstURL = returnURLs(message).split()
+      firstURL = str(returnURLs(message).strip())
       send(firstURL)
       tittelen = urlTitle(firstURL)
       send(tittelen)
-
 
    #if (smallTalk == 1) and (user == brukerTalk):
    #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
