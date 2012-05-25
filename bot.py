@@ -420,10 +420,10 @@ while True:
       continue
 
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
-      firstURL = returnURLs(message)
+      firstURL = returnURLs(message).split()
       send(firstURL)
-      #tittelen = urlTitle(firstURL)
-      #send(tittelen)
+      tittelen = urlTitle(firstURL)
+      send(tittelen)
 
 
    #if (smallTalk == 1) and (user == brukerTalk):
