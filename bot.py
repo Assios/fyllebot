@@ -87,8 +87,11 @@ def sjekketriks():
    return string
 
 def returnURLs(message):
-   urlen=message[message.find("http://")+7:message.find(" ")]
-   return "http://" + urlen
+   start = message.find('http://')
+   end = -1
+   urlen = message[start:]
+   urlen = shlex.split(urlen)[0]
+   return urlen
 
 def urlTitle(url):
    soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
