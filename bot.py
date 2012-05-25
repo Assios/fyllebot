@@ -86,13 +86,9 @@ def sjekketriks():
    string = sjekketriks[tall]
    return string
 
-
 def returnURLs(message):
    urlen=message[message.find("http://")+7:message.find(" ")]
    return "http://" + urlen
-
-
-
 
 def urlTitle(url):
    soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
@@ -421,7 +417,7 @@ while True:
       continue
 
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
-      firstURL = returnURLs(message).strip()
+      firstURL = returnURLs(message)
       send(firstURL)
       tittelen = urlTitle(firstURL)
       send(tittelen)
