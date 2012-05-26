@@ -441,13 +441,13 @@ while True:
    if ('parently' in message):
       send('Mente du APparently, Christian?')
 
-   if ((shlex.split(message)[0]=='!kick') and admins()):
-      try:
+   try:
+      if (shlex.split(message)[0]=='!kick') and (admins()):
          (kickUser(shlex.split(message)[1],shlex.split(message)[2]))
-      except:
-         pass
+   except:
+      pass
 
-   if ((shlex.split(message)[0]=='!adduser') and (admins()):
+   if (shlex.split(message)[0]=='!adduser') and (admins()):
       listOfUsers.append(shlex.split(message)[1])
 
    if ((shlex.split(message)[0]=='!removeuser') and (admins()):
