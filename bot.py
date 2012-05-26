@@ -442,7 +442,7 @@ while True:
       send('Mente du APparently, Christian?')
 
    try:
-      if (shlex.split(message)[0]=='!kick') and (admins()):
+      if ((shlex.split(message)[0]=='!kick') and admins()):
          (kickUser(shlex.split(message)[1],shlex.split(message)[2]))
    except:
       pass
