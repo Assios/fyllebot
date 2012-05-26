@@ -457,7 +457,7 @@ while True:
       if (shlex.split(message)[0]=='!removeuser') and (admins()):
          listOfUsers.remove(shlex.split(message)[1])
    except:
-      irc.send('NOTICE ' + user +  ' : Bruker ikke i lista \r\n')
+      pass
 
    if (message[0:4] == '!msg' and admins()):
       send(fyllemessage[4:].strip())
