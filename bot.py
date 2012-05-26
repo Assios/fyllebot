@@ -450,7 +450,7 @@ while True:
    if (shlex.split(message)[0]=='!adduser') and (admins()):
       listOfUsers.append(shlex.split(message)[1])
 
-   if ((shlex.split(message)[0]=='!removeuser') and (admins()):
+   if (shlex.split(message)[0]=='!removeuser') and (admins()):
       try:
          listofUsers.remove(shlex.split(message)[1])
       except:
