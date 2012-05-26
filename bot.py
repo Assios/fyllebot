@@ -424,6 +424,7 @@ while True:
       try:        
          tittelen = urlTitle(firstURL)
          if (tittelen == "Parallels Confixx"):
+            send('Det der er ikke en gyldig webside ass')
          else:
             send(tittelen)
          continue
