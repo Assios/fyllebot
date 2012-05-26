@@ -423,7 +423,10 @@ while True:
       firstURL = str(returnURLs(message).strip())
       try:        
          tittelen = urlTitle(firstURL)
-         send(tittelen)
+         if (tittelen == "Parallels Confixx"):
+         else:
+            send(tittelen)
+         continue
       except:
          pass
 
@@ -483,9 +486,6 @@ while True:
          send('DU SLO MEG :( GRATULERER!')
          gameOver = 1
          pong = 0
-
-   if ('x78437c' in message):
-      syng()
 
    if ('bærsj' in message):
       send('Det skrives ikke med r, julie >:(')
@@ -621,7 +621,6 @@ while True:
          if (len(message) < 22):
             send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
             continue
-      
 
    if ("!random") in message:
       send(randomGreet() +  ", " +  randomUser() + smiley)
@@ -632,6 +631,10 @@ while True:
          send(user + ' joina kanalen! VELKOMMEN ASS')
    except:
       pass
+
+   if ('pong' in message) and not (user == 'fyllebot'):
+      send('Skriv !pong for å spille pong mot meg!' + smiley())
+      continue
 
    try:
       if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('fyllebot' not in user):
