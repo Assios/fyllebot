@@ -1,19 +1,13 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-def admins():
-   f = open('admins.txt', 'r+')
-   string = ''
-   for linje in f:
-      string+= linje
-   admin = string.splitlines()
-   for i in range(0, len(admin)):
-      if (admin[i].lower() == user.lower()):
-         return True
-   return False
 
-def kickUser(username, melding):
-   irc.send('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
+def kickUsers(username, melding):
+   return('KICK ' + " #fyllechat " + username + " :" + melding + '\r\n')
 
 def opUser(username):
+<<<<<<< HEAD
    irc.send('MODE ' + " #fyllechat +o " + username + '\r\n')
+=======
+   return('O ' + " #fyllechat " + username + '\r\n')
+>>>>>>> 47e602c12bd00c85e708ff8a0a0e7c2ab650dc13

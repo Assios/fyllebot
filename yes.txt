@@ -21,3 +21,5 @@ tru
 ya
 bra
 awesome
+enig
+agree

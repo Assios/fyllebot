@@ -1,7 +1,12 @@
 !polet - tid til polet stenger
-!imdb filmnavn - gir IMDB-scoren til filmen
+!imdb <filmnavn> - gir IMDB-informasjon om filmen
 !sjekketriks - tilfeldig sjekketriks
+!long <URL> - genererer lengre URL
 !promille - kalkulerer promillen din
 !film - tilfeldig film
+!beer - ØL
 !middag - tilfeldig matrett
 !drikke - tilfeldig drikke
+!pong - spill pong mot meg!
+!ukenummer - gir ukenummeret
+!youtube - kul youtubefilm!
