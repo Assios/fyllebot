@@ -4,6 +4,7 @@
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
 from time import sleep
 from pprint import pprint
+import BeautifulSoup
 from xml.dom.minidom import parseString
 
 
@@ -12,10 +13,11 @@ port = 6667
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
 print irc.recv ( 1024 )
+channel = '#fyllechat'
 irc.send ( 'NICK fyllebot\r\n' )
 irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
-irc.send ( 'JOIN #fyllechat\r\n' )
-irc.send ( 'PRIVMSG #fyllechat :HEI ASS.\r\n' )
+irc.send ( 'JOIN '+channel+'\r\n' )
+irc.send ( 'PRIVMSG '+channel+ ' :HEI ASS.\r\n' )
 
 from imdb import *
 from mat import *
@@ -55,14 +57,14 @@ def stengetidpolet():
     return ''
 
 def send(melding):
-   irc.send ( 'PRIVMSG #fyllechat :' + melding + '\r\n' )
+   irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
 def privsend(melding):
    irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 
 def randomSupSvar():
-	nr = random.randint(0, 7)
-	mld = ["Drikker tequila!", "Shotter vodka ass.", "Drikker rista martini. Ikke stirra", "leker batman. I'M BATMAN!", "NANANANANA BATMAAAN!", "LOLOLOLO SUPERMAAN!", "zzZZZzZZZZSOVNER ASS", "ssshhhhh, prøver å gjemme meg!"]
-	return mld[nr]
+   nr = random.randint(0, 7)
+   mld = ["Drikker tequila!", "Shotter vodka ass.", "Drikker rista martini. Ikke stirra", "leker batman. I'M BATMAN!", "NANANANANA BATMAAAN!", "LOLOLOLO SUPERMAAN!", "zzZZZzZZZZSOVNER ASS", "ssshhhhh, prøver å gjemme meg!"]
+   return mld[nr]
  
 def rhapsody():
    f = open('lyrics.txt', 'r+')
@@ -72,7 +74,7 @@ def rhapsody():
    lyrics = string.splitlines()
    for i in range(len(lyrics)):
       if (lyrics[i].lower() in message):
-         irc.send ( 'PRIVMSG #fyllechat :'+lyrics[i+1]+'\r\n' )
+         irc.send ( 'PRIVMSG ' + channel + ' :'+lyrics[i+1]+'\r\n' )
 
 def sjekketriks():
    f = open('sjekketriks.txt', 'r+')
@@ -83,6 +85,18 @@ def sjekketriks():
    tall = random.randint(0, len(sjekketriks)-1)
    string = sjekketriks[tall]
    return string
+
+def returnURLs(message):
+   start = message.find('http://')
+   end = -1
+   urlen = message[start:]
+   urlen = shlex.split(urlen)[0]
+   return urlen
+
+def urlTitle(url):
+   soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
+   string = str(soup.title.string)
+   return string.strip().splitlines()[0]
 
 def count(tall):
    tallet = int(tall)
@@ -101,14 +115,30 @@ def beer():
       sleep(0.2)
 
 def fylla():
-   mottaker = user;
+   mottaker = user
    f = open('fylla.txt', 'r+')
-   for linje in f:
-      send('   ' + linje)
-      sleep(0.2)
+   string = ""
+   for line in f:
+      string+= line
+   send(string)
+
+def randomPong():
+   pongstr = ['|    .', '|         .', '| .', '|  .', '|   .', '|  .', '|     .', '|  .', '. |   ', '|    .']
+   tall = random.randint(0, len(pongstr)-1)
+   return pongstr[tall]
 
 def randomReply():
    f = open('reply.txt', 'r+')
+   string = ''
+   for linje in f:
+      string+=linje
+   reply = string.splitlines()
+   tall = random.randint(0, len(reply)-1)
+   string = reply[tall]
+   return string
+
+def youtube():
+   f = open('youtube.txt', 'r+')
    string = ''
    for linje in f:
       string+=linje
@@ -267,9 +297,8 @@ def imdb(filmnavn):
    return(str(score))
 
 def randomUser():
-   lengden = len(listOfUsers)-1
-   tallet = random.randint(0, lengden)
-   return string
+   tallet = random.randint(0, len(listOfUsers)-1)
+   return listOfUsers[tallet]
 
 def ukenummer():
    filehandle = urllib.urlopen("http://ukenummer.no/json")
@@ -298,9 +327,6 @@ def weather():
    send(xmlData)
    print xmlData
 
-
-
-
 def randomGreet():
    greetings = ['hei', 'hallo', 'heisann', 'hej', 'hey', 'halla', 'hi', 'hola', 'yo']
    nr = random.randint(0, len(greetings)-1)
@@ -317,6 +343,9 @@ def film():
    string = filmer[nr]
    return "\""+string+"\""
 
+def kickUser(username, melding):
+   irc.send('KICK ' + channel + ' ' + username + " :" + melding + '\r\n')
+
 listOfUsers = []
 today = datetime.date.today()
 day = today.weekday()
@@ -325,7 +354,9 @@ dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det fre
 
 samtaleLvl = 0
 filmLevel = 0
+pong = 0
 mld=0
+smallTalk = 0
 finishedLoading = 0
 while True:
    data = irc.recv(1024)
@@ -341,7 +372,7 @@ while True:
 
    #Liste med brukere
    try:
-      brukerliste = data.split('= #fyllechat ')[1]
+      brukerliste = data.split('= ' + channel + ' ')[1]
       bruker2 = brukerliste.split(' ')
       fyllechatIndex = bruker2.index(':End')
       listOfUsers = bruker2[1:(fyllechatIndex-3)]
@@ -371,10 +402,38 @@ while True:
    if data.find ( 'PING' ) != -1:
       irc.send ( 'PONG ' + data.split() [ 1 ] + '\r\n' )
    if data.find ( 'KICK' ) != -1:
-      irc.send ( 'JOIN #fyllechat\r\n' )
+      irc.send ( 'JOIN ' + channel + '\r\n' )
 
    if greet() and ('fyllebot' in message):
       send(randomGreet() + ', ' + user + smiley())
+      smallTalk = 1
+      brukerTalk = user
+      continue
+
+   if ('!youtube' in message):
+      thisURL = youtube()
+      try:
+         send(urlTitle(thisURL) + ": ")
+      except:
+         pass
+      send(thisURL)
+      continue
+
+   if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
+      firstURL = str(returnURLs(message).strip())
+      try:        
+         tittelen = urlTitle(firstURL)
+         if (tittelen == "Parallels Confixx"):
+            send('Det der er ikke en gyldig webside ass')
+         else:
+            send(tittelen)
+         continue
+      except:
+         pass
+
+   #if (smallTalk == 1) and (user == brukerTalk):
+   #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
+   #   smalltalk = 0
 
    if ('hi doggie' in message):
       send('\'The Room\' sucks!')
@@ -384,14 +443,35 @@ while True:
 
    try:
       if (shlex.split(message)[0]=='!kick') and (admins()):
-         send(kickUser(shlex.split(message)[1],shlex.split(message)[2]))
+         (kickUser(shlex.split(message)[1],shlex.split(message)[2]))
    except:
       pass
 
+   try:
+      if (shlex.split(message)[0]=='!adduser') and (admins()):
+         listOfUsers.append(shlex.split(message)[1])
+   except:
+      pass
+
+   try:
+      if (shlex.split(message)[0]=='!removeuser') and (admins()):
+         listOfUsers.remove(shlex.split(message)[1])
+   except:
+      pass
 
    if (message[0:4] == '!msg' and admins()):
       send(fyllemessage[4:].strip())
 
+   if ('!pong' in message):
+      mottaker = user
+      f = open('ponghead.txt', 'r+')
+      for line in f:
+         send(line)
+         sleep(1.0)
+      gameOver = 0
+      sleep(0.2)
+      send('Din tur! Sjekk http://bash.org/?9322 for regler! Du skyter mot venstre.')
+      pong = 1
 
    try:
       if ('!imdb' in message):
@@ -405,8 +485,19 @@ while True:
    except:
       pass
 
-   if ('x78437c' in message):
-      syng()
+   if (pong==1) and ('.' in message) and ('|' in message) and ('fyllebot' not in user):
+      if (message[0] != '.'):
+         send('DU TAPTE! :D')
+         gameOver = 1
+         pong = 0
+         sendPong= ''
+      else:
+         sendPong = randomPong()
+         send(sendPong)
+      if (sendPong == '. |   '):
+         send('DU SLO MEG :( GRATULERER!')
+         gameOver = 1
+         pong = 0
 
    if ('bærsj' in message):
       send('Det skrives ikke med r, julie >:(')
@@ -446,19 +537,23 @@ while True:
    if ((('hvilken film' in message) or ('se film' in message) or (' film' in message and 'anbefal' in message) or (' film' in message and 'sett' in message) or ('hvilke film' in message)) and ('hva' not in message)):
       send('Har du sett filmen ' + film() + '?' + smiley())
       filmLevel=1
+      continue
 
    if yes() and (filmLevel==1):
       send(['Den filmen er veldig bra, ikke sant?', 'DEN FILMEN ER HELT KONGE, RIGHT?!', 'Det er en av favorittfilmene mine ass. Likte du den?'][random.randint(0, 2)])
       message=" "
       filmLevel=2
+      continue
 
    if yes() and (filmLevel==2):
       send(['Jeg likte den også', 'vil se den igjen ass, joinerru kino?'][random.randint(0,1)] + smiley())
       filmLevel=0
+      continue
 
    if no() and (filmLevel==1):
       send(['Du burde se den ass!', 'Den er braaa, men du burde ikke se traileren. Inneholder massse spoilers. HATER SPOILERS'][random.randint(0,1)] + smiley())
       filmLevel=0
+      continue
 
    if ("count" in message):
       try:
@@ -483,33 +578,45 @@ while True:
 
    if ('fuck' in message) and ('fyllebot' in message):
       send('>:C')
+      continue
 
    if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot') and (admins()):
-      irc.send ( 'PRIVMSG #fyllechat :ok FU!\r\n' )
+      irc.send ( 'PRIVMSG ' + channel + ' :ok FU!\r\n' )
       irc.send ( 'QUIT\r\n' )
 
    if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
       send('ER DRITA :D')
+      continue
    if (message=="sup fyllebot"):
       send(randomSupSvar())
+      continue
    if ( 'slaps fyllebot' ) in message:
       send('WELL FUCK YOU.')
 
    if ('fyllebot' in message) and ('takk' in message):
       send(['care.', 'værsågod' + smiley(), 'np, ' + user, 'awww, ' + user + smiley()][random.randint(0,3)])
+      continue
 
    if (message == 'fyllebot') or (message == 'fyllebot?'):
       send('ja?')
       brukerSvar = user;
       samtaleLvl = 1
 
+   if ('hvem' in message) and ('er' in message):
+      send(['Jeg vil snakke med ' + randomUser() + '!', 'Hvorfor er ikke ' + randomUser() + ' her?', 'Hvafaeeeeen. ' + randomUser() + '!?!?!'][random.randint(0, 2)])
+
    if (" " in message) and (samtaleLvl==1) and (user == brukerSvar):
-      send(['HAHAH, du ass!', 'fu.', 'hater deg ' + user + '.', 'elsker deg, ' + user, 'idiot ass, ' + user + smiley(), 'du må jo være drita da, ' + user + '.'][random.randint(0,5)])
+      send(['HAHAH, du ass!', 'Hvor er ' + randomUser() + '?', 'fu.', 'hater deg ' + user + '.', 'elsker deg, ' + user, 'idiot ass, ' + user + smiley(), 'du må jo være drita da, ' + user + '.'][random.randint(0,5)])
       samtaleLvl=0
       brukerSvar = ""
+      continue
 
-   if ('fyllebot' in message) and (not greet()) and (not meld()):
+   if ('fyllebot' in message) and (not greet()) and (not meld()) and not (user=="fyllebot"):
          send(randomReply())
+         continue
+
+   if ('hvor' in message):
+      send('Hvor er ' + randomUser() + '?')
 
    try:
       if ('!long' in message):
@@ -519,11 +626,13 @@ while True:
          send(xmelding + long(message))
          continue
    except:
-      pass
+      send('Er for full til å forlenge URLer atm :( Prøv igjen senere')
 
-   if ('url' in message) or ("www." in message) and not (user == "fyllebot"):
+   if ("www." in message) and not (user == "fyllebot"):
       if (finishedLoading == 1):
-         send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
+         if (len(message) < 22):
+            send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
+            continue
 
    if ("!random") in message:
       send(randomGreet() +  ", " +  randomUser() + smiley)
@@ -535,9 +644,13 @@ while True:
    except:
       pass
 
+   if ('pong' in message) and not (user == 'fyllebot'):
+      send('Skriv !pong for å spille pong mot meg!' + smiley())
+      continue
+
    try:
       if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('fyllebot' not in user):
-         send(user)
+         send('Hadet bra, ' + user + smiley())
          listOfUsers.remove(user)
    except:
       pass
@@ -547,12 +660,12 @@ while True:
          listOfUsers.remove(user)
          thisUser = msg[2][1:].strip()
          listOfUsers.append(thisUser)
-         send(thisUser)
+         send('Bra navnevalg, ' +  thisUser + '!')
    except:
       pass
 
    #kræsjgreie
-   if ('!kræsj' in message):
+   if ('!kræsj' in message) and (user=="Assios"):
       send(jfriojfro)
    
 

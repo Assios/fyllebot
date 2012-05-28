@@ -7,4 +7,6 @@
 !beer - ØL
 !middag - tilfeldig matrett
 !drikke - tilfeldig drikke
+!pong - spill pong mot meg!
 !ukenummer - gir ukenummeret
+!youtube - kul youtubefilm!
