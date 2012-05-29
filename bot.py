@@ -346,6 +346,9 @@ def film():
 def kickUser(username, melding):
    irc.send('KICK ' + channel + ' ' + username + " :" + melding + '\r\n')
 
+def opUser(username):
+	irc.send('MODE ' + channel + ' +o ' + username + '\r\n')
+
 listOfUsers = []
 today = datetime.date.today()
 day = today.weekday()
