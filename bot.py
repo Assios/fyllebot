@@ -352,6 +352,13 @@ def kickUser(username, melding):
 def opUser(username):
 	irc.send('MODE ' + channel + ' +o ' + username + '\r\n')
 
+def halfopUser(username):
+	irc.send('MODE ' + channel + ' +h ' + username + '\r\n')
+
+def dehalfopUser(username):
+	irc.send('MODE ' + channel + ' -h ' + username + '\r\n')
+
+
 listOfUsers = []
 today = datetime.date.today()
 day = today.weekday()
@@ -496,6 +503,19 @@ while True:
          deopUser(shlex.split(message)[1])
    except:
       pass
+   
+   try:
+      if (shlex.split(message)[0]=='!halfop') and (admins()):
+         halfopUser(shlex.split(message)[1])
+   except:
+      pass
+
+   try:
+      if (shlex.split(message)[0]=='!dehalfop') and (admins()):
+         dehalfopUser(shlex.split(message)[1])
+   except:
+      pass
+
 
    if (pong==1) and ('.' in message) and ('|' in message) and ('fyllebot' not in user):
       if (message[0] != '.'):
