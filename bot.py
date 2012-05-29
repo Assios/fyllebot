@@ -343,6 +343,9 @@ def film():
    string = filmer[nr]
    return "\""+string+"\""
 
+def deopUser(username):
+    irc.send('MODE ' + channel + ' -o ' + username + '\r\n')
+
 def kickUser(username, melding):
    irc.send('KICK ' + channel + ' ' + username + " :" + melding + '\r\n')
 
@@ -485,6 +488,12 @@ while True:
    try:
       if (shlex.split(message)[0]=='!op') and (admins()):
          opUser(shlex.split(message)[1])
+   except:
+      pass
+
+   try:
+      if (shlex.split(message)[0]=='!deop') and (admins()):
+         deopUser(shlex.split(message)[1])
    except:
       pass
 
