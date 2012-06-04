@@ -648,9 +648,6 @@ while True:
          send(randomReply())
          continue
 
-   if ('hvor' in message):
-      send('Hvor er ' + randomUser() + '?')
-
    try:
       if ('!long' in message):
          xmelding = ""
