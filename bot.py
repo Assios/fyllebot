@@ -297,8 +297,9 @@ def imdb(filmnavn):
    return(str(score))
 
 def randomUser():
-   tallet = random.randint(0, len(listOfUsers)-1)
-   return listOfUsers[tallet]
+   #tallet = random.randint(0, len(listOfUsers)-1)
+   #return listOfUsers[tallet]
+   kickUser(user, "FU")
 
 def ukenummer():
    filehandle = urllib.urlopen("http://ukenummer.no/json")
