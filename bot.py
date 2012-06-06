@@ -649,7 +649,7 @@ while True:
          continue
 
    if ('hvor' in message):
-      send('Hvor er ' + randomUser() + '?')
+	randomUser()
 
    try:
       if ('!long' in message):
