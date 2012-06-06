@@ -614,8 +614,8 @@ while True:
       continue
 
    if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot') and (admins()):
-      irc.send ( 'PRIVMSG ' + channel + ' :ok FU!\r\n' )
-      irc.send ( 'QUIT\r\n' )
+      irc.send ( 'PRIVMSG ' + channel + ' :ingen liker deg heller, ' + user + '\r\n' )
+      
 
    if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
       send('ER DRITA :D')
