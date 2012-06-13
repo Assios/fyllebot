@@ -590,6 +590,7 @@ while True:
       continue
 
    if (message == "!quiz"):
+      spm = 0
       q = open('questions.txt', 'r+')
       a = open('answers.txt', 'r+')
       string=''
@@ -606,8 +607,10 @@ while True:
          question = questions[tall]
          answer = answers[tall]
          send(question)
+         while (spm == 0)
          if (message == answer):
             send('Riktig svar!')
+            spm = 1
             quizLevel = 0
 
 
