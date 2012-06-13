@@ -372,6 +372,7 @@ pong = 0
 mld=0
 smallTalk = 0
 finishedLoading = 0
+quizLevel = 0
 while True:
    data = irc.recv(1024)
    msg = data.split(' ')
@@ -587,6 +588,30 @@ while True:
       send(['Du burde se den ass!', 'Den er braaa, men du burde ikke se traileren. Inneholder massse spoilers. HATER SPOILERS'][random.randint(0,1)] + smiley())
       filmLevel=0
       continue
+
+   if (message == "!quiz"):
+      q = open('questions.txt', 'r+')
+      a = open('answers.txt', 'r+')
+      string=''
+      for linje in q:
+         string+=linje
+      questions = string.splitlines()
+      string2=''
+      for linje in a:
+         string2+=linje
+      answers = string.splitlines()
+      tall = random.randint(0, len(questions)-1)
+      quizLevel = 1
+      while (quizLevel != 0):
+         question = questions[tall]
+         answer = answers[tall]
+         send(question)
+         if (message == answer):
+            send('Riktig svar!')
+            quizLevel = 0
+
+
+
 
    if ("count" in message):
       try:
