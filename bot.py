@@ -250,9 +250,10 @@ def Commands():
    if ('!beer' in message):
       beer()
 
-   if ('!bruker' in message):
-      for i in range(0, len(listOfUsers)):
-         send(listOfUsers[i])
+   if ('!bruker' in message) and admins():
+      irc.send('NAMES \r\n')
+      listOfUsers = data.split(' ')
+      send('DONE')
 
    if ('!drikke' == message):
       send(drikkee())
@@ -297,9 +298,11 @@ def imdb(filmnavn):
    return(str(score))
 
 def randomUser():
-   #tallet = random.randint(0, len(listOfUsers)-1)
-   #return listOfUsers[tallet]
-   kickUser(user, "FU")
+   try:
+      tallet = random.randint(0, len(listOfUsers)-1)
+      return listOfUsers[tallet]
+   catch:
+      return user
 
 def ukenummer():
    filehandle = urllib.urlopen("http://ukenummer.no/json")
@@ -361,8 +364,6 @@ def dehalfopUser(username):
 
 
 listOfUsers = []
-today = datetime.date.today()
-day = today.weekday()
 dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lårdag", "Såndag"]
 dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
 
@@ -453,7 +454,7 @@ while True:
    if ('hi doggie' in message):
       send('\'The Room\' sucks!')
 
-   if ('parently' in message):
+   if ('parently' in message) and ('app' not in message):
       send('Mente du APparently, Christian?')
 
    try:
@@ -562,10 +563,9 @@ while True:
    if ('!fylla' in message) and (admins()):
       fylla()
 
-   if ('vår' in message):
-      send('DET ER DRITFINT VåR I DAG. SOL N SHIT')
-
    if (('hvilken' in message) and ('dag' in message)):
+      today = datetime.date.today()
+      day = today.weekday()
       send('Det er ' + dag[day] + ' i dag! ' + dagstatus[day])
 
    if ((('hvilken film' in message) or ('se film' in message) or (' film' in message and 'anbefal' in message) or (' film' in message and 'sett' in message) or ('hvilke film' in message)) and ('hva' not in message)):
@@ -589,7 +589,7 @@ while True:
       filmLevel=0
       continue
 
-   if (message == "!quiz"):
+   '''if (message == "!quiz"):
       spm = 0
       q = open('questions.txt', 'r+')
       a = open('answers.txt', 'r+')
@@ -611,7 +611,7 @@ while True:
          if (message == answer):
             send('Riktig svar!')
             spm = 1
-            quizLevel = 0
+            quizLevel = 0'''
 
 
 
