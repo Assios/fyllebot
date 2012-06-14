@@ -301,7 +301,7 @@ def randomUser():
    try:
       tallet = random.randint(0, len(listOfUsers)-1)
       return listOfUsers[tallet]
-   catch:
+   except:
       return user
 
 def ukenummer():
