@@ -115,12 +115,11 @@ def beer():
       sleep(0.2)
 
 def fylla():
-   mottaker = user
    f = open('fylla.txt', 'r+')
    string = ""
    for line in f:
       string+= line
-   send(string)
+      send(string)
 
 def randomPong():
    pongstr = ['|    .', '|         .', '| .', '|  .', '|   .', '|  .', '|     .', '|  .', '. |   ', '|    .']
