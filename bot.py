@@ -361,7 +361,7 @@ def dehalfopUser(username):
 	irc.send('MODE ' + channel + ' -h ' + username + '\r\n')
 
 
-listOfUsers = []
+listOfUsers = {}
 dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lårdag", "Såndag"]
 dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
 
@@ -587,7 +587,10 @@ while True:
       filmLevel=0
       continue
 
-   '''if (message == "!quiz"):
+   if (message == "!quiz"):
+      score = open('score.txt', 'r+')
+      for i in range (0, len(listOfUsers)):
+         score.write(listOfUsers[i] + " " + "0\n")
       spm = 0
       q = open('questions.txt', 'r+')
       a = open('answers.txt', 'r+')
@@ -599,9 +602,9 @@ while True:
       for linje in a:
          string2+=linje
       answers = string.splitlines()
-      tall = random.randint(0, len(questions)-1)
       quizLevel = 1
       while (quizLevel != 0):
+         tall = random.randint(0, len(questions)-1)
          question = questions[tall]
          answer = answers[tall]
          send(question)
@@ -609,10 +612,13 @@ while True:
          if (message == answer):
             send('Riktig svar!')
             spm = 1
-            quizLevel = 0'''
+            quizLevel = 0
 
 
-
+   if ("testquiz" in message):
+      fil = open('score.txt', 'r+')
+      for line in fil:
+         send(line)
 
    if ("count" in message):
       try:
@@ -699,7 +705,7 @@ while True:
    try: 
       if 'JOIN' in msg[1] and ('fyllebot' not in user):
          listOfUsers.append(user)
-         send(user + ' joina kanalen! VELKOMMEN ASS')
+         send(user + ' joina fyllechat! VELKOMMEN, ' + user)
    except:
       pass
 
