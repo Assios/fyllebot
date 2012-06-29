@@ -608,11 +608,11 @@ while True:
          question = questions[tall]
          answer = answers[tall]
          send(question)
-         while (spm == 0)
-         if (message == answer):
-            send('Riktig svar!')
-            spm = 1
-            quizLevel = 0
+         while (spm == 0):
+            if (message == answer):
+               send('Riktig svar!')
+               spm = 1
+               quizLevel = 0
 
 
    if ("testquiz" in message):
