@@ -591,6 +591,7 @@ while True:
       score = open('score.txt', 'r+')
       for i in range (0, len(listOfUsers)):
          score.write(listOfUsers[i] + " " + "0\n")
+      score.close()
       spm = 0
       q = open('questions.txt', 'r+')
       a = open('answers.txt', 'r+')
