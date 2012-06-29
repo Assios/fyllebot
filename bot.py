@@ -250,9 +250,8 @@ def Commands():
       beer()
 
    if ('!bruker' in message) and admins():
-      irc.send('NAMES \r\n')
-      listOfUsers = data.split(' ')
-      send('DONE')
+      for i in range(0, len(listOfUsers)):
+         send(listOfUsers[i])
 
    if ('!drikke' == message):
       send(drikkee())
