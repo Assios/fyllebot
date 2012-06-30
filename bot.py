@@ -513,7 +513,7 @@ while True:
 
    try:
       if (shlex.split(message)[0]=='!kalkuler'):
-            calculate(shlex.split(message)[1])
+            send(calculate(shlex.split(message)[1]))
    except:
       pass
 
