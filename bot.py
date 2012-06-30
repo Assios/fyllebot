@@ -269,6 +269,13 @@ def yes():
          return True
    return False
 
+def yearInfo(year):
+   string=""
+   filehandle = urllib.urlopen("http://numbersapi.com/" + year + "/year")
+   for lines in filehandle.readlines():
+      string+=lines
+   send(string)
+
 def Commands():
    if (message == '!sjekketriks'):
       send(sjekketriks()+'\r\n')
@@ -449,9 +456,6 @@ while True:
             return True
       return False
 
-   #Melding når folk joiner
-
-
    if data.find ( 'PING' ) != -1:
       irc.send ( 'PONG ' + data.split() [ 1 ] + '\r\n' )
    if data.find ( 'KICK' ) != -1:
@@ -559,6 +563,15 @@ while True:
    try:
       if (shlex.split(message)[0]=='!dehalfop') and (admins()):
          dehalfopUser(shlex.split(message)[1])
+   except:
+      pass
+
+   try:
+      if (shlex.split(message)[0]=='!år'):
+         try:
+            yearInfo(shlex.split(message[1]))
+         except:
+            send('Skriv inn et ordentlig årstall a')
    except:
       pass
 
