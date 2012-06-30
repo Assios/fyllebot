@@ -243,7 +243,9 @@ def calculate(string):
    summen = tall[0]
    for i in range(0, len(op)):
       summen = calc(summen, tall[i+1], op[i])
-   return summen
+   send('Hmm, la meg tenke litt...')
+   sleep(random.randint(0.2, 3.2))
+   send('Tja, høres ' + summen + ' riktig ut?')
 
 def filmene():
    f = open('film.txt', 'r+')
@@ -513,7 +515,7 @@ while True:
    try:
       if (shlex.split(message)[0]=='!kalkuler'):
          try:
-            send(calculate(shlex.split(message)[1]))
+            calculate(shlex.split(message)[1])
          except:
             send('Det der blir for avansert for meg ass.')
    except:
