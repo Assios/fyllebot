@@ -244,7 +244,9 @@ def calculate(string):
    for i in range(0, len(op)):
       summen = calc(summen, tall[i+1], op[i])
    print summen
-   send(str(summen))
+   send('Hmm, la meg tenke litt...')
+   sleep(random.randint(0.3, 3.2))
+   send(['Kan det stemme at svaret er ' + summen + '?', 'Hmm, jeg tror svaret er ' + summen, 'Muligens ' + summen, 'Er ikke sikkert ass. Sånn ca ' + summen + ' kanskje?'][random.randint(0,2)])
 
 def filmene():
    f = open('film.txt', 'r+')
