@@ -274,7 +274,17 @@ def yearInfo(year):
    filehandle = urllib.urlopen("http://numbersapi.com/" + year + "/year")
    for lines in filehandle.readlines():
       string+=lines
-   send(string)
+   if "Cannot GET" in string:
+      send('Skriv inn et ordentlig årstall a')
+   else:
+      send(string)
+
+def randomMath():
+   string=""
+   filehandle = urllib.urlopen("http://numbersapi.com/random/math")
+   for lines in filehandle.readlines():
+      string+=lines
+   send(string)  
 
 def Commands():
    if (message == '!sjekketriks'):
@@ -562,19 +572,18 @@ while True:
 
    try:
       if (shlex.split(message)[0]=='!dehalfop') and (admins()):
-         dehalfopUser(shlex.split(message)[1])
+         yodehalfopUser(shlex.split(message)[1])
    except:
       pass
 
    try:
       if (shlex.split(message)[0]=='!år'):
-         try:
-            send(yearInfo(shlex.split(message)[1]))
-         except:
-            send('Skriv inn et ordentlig årstall a')
+         send(yearInfo(shlex.split(message)[1]))
    except:
       pass
 
+   if ('!matte' in message):
+      send(randomMath())
 
    if (pong==1) and ('.' in message) and ('|' in message) and ('fyllebot' not in user):
       if (message[0] != '.'):
