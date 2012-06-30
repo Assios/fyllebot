@@ -590,7 +590,7 @@ while True:
    try:
       if (shlex.split(message)[0]=='!år'):
          send(yearInfo(shlex.split(message)[1]))
-   excepte
+   except:
       pass
 
    try:
