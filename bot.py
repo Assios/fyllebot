@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
+from __future__ import division
 from time import sleep
 from pprint import pprint
 import BeautifulSoup
@@ -207,6 +208,42 @@ def meld():
       if (mldd[i] in message):
          return True
    return False
+
+def calc(num1, num2, operator):
+   if (operator == '*'):
+      return num1*num2
+   elif (operator == '+'):
+      return num1+num2
+   elif (operator == '-'):
+      return num1-num2
+   elif (operator == '/'):
+      return num1/num2
+
+def calculate(string):
+   liste = []
+   tall = []
+   op = []
+   operators = '*/-+'
+   num = '1234567890'
+   k = 0
+   for i in range(0, len(string)):
+      if string[i] not in num:
+         if string[i] not in operators:
+            send('Klarer ikke regne ut det der ass')
+            return ''
+         else:
+            liste.append(string[k:i])
+            op.append(string[i])
+            k=i+1
+   liste.append(string[k:])
+   for i in range(0, len(liste)):
+      tall.append(int(liste[i]))
+   print tall
+   print op
+   summen = tall[0]
+   for i in range(0, len(op)):
+      summen = calc(summen, tall[i+1], op[i])
+   return summen
 
 def filmene():
    f = open('film.txt', 'r+')
@@ -473,6 +510,12 @@ while True:
    except:
       pass
 
+   if (shlex.split(message)[0]=='!kalkuler'):
+      try:
+         send(calculate(shlex.split(message)[1])
+      except:
+         send('Det der blir for avansert for meg ass.')
+
    if (message[0:4] == '!msg' and admins()):
       send(fyllemessage[4:].strip())
 
@@ -587,7 +630,7 @@ while True:
       filmLevel=0
       continue
 
-   if (message == "!quiz"):
+   '''if (message == "!quiz"):
       score = open('score.txt', 'r+')
       for i in range (0, len(listOfUsers)):
          score.write(listOfUsers[i] + " " + "0\n")
@@ -613,7 +656,7 @@ while True:
             if (message == answer):
                send('Riktig svar!')
                spm = 1
-               quizLevel = 0
+               quizLevel = 0'''
 
 
    if ("testquiz" in message):
