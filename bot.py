@@ -512,7 +512,7 @@ while True:
 
    if (shlex.split(message)[0]=='!kalkuler'):
       try:
-         send(calculate(shlex.split(message)[1])
+         send(calculate(shlex.split(message)[1]))
       except:
          send('Det der blir for avansert for meg ass.')
 
