@@ -568,10 +568,7 @@ while True:
 
    try:
       if (shlex.split(message)[0]=='!år'):
-         try:
-            yearInfo(shlex.split(message[1]))
-         except:
-            send('Skriv inn et ordentlig årstall a')
+         send(yearInfo(shlex.split(message[1])))
    except:
       pass
 
