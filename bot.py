@@ -274,7 +274,7 @@ def yearInfo(year):
    filehandle = urllib.urlopen("http://numbersapi.com/" + year + "/year")
    for lines in filehandle.readlines():
       string+=lines
-   if "Cannot GET" in string:
+   if ("Cannot GET" in string) or ("Invalid url" in string):
       send('Skriv inn et ordentlig årstall a')
    else:
       send(string)
@@ -284,7 +284,7 @@ def numberInfo(number):
    filehandle = urllib.urlopen("http://numbersapi.com/" + number + "/math")
    for lines in filehandle.readlines():
       string+=lines
-   if "Cannot GET" in string:
+   if ("Cannot GET" in string) or ("Invalid url" in string):
       send('Skriv inn et ordentlig tall a')
    else:
       send(string)
@@ -590,7 +590,7 @@ while True:
    try:
       if (shlex.split(message)[0]=='!år'):
          send(yearInfo(shlex.split(message)[1]))
-   except:
+   excepte
       pass
 
    try:
