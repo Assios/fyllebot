@@ -686,6 +686,7 @@ while True:
    if (filmLevel==3) and (message!=''):
       send(['Fuck deg. FUCK DEG!', 'fu.', 'hater deg.'][random.randint(0,2)])
       filmLevel=0
+      continue
 
    if ('fuck' in message) and ('fyllebot' in message):
       send('>:C')
@@ -717,7 +718,7 @@ while True:
       send(['Jeg vil snakke med ' + randomUser() + '!', 'Hvorfor er ikke ' + randomUser() + ' her?', 'Hvafaeeeeen. ' + randomUser() + '!?!?!'][random.randint(0, 2)])
 
    if (" " in message) and (samtaleLvl==1) and (user == brukerSvar):
-      send(['HAHAH, du ass!', 'Hvor er ' + randomUser() + '?', 'fu.', 'hater deg ' + user + '.', 'elsker deg, ' + user, 'idiot ass, ' + user + smiley(), 'du må jo være drita da, ' + user + '.'][random.randint(0,5)])
+      send(['HAHAH, du ass!', 'Hvor er ' + randomUser() + '?', 'fu.', 'hater deg ' + user + '.', 'elsker deg, ' + user, 'idiot ass, ' + user + smiley(), 'Skriv !kalkuler 2*3 for å få meg til å regne ut 2*3 :D', 'du må jo være drita da, ' + user + '.'][random.randint(0,6)])
       samtaleLvl=0
       brukerSvar = ""
       continue

@@ -10,3 +10,4 @@
 !pong - spill pong mot meg!
 !ukenummer - gir ukenummeret
 !youtube - kul youtubefilm!
+!kalkuler - regner ut regnestykket (+,-,*,/)
