@@ -1,6 +1,6 @@
-from __future__ import division
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import division
 
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
 from time import sleep
