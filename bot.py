@@ -510,11 +510,14 @@ while True:
    except:
       pass
 
-   if (shlex.split(message)[0]=='!kalkuler'):
-      try:
-         send(calculate(shlex.split(message)[1]))
-      except:
-         send('Det der blir for avansert for meg ass.')
+   try:
+      if (shlex.split(message)[0]=='!kalkuler'):
+         try:
+            send(calculate(shlex.split(message)[1]))
+         except:
+            send('Det der blir for avansert for meg ass.')
+   except:
+      pass
 
    if (message[0:4] == '!msg' and admins()):
       send(fyllemessage[4:].strip())
