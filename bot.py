@@ -243,9 +243,8 @@ def calculate(string):
    summen = tall[0]
    for i in range(0, len(op)):
       summen = calc(summen, tall[i+1], op[i])
-   send('Hmm, la meg tenke litt...')
-   sleep(random.randint(0.2, 3.2))
-   send('Tja, høres ' + summen + ' riktig ut?')
+   print summen
+   send(summen + '')
 
 def filmene():
    f = open('film.txt', 'r+')
