@@ -247,7 +247,8 @@ def calculate(string):
    summen = str(summen)
    send('Hmm, la meg tenke litt...')
    sleep(random.randint(0.3, 3.2))
-   send(['Kan det stemme at svaret er ' + summen + '?', 'Hmm, jeg tror svaret er ' + summen, 'Muligens ' + summen, 'Er ikke sikkert ass. Sånn ca ' + summen + ' kanskje?'][random.randint(0,2)])
+   send(summen)
+   send(['Kan det stemme at svaret er ' + summen + '?', 'Hmm, jeg tror svaret er ' + summen, 'Muligens ' + summen, 'Er ikke sikkert ass. Sånn ca ' + summen + ' kanskje?'][random.randint(0,3)])
 
 def filmene():
    f = open('film.txt', 'r+')
