@@ -244,7 +244,7 @@ def calculate(string):
    for i in range(0, len(op)):
       summen = calc(summen, tall[i+1], op[i])
    print summen
-   send(summen + '')
+   send(str(summen))
 
 def filmene():
    f = open('film.txt', 'r+')
