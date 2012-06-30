@@ -1,8 +1,8 @@
+from __future__ import division
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
-from __future__ import division
 from time import sleep
 from pprint import pprint
 import BeautifulSoup
