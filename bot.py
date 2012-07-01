@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 
-import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json
+import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json, math
 from time import sleep
 from pprint import pprint
 import BeautifulSoup
@@ -90,7 +90,7 @@ def sjekketriks():
 def returnURLs(message):
    start = message.find('http://')
    end = -1
-   urlen = message[start:]
+   urlen = fyllemessage[start:]
    urlen = shlex.split(urlen)[0]
    return urlen
 
