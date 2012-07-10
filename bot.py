@@ -116,6 +116,13 @@ def beer():
       irc.send('NOTICE ' + mottaker +  ' :' + linje + '\r\n')
       sleep(0.2)
 
+def langsetning():
+   f = open('langsetning.txt', 'r+')
+   for linje in f:
+      send(linje)
+      sleep(0.4)
+
+
 def fylla():
    f = open('fylla.txt', 'r+')
    string = ""
@@ -619,6 +626,9 @@ while True:
          send('DU SLO MEG :( GRATULERER!')
          gameOver = 1
          pong = 0
+
+   if ('!familydoctors' in message):
+      langsetning()
 
    if ('bærsj' in message):
       send('Det skrives ikke med r, julie >:(')
