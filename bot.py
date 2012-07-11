@@ -98,6 +98,7 @@ def urlTitle(url):
    soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
    string = str(soup.title.string)
    string = string.replace('&quot;', '\"')
+   string = string.replace('&#39;', '\'')
    return string.strip().splitlines()[0]
 
 def count(tall):
@@ -310,6 +311,8 @@ def Commands():
       send(sjekketriks()+'\r\n')
    if ('!film' == message):
       send('Tilfeldig film: ' + film())
+   if ('!dickfilm' == message):
+      send('Tilfeldig film: ' + dickfilm())
    if ('!promille' == message):
       send('Kalkulerer promille.')
       sleep(0.2)
@@ -419,6 +422,25 @@ def film():
    nr = random.randint(0, len(filmer)-1)
    string = filmer[nr]
    return "\""+string+"\""
+
+def dickfilm():
+   f = open('film.txt', 'r+')
+   string = ''
+   string2 = ''
+   for linje in f:
+      if (' ' not in linje):
+         string+=linje
+   filmer = string.splitlines()
+   nr = random.randint(0, len(filmer)-1)
+   string = filmer[nr]
+   words = string.split(' ')
+   tall = random.randint(0, len(words)-1)
+   words[tall] = 'dick'
+   for ordene in words:
+      string2 = ordene + " "
+   return "\""+string2+"\""
+
+
 
 def deopUser(username):
     irc.send('MODE ' + channel + ' -o ' + username + '\r\n')
@@ -727,6 +749,7 @@ while True:
 
    if filmz() and ('!imdb' not in message):
       send(filmScore(filmReturn()))
+
       
    if ("!vær" in message):
       weather()
