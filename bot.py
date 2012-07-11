@@ -437,10 +437,15 @@ def dickfilm():
    words = string.split(' ')
    print words
    tall = random.randint(0, len(words)-1)
-   words[tall] = 'dick'
+   if (tall == 0):
+      words[tall] = 'Dick'
+   else:
+      words[tall] = 'dick'
    print words
    for i in range(0, len(words)):
-      string2+= words[i] + " "
+      string2+= words[i]
+      if (i < len(words)-1):
+         string2 += ' '
    return "\""+string2+"\""
 
 
