@@ -438,8 +438,9 @@ def dickfilm():
    print words
    tall = random.randint(0, len(words)-1)
    words[tall] = 'dick'
-   for ordene in words:
-      string2 = ordene + " "
+   print words
+   for i in range(0, len(words)):
+      string2+= words[i] + " "
    return "\""+string2+"\""
 
 
