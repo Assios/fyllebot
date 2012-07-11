@@ -433,7 +433,9 @@ def dickfilm():
    filmer = string.splitlines()
    nr = random.randint(0, len(filmer)-1)
    string = filmer[nr]
+   print string
    words = string.split(' ')
+   print words
    tall = random.randint(0, len(words)-1)
    words[tall] = 'dick'
    for ordene in words:
