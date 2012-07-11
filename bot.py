@@ -428,7 +428,7 @@ def dickfilm():
    string = ''
    string2 = ''
    for linje in f:
-      if (' ' not in linje):
+      if (' ' in linje):
          string+=linje
    filmer = string.splitlines()
    nr = random.randint(0, len(filmer)-1)
