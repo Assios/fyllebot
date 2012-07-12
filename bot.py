@@ -437,7 +437,9 @@ def dickfilm():
    words = string.split(' ')
    print words
    tall = random.randint(0, len(words)-1)
-   if (tall == 0):
+   if (words[tall] == 'The' or words[tall] == 'the'):
+      tall=tall+1
+   if (tall == 0 or words[tall][0] in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
       words[tall] = 'Dick'
    else:
       words[tall] = 'dick'
