@@ -440,9 +440,15 @@ def dickfilm():
    if (words[tall] == 'The' or words[tall] == 'the'):
       tall=tall+1
    if (tall == 0 or words[tall][0] in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
-      words[tall] = 'Dick'
+      if (words[tall][-1]=='s'):
+         words[tall] = 'Dicks'
+      else:
+         words[tall] = 'Dick'
    else:
-      words[tall] = 'dick'
+      if (words[tall][-1]=='s'):
+         words[tall] = 'dicks'
+      else:
+         words[tall] = 'dick'
    print words
    for i in range(0, len(words)):
       string2+= words[i]
