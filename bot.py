@@ -24,14 +24,13 @@ from imdb import *
 from mat import *
 from admins import *
 
-dato = str(datetime.datetime.now())
-aar = int(dato[0:4])
-maaned = int(dato[5:7])
-dag = int(dato[8:10])
-dato = datetime.date(aar, maaned, dag)
-polet = [17, 17, 17, 18, 18, 15, 10000]
-
 def stengetidpolet():
+    dato = str(datetime.datetime.now())
+    aar = int(dato[0:4])
+    maaned = int(dato[5:7])
+    dag = int(dato[8:10])
+    dato = datetime.date(aar, maaned, dag)
+    polet = [17, 17, 17, 18, 18, 15, 10000]
     aapent = 1
     poltid = polet[dato.weekday()]
     tiden = str(datetime.datetime.now())
@@ -492,6 +491,9 @@ while True:
    #Legger til en "kopi" av message uten lower, slik at man kan sende capslock-sensitive meldinger gjennom fyllebot
    fyllemessage = ' '.join(msg[3:]).strip()[1:]
 
+   #Tar datoen hver gang:
+   currentDate = datetime.date(aar, maaned, dag)
+
    user = msg[0].split("!")
    user = user[0].replace(":", "")
    if ("End of /NAMES list" in fyllemessage):
@@ -510,6 +512,9 @@ while True:
    except:
       pass
 
+   if ("!date" in message):
+      print currentDate
+      send(currentDate)
 
    #Denne admins()-funksjonen skal flyttes over senere. Får feilmeldinge "user not defined" når den er plassert i egen fil...
    def admins():
