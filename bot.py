@@ -156,7 +156,7 @@ def youtube():
    return string
 
 def smiley():
-   smileys=[' :D', ' :)', ' :>', ' €:', ' ;*']
+   smileys=[' :D', ' :)', ' :>', ' €:', ' ;*', '<3', 'HØHØ']
    nr = random.randint(0, len(smileys)-1)
    return smileys[nr]
 
@@ -516,9 +516,9 @@ while True:
       f = open('bursdag.txt', 'r+')
       string = ''
       for linje in f:
-         if (shlex.split(linje)[0] == shlex.split(currentDate)[0]):
+         if (shlex.split(linje)[0][4:] == shlex.split(currentDate)[0][4:]):
             if (user == shlex.split(linje)[1]):
-               send('GRATULERER MED DAGEN, ' + user + ' :D')
+               send('GRATULERER MED DAGEN, ' + user + smiley())
 
    #Denne admins()-funksjonen skal flyttes over senere. Får feilmeldinge "user not defined" når den er plassert i egen fil...
    def admins():
