@@ -512,9 +512,13 @@ while True:
    except:
       pass
 
-   if ("!date" in message):
-      print currentDate
-      send(currentDate)
+   def bursdag():
+      f = open('bursdag.txt', 'r+')
+      string = ''
+      for linje in f:
+         if (shlex.split(linje)[0] == shlex.split(currentDate)[0]):
+            if (user == shlex.split(linje)[1]):
+               send('GRATULERER MED DAGEN, ' + user + ' :D')
 
    #Denne admins()-funksjonen skal flyttes over senere. Får feilmeldinge "user not defined" når den er plassert i egen fil...
    def admins():
@@ -792,6 +796,7 @@ while True:
    if (message=="ingen liker deg, fyllebot") or (message=='stikk a, fyllebot') and (admins()):
       irc.send ( 'PRIVMSG ' + channel + ' :ingen liker deg heller, ' + user + '\r\n' )
       
+   bursdag()
 
    if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
       send('ER DRITA :D')
