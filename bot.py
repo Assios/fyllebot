@@ -492,7 +492,7 @@ while True:
    fyllemessage = ' '.join(msg[3:]).strip()[1:]
 
    #Tar datoen hver gang:
-   currentDate = datetime.date(aar, maaned, dag)
+   currentDate = str(datetime.datetime.now())
 
    user = msg[0].split("!")
    user = user[0].replace(":", "")
