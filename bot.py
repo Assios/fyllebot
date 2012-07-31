@@ -74,6 +74,7 @@ def lastUrl(newurl):
    elif len(lastUrls) == 5:
       for i in range(0, len(lastUrls)-1):
          lastUrls[i] = lastUrls[i+1]
+      lastUrls[4] = newurl
 
 def rhapsody():
    f = open('lyrics.txt', 'r+')
@@ -791,7 +792,10 @@ while True:
 
    if ("!lastlink" in message):
       try:
-         send('Siste linker:')
+         if ((len(lastUrls) == 5)):
+            send('Siste 5 linker:')
+         else:
+            send('Siste linker:')
          for i in range(0, len(lastUrls)):
             send(lastUrls[i])
       except:
