@@ -69,12 +69,12 @@ def randomSupSvar():
    return mld[nr]
 
 def lastUrl(newurl):
-   if len(lastUrls) < 3:
+   if len(lastUrls) < 5:
       lastUrls.append(newurl)
-   elif len(lastUrls) == 3:
+   elif len(lastUrls) == 5:
       for i in range(0, len(lastUrls)-1):
          lastUrls[i] = lastUrls[i+1]
-         lastUrls[2] = newurl
+         lastUrls[4] = newurl
 
 def rhapsody():
    f = open('lyrics.txt', 'r+')
@@ -796,7 +796,7 @@ while True:
          for i in range(0, len(lastUrls)):
             send(lastUrls[i])
       except:
-         send('Ingen linker lagret enda.')
+         pass
 
    if no() and (filmLevel==2):
       send(['WHATTHEFUCK? :C', 'Hadde tenkt å be deg med på kino, men IKKE Nå LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])
