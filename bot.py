@@ -167,9 +167,8 @@ def youtube():
    return string
 
 def smiley():
-   smileys=[' :D', ' :)', ' :>', ' €:', ' ;*', '<3', 'HØHØ']
-   nr = random.randint(0, len(smileys)-1)
-   return smileys[nr]
+   smileys = random.choice((' :D', ' :)', ' :>', ' €:', ' ;*', '<3', 'HØHØ'))
+   return smileys
 
 def greet():
    f = open('greetings.txt', 'r+')
