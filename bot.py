@@ -74,7 +74,6 @@ def lastUrl(newurl):
    elif len(lastUrls) == 5:
       for i in range(0, len(lastUrls)-1):
          lastUrls[i] = lastUrls[i+1]
-         lastUrls[4] = newurl
 
 def rhapsody():
    f = open('lyrics.txt', 'r+')
