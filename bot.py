@@ -24,6 +24,8 @@ from imdb import *
 from mat import *
 from admins import *
 
+global lastUrls = []
+
 def stengetidpolet():
     dato = str(datetime.datetime.now())
     aar = int(dato[0:4])
@@ -65,8 +67,6 @@ def randomSupSvar():
    nr = random.randint(0, 7)
    mld = ["Drikker tequila!", "Shotter vodka ass.", "Drikker rista martini. Ikke stirra", "leker batman. I'M BATMAN!", "NANANANANA BATMAAAN!", "LOLOLOLO SUPERMAAN!", "zzZZZzZZZZSOVNER ASS", "ssshhhhh, prøver å gjemme meg!"]
    return mld[nr]
- 
-global lastUrls = []
 
 def lastUrl(newurl):
    if len(lastUrls) < 3:
