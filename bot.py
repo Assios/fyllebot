@@ -66,6 +66,16 @@ def randomSupSvar():
    mld = ["Drikker tequila!", "Shotter vodka ass.", "Drikker rista martini. Ikke stirra", "leker batman. I'M BATMAN!", "NANANANANA BATMAAAN!", "LOLOLOLO SUPERMAAN!", "zzZZZzZZZZSOVNER ASS", "ssshhhhh, prøver å gjemme meg!"]
    return mld[nr]
  
+global lastUrls = []
+
+def lastUrl(newurl):
+   if len(lastUrls) < 3:
+      lastUrls.append(newurl)
+   elif len(lastUrls) == 3:
+      for i in range(0, len(lastUrls)-1):
+         lastUrls[i] = lastUrls[i+1]
+         lastUrls[2] = newurl
+
 def rhapsody():
    f = open('lyrics.txt', 'r+')
    string=''
@@ -91,6 +101,7 @@ def returnURLs(message):
    end = -1
    urlen = fyllemessage[start:]
    urlen = shlex.split(urlen)[0]
+   lastUrl(urlen)
    return urlen
 
 def urlTitle(url):
@@ -778,6 +789,14 @@ while True:
       
    if ("!vær" in message):
       weather()
+
+   if ("!lastlink" in message):
+      try:
+         send('Siste linker:')
+         for i in range(0, len(lastUrls)):
+            send(lastUrls[i])
+      except:
+         send('Ingen linker lagret enda.')
 
    if no() and (filmLevel==2):
       send(['WHATTHEFUCK? :C', 'Hadde tenkt å be deg med på kino, men IKKE Nå LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])
