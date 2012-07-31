@@ -24,7 +24,7 @@ from imdb import *
 from mat import *
 from admins import *
 
-global lastUrls = []
+lastUrls = []
 
 def stengetidpolet():
     dato = str(datetime.datetime.now())
