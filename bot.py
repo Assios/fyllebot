@@ -458,6 +458,9 @@ def film():
    return "\""+string+"\""
 
 def dickfilm():
+   if random.randint(0,2000) == 1337:
+      return "The twilight saga"
+      
    f = open('film.txt', 'r+')
    string = ''
    string2 = ''
@@ -932,7 +935,7 @@ while True:
    except:
       send('Faen ass ugyldie matrise ' + smiley())
 
-   if ('neo' in message or 'agent smith' in message):
+   if (('neo' in message or 'agent smith' in message or 'matrix' in message or 'matrise' in message) and not ('!matrix' in message) and not ('!matrise' in message)):
       send('Skal jeg gange matrisa di? Prøv !matrise [matrix]*[matrix]'+smiley())
 
    #kræsjgreie
