@@ -5,7 +5,7 @@ from __future__ import division
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json, math
 from time import sleep
 from pprint import pprint
-import BeautifulSoup
+#import BeautifulSoup
 from xml.dom.minidom import parseString
 
 
@@ -25,6 +25,31 @@ from mat import *
 from admins import *
 
 lastUrls = []
+
+def array_multiplier(message):
+   #if message.split("--")[-1]=="verbose":
+      #verbose = True
+      #vurdere å implementere --verbose (debug info underveis, mellomregning etc)
+
+   v1,v2 = [eval(re.sub("[^0-9,\.\[\]]*","",i)) for i in message.split("*")]
+   final_array = [[None]*len(v2[0]) for i in range(len(v1))]
+   #send(str(len(v2[0])),str(len(v1)))
+
+   for a in range(len(v1)):
+      for b in range(len(v2[0])):
+         current = 0
+         for c in range(len(v2)):
+            current += (v1[a][c] * v2[c][b])
+            #if verbose:
+               #send(str(v1[a][c],"*",v2[c][b]))
+               #send(str("nåværende delsum er",current))
+         #if verbose:
+            #send(str("adding",current,"to",a," , ",b))
+         final_array[a][b] = current
+
+   send("___RESULTAT___")
+   for i in range(len(v1)):
+      send("  "+str(final_array[i]))
 
 def stengetidpolet():
     dato = str(datetime.datetime.now())
@@ -542,6 +567,8 @@ while True:
             return True
       return False
 
+
+
    if data.find ( 'PING' ) != -1:
       irc.send ( 'PONG ' + data.split() [ 1 ] + '\r\n' )
    if data.find ( 'KICK' ) != -1:
@@ -898,6 +925,15 @@ while True:
          send('Bra navnevalg, ' +  thisUser + '!')
    except:
       pass
+
+   try:
+      if ('!matrise' in message or '!matrix' in message):
+         array_multiplier(message)
+   except:
+      send('Faen ass ugyldie matrise ' + smiley())
+
+   if ('neo' in message or 'agent smith' in message):
+      send('Skal jeg gange matrisa di? Prøv !matrise [matrix]*[matrix]'+smiley())
 
    #kræsjgreie
    if ('!kræsj' in message) and (user=="Assios"):
