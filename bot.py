@@ -785,8 +785,8 @@ while True:
          while (count == i):
             if (checkAnswer(svar, nummer[i], message)):
                addPoints(user, 'quiz')
-               count++
-            if (message == 'nxt'):
+               continue
+            elif (message == 'nxt'):
                send(svar[nummer[i]])
                continue
 
