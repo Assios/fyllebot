@@ -778,12 +778,12 @@ while True:
       nummer = makeListOfNumbers(sporsmal, 10)
 
       for i in range(0, len(nummer)):
-         answer = ''
          count = i
          send("Spørsmål nr. " + str(i+1) + ": ")
          send(sporsmal[nummer[i]])
          while (count == i):
-            if (checkAnswer(svar, nummer[i], message)):
+            for ans in svar[nummer[i]]:
+               if ans in message:
                print 'DONE'
                addPoints(user, 'quiz')
                count = count + 1
