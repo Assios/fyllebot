@@ -788,7 +788,7 @@ while True:
             send(svar[nummer[i]])
             continue
 
-   send(getWinner(users))
+      send(getWinner(users))
 
 
    if ("count" in message):
