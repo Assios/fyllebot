@@ -779,15 +779,16 @@ while True:
 
       for i in range(0, len(nummer)):
          answer = ''
+         count = i
          send("Spørsmål nr. " + str(i+1) + ": ")
          send(sporsmal[nummer[i]])
-         while (not checkAnswer(svar, nummer[i], message)) and (message != 'nxt'):
-            answer = raw_input('Skriv inn svar: ')
-         if (checkAnswer(svar, nummer[i], message)):
-            addPoints(user, 'quiz')
-         elif (message == 'nxt'):
-            send(svar[nummer[i]])
-            continue
+         while (count == i):
+            if (checkAnswer(svar, nummer[i], message)):
+               addPoints(user, 'quiz')
+               continue
+            elif (message == 'nxt'):
+               send(svar[nummer[i]])
+               continue
 
       if (quizLvl == 1):
          send(getWinner(users))
