@@ -1,2 +1,640 @@
-42
-9
+[9000000, 9000.000, ni millioner, nine millions]
+[9, ni, nINE]
+Beach Boys
+[5, fem, five]
+albania
+[gronn, gront, green]
+Dolphin
+Five
+Red
+Albania
+Green
+[USA, Arizona]
+Beach Boys
+[Knee, kneecap]
+Vodka
+Yuri Gagarin
+John Lennon
+Red Rum
+Lee Majors
+Sheep
+Mekon
+Robin
+Calling birds
+The bush kangaroo
+Tightrope walker
+Gnasher
+Camels
+David Jason
+Benny Goodman
+Louis Bleriot
+Sylvester Stallone
+Crimean
+John Logie Baird
+Golfer
+Sparrow
+Lose their leaves in winter
+Spoon
+Dentist - its tooth decay
+Lady Chatterlys Lover
+Plum
+Six
+The Producers
+Douglas Bader
+Admiral Benbow
+Harry Houdini
+Christopher Columbus
+Napoleon Bonaparte
+Margaret Mitchell
+The Black Death
+Pinocchio
+Walt Disney
+Eat porridge
+Victoria Cross
+Beards
+Barrister
+Bogart
+Dolly Parton
+International Monetary Fund
+Thomas the tank engine
+China
+Microsoft
+[Rick's, Rick, Ricks]
+Casino Royale
+Dog
+Schilling
+Red Crescent
+Jack
+[Dynamite, the dynamite, dynamitt]
+Roger Bannister
+Mountains in Scotland
+Toyota
+Republic of Ireland or Eire
+The Curies
+Hair
+John Constable
+Number 13
+Kit or Kitten
+France
+Harry Palmer
+Brotherhood of Man
+Turkey
+Fish
+Cigar
+Ants
+Sulphuric
+Parliament
+Hare
+Doc Savage
+Oliver Hardy
+Fish
+Blood Groups
+Potato
+Hamlin
+Lourdes
+Calcutta
+Hovercraft
+Scarecrow
+Shoes
+German Measles
+Talc
+Mona Lisa
+Puccini
+India
+George Orwell
+Shoemaker
+China
+Barbara Stanwyck
+Grenadine
+Art of Dancing
+Horses
+Alexander Dumas
+Hocus Pocus
+Louis Bleriot
+[Dr No, Dr. No]
+Silence of the Lambs
+Addis Ababa
+Medicine
+Motorcycle Racing
+Alaska
+Berlin MexicoLondon
+Woody Allen
+Amnesty International
+Nelson Mandela
+Tutankamen tomb
+Pluto
+[Jackie Joyner-Kersey, Jackie Joyner Kersey, Jackie Kersey]
+Jayne Austin
+Archimedes
+Johan Sebastian Bach
+Minnesota twins
+Your Holiness
+Edinburgh
+Tchaikovsky
+The Deaf
+Jack Benny
+Jonah
+Mrs Doubtfire
+Bishop
+Blitzkrieg
+Cabbage
+Donald Campbell
+[Buick, Chrysler]
+Joseph Heller
+Netherlands
+[Chess World Champions, chess, chess world champs, chess champs]
+Chrysanthemum
+Hit Gong
+Bordeaux
+[Logarithms, Logarithm, Log, logaritmer, logaritmen]
+[IBM FORTRAN, FORTRAN]
+Tuberculosis
+Delaware
+Winds
+Roald Dahl
+Oscar Wilde
+Kirk Douglas
+Sir Francis Drake
+Tara
+Washington Redskins
+Freemasons
+Bob Dylan
+Lead
+Jonathon Swift
+Sunken Fence
+[Hari Kari, suicide]
+William Harvey
+Hedge Sparrow
+Greece
+Hermes
+Rock Hudson
+Aldus Huxley
+Regions of Italy
+Jodhpur
+John
+Judo
+Skiing
+Diamonds
+Stanley Kubrick
+Glass
+Clive Staples Lewis
+Squirrel
+First test tube baby
+Adolf Hitler
+Israel
+Sherlock Holmes
+Trees
+Oedipus
+Thomas Paine
+Palermo
+Polaroid
+Pink Floyd
+Pinocchio
+Uranium
+Porcelain
+Germany
+Pendulum clock
+Hindu
+Oil
+Kenya
+The Great Escape
+Nose bleed
+Around the world in 80 days
+Hippopotamus
+Perseus
+Tin and Lead
+[Kodak 1, Kodak]
+Philosophers
+Barometer
+Pablo Picasso
+Pitcairn Islands
+Po
+Husband
+Colonies of Portugal
+Moonshine
+Priam
+Machu Picchu
+Herman Melville
+Dick Turpin
+The Flash
+Mercedes
+Queensland
+Ragnarok
+Underground railway
+Arthur Ransom
+Mustard
+Vidkun Quisling
+Rabat
+Square Thus Square meal
+Buddhist
+Linux computer operating system
+Rhesus Monkey
+Rhodesia
+Rice
+Lawyer
+Stethoscope
+The Rolling Stones
+Zero
+Erwin Rommel
+Rosetta Stone
+The University Boat Race
+Faberge
+Science Fiction
+Randolph Scott
+Taste
+Sein Fein
+Ransome Olds
+Christian Barnard
+Dog Star
+Slide Rule
+Socrates
+Thomas Octave Murdoch Sopwith
+South Dakota
+Malaria
+Mariner 9
+Regions of Spain
+[Skiing, ski]
+Igor Stravinsky
+Subpoena
+John Surtees
+Switzerland
+Thermometer
+Tank
+Tantalus
+Edgar Rice Burroughs
+Tea
+Marconi
+Martina Navratilova
+Terracotta
+State of Texas
+Macbeth
+John Buchan
+New York Giants
+Triton
+Tina Turner
+USSR
+Trenton
+Peter Ustinov
+Vacuum or thermos flask
+Vesta
+Vines
+Colour Television
+Dashiell Hammett
+Yosemite USA
+Zip Fastener
+Napoleon
+Oral Contraceptive
+Whittle Jet Engine
+Tennis
+Lancaster Pennsylvania
+Fay Wray
+[America's Cup, Americas Cup]
+Hops
+Congo
+ABO Blood Groups
+George Washington
+Japan
+Paul Newman
+Diners Club
+Poisoned by chemicals work
+Eating horsemeat
+Florida
+Jury Bribing
+Australia Story of the Kelly gang
+Anita Loos
+Stuffing birds
+Librarian
+Federal reserve bank Manhattan
+Communist rob rich
+Charles Atlas
+Fell off toilet
+Oscars
+Dog doing life for killing cat
+Eiffel tower
+Oysters
+Mystery of Edwinn Drood
+Sargasso sea
+Dewrinkle prunes
+Readers Digest
+St Nicholas
+Sell second hand furniture
+Rabbits
+Shelly Winters
+Serve wine
+Vatican City
+Rock around the clock
+Denmark
+Michael Jackson
+Swagman's Knapsack
+Germany
+Davy Crocket
+Karl Malden
+American flag
+Blaire General
+Jellyfish
+Ptolemy Dionysus her brother
+Artful Dodger
+Charlie Chaplin
+Ginger Rodgers
+Peaquod
+Herbert Hoover
+Ash Wednesday
+Brookfield
+Captain Flint
+The Untouchables
+Poland
+Telstar by The Tornados
+Mexico
+Cats
+Military belt
+W
+Agatha Christie
+[Shakespeare, William Shakespeare]
+Olympic
+Onions
+Margaret Rutherford
+Greek
+Loving and Giving
+The robe
+Senlac hill
+Apple
+Gold
+[Its all over now, It's all over now]
+Sharks Jets
+Double Eagle
+Franz Liszt
+[15th July, 15. Juli, 15. of july, July 15th, femtende juli]
+Mushrooms
+Feet
+Practice Balls
+Salmon
+Sax Rohmer
+Edith Blyton
+Rod Stiger
+Singer sewing machine in 1850s
+Honey
+Zodiac
+Saturn
+Flower arranging
+American
+Portugal
+Milk
+Sea creatures and birds
+Duluth Minnesota
+Brush
+Claudius
+Helen of Troy
+Horse bits
+Ensign Chekov
+Cliff Richard
+Ivory
+Arachne
+Carry on Sergeant
+Lauren Bacall
+Cow Yak cross
+Long Sighted
+Dalai Lama
+Mistletoe
+Jerry Lewis
+Bullfighting
+Piper at the gates of dawn
+Venice
+Kissing Cousins
+Venus de Milo
+Britain
+Maltese falcon
+8 marriages
+Napoleon Bonaparte
+See in the dark
+Bourse
+Beethoven
+Wild Thing
+Maroon
+Tokyo
+Baby Face
+Ronald Regan
+Grape Knee High
+Leather
+Calf
+Goldfinger
+Piano
+Tongue
+Wood
+Art theft
+[Saw woman in half, saw a woman in half, sage en kvinne i to, sage en dame i to, saw a woman, saw woman]
+Victor Hugo
+Flamingo
+Apollo
+Alexander the Great
+Diogones
+Toothbrush
+Motorists in canals
+WW1 Gas mask filters
+American Indians
+Violet
+Hydrochloric acid
+Australian football
+Roo
+Charles Bronson
+Perseus
+Rose
+Umbrellas
+[The Mannequin Pis, Mannequin Pis, The Manneken Pis, Manneken Pis]
+Charles Lindbergh
+Killed in Battle
+Idaho
+Boris Pasternak
+Joe Shlabotnik
+May
+Ice Crystals
+Eating with forks
+Knitting stitches
+Typhoid Mary
+Milking a cow
+As food or Chow
+Small Orange
+Aphrodite
+Crossword
+Badgers
+Parsley
+[To cook, cook, cooking]
+Phidipedes
+Starfish
+La Scala
+Alcohol
+Dog
+Egypt
+Alvin Stardust
+Lettuce
+Ounce
+Coffee
+King Camp Gillette
+[Norwegian, norsk]
+Brandy Cointreau Lemon juice
+Swine
+Irish Gaelic language
+Birds Eggs
+Cork
+Smallpox
+Nine of Diamonds
+Vermeer
+Finland
+Economics
+[London, Eltham]
+Back of head
+Sausages
+Jean Claude Van Dam
+Grace Kelly
+Ships compass
+Elizabeth Taylor
+Monaco
+Falkland Islands
+Sergeant Joe Friday
+Liberia
+Albion
+November
+Some Like it Hot
+Quart glass
+[Roller Skates, rulleskøyter]
+Hertford Hereford Hampshire
+[He was dead, han var død, død, dead]
+Tinfoil
+Port
+Freemasons
+Joan Rivers
+Toothache
+[Alcohol strength, alkoholprosent, alkoholmengde]
+Transylvania
+Isaac Newton
+Little Richard
+A kind of hairnet
+Jayne Mansfield
+Britain
+Tea Pot
+Frankie Valli
+Cotton
+Kissing
+Electric chair
+Mexico
+Shakespeare
+Elvis
+Mickey Mouse
+Iceland
+Ringo Starr
+Swollen feet
+[Sea Horse, A sea horse, sjøhest]
+Zorro
+Duran Duran
+Russia
+Dew
+Joint Heir
+Tremaloes
+Archimedes
+Chickadees
+North island New Zealand
+Ian Fleming
+Alfred Hitchcock
+[Goldfinger, Diamonds are Forever, Moonraker]
+Steeplechase
+[Orange, oransje]
+Johnny Weismuller
+Hands
+Greeks
+False Teeth
+Romans
+Thaddeus
+Imperfection
+Anchor
+For Cash
+Jolly Rodger
+Angola
+John Denver
+Saw
+Woman of the Year
+Hair oil
+Hangman
+Detergent
+Jackie Stuart
+Gernsbeck
+Michael Caine
+Rain
+Turnip
+Blackbeard
+Soap
+Black
+Camels
+Captain Bligh
+The Road Runner
+Greek
+Jamaica
+Lenny Bruce
+Zip Fastener
+FBI
+Harry Bellefonte
+Aluminium
+Onion
+Freckles
+Very small pig
+Margarine
+Elias
+The Pope
+Bacon Prunes
+I Play
+The Who
+Giraffe
+Muscles
+Deep Blue
+Magpie
+Beards
+Decca
+Iran
+Nightstick
+Supergirl
+Venezuela
+Two penny Blue
+Hungary
+Vietnam currency
+Robin
+Naming Hurricanes
+Zone Improvement Plan
+Birch
+Turkish bath
+Polo
+Kellogg corn flakes
+Jezebel
+Scarlet Pimpernel
+Walnut
+Sticky Fingers
+An Otter
+[St Vitas, Vitas, St. Vitas]
+Bamboo
+Mrs Pyncheron
+Mark Twain
+Sid Vicious
+Charon
+James Herriot
+Formic acid
+Terry Nation
+Mixed Bathing
+Venice
+Alan Arkin
+Lloyds of London
+Archery
+David Copperfield
+Trees
+Motor Rallying
+Nero
+[LP record, LP, Long Play]
+Sight
+Squirrels tails
+Queen Diamonds
+Gustave
+Polio
+Cancer
+Stainless Steel
+Al Capone
+The Pelican
+Stay away Joe
+Alarm Clocks
+Egypt
+M

@@ -8,7 +8,6 @@ from pprint import pprint
 #import BeautifulSoup
 from xml.dom.minidom import parseString
 
-
 network = 'irc.quakenet.org'
 port = 6667
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
@@ -20,9 +19,15 @@ irc.send ( 'USER fyllebot fyllebot fyllebot :FylleBOOOT\r\n' )
 irc.send ( 'JOIN '+channel+'\r\n' )
 irc.send ( 'PRIVMSG '+channel+ ' :HEI ASS.\r\n' )
 
+def send(melding):
+   irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
+def privsend(melding):
+   irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
+
 from imdb import *
 from mat import *
 from admins import *
+from quiz import *
 
 lastUrls = []
 
@@ -82,11 +87,6 @@ def stengetidpolet():
     if aapent==1:
         send (str(polsteng)+' timer og '+str(polmin) + 'min til stengetid')
     return ''
-
-def send(melding):
-   irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
-def privsend(melding):
-   irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 
 def randomSupSvar():
    nr = random.randint(0, 7)
@@ -157,7 +157,6 @@ def langsetning():
    for linje in f:
       send(linje)
       sleep(0.4)
-
 
 def fylla():
    f = open('fylla.txt', 'r+')
@@ -521,7 +520,6 @@ pong = 0
 mld=0
 smallTalk = 0
 finishedLoading = 0
-quizLevel = 0
 while True:
    data = irc.recv(1024)
    msg = data.split(' ')
@@ -772,39 +770,26 @@ while True:
       filmLevel=0
       continue
 
-   '''if (message == "!quiz"):
-      score = open('score.txt', 'r+')
-      for i in range (0, len(listOfUsers)):
-         score.write(listOfUsers[i] + " " + "0\n")
-      score.close()
-      spm = 0
-      q = open('questions.txt', 'r+')
-      a = open('answers.txt', 'r+')
-      string=''
-      for linje in q:
-         string+=linje
-      questions = string.splitlines()
-      string2=''
-      for linje in a:
-         string2+=linje
-      answers = string.splitlines()
-      quizLevel = 1
-      while (quizLevel != 0):
-         tall = random.randint(0, len(questions)-1)
-         question = questions[tall]
-         answer = answers[tall]
-         send(question)
-         while (spm == 0):
-            if (message == answer):
-               send('Riktig svar!')
-               spm = 1
-               quizLevel = 0'''
+      #STARTQUIZ
+   if ('!quiz' in message):
+      sporsmal = getQuestions()
+      svar = getAnswers()
+      nummer = makeListOfNumbers(sporsmal, 10)
 
+      for i in range(0, len(nummer)):
+         answer = ''
+         print "Spørsmål nr. " + str(i+1) + ": "
+         print sporsmal[nummer[i]]
+         while (not checkAnswer(svar, nummer[i], answer.lower())) and (answer != 'nxt'):
+            answer = raw_input('Skriv inn svar: ')
+         if (checkAnswer(svar, nummer[i], answer.lower())):
+            addPoints(user, 'quiz')
+         elif (answer == 'nxt'):
+            print svar[nummer[i]]
+            continue
 
-   if ("testquiz" in message):
-      fil = open('score.txt', 'r+')
-      for line in fil:
-         send(line)
+   print getWinner(users)
+
 
    if ("count" in message):
       try:
@@ -942,7 +927,6 @@ while True:
    if ('!kræsj' in message) and (user=="Assios"):
       send(jfriojfro)
    
-
    rhapsody()
    Commands()
 
