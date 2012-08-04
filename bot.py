@@ -772,6 +772,7 @@ while True:
 
       #STARTQUIZ
    if ('!quiz' in message):
+      quizLvl = 1
       sporsmal = getQuestions()
       svar = getAnswers()
       nummer = makeListOfNumbers(sporsmal, 10)
@@ -788,7 +789,9 @@ while True:
             send(svar[nummer[i]])
             continue
 
-      send(getWinner(users))
+      if (quizLvl == 1):
+         send(getWinner(users))
+         quizLvl = 0
 
 
    if ("count" in message):
