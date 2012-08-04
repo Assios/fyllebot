@@ -781,11 +781,11 @@ while True:
          answer = ''
          send("Spørsmål nr. " + str(i+1) + ": ")
          send(sporsmal[nummer[i]])
-         while (not checkAnswer(svar, nummer[i], answer.lower())) and (answer != 'nxt'):
+         while (not checkAnswer(svar, nummer[i], message)) and (message != 'nxt'):
             answer = raw_input('Skriv inn svar: ')
-         if (checkAnswer(svar, nummer[i], answer.lower())):
+         if (checkAnswer(svar, nummer[i], message)):
             addPoints(user, 'quiz')
-         elif (answer == 'nxt'):
+         elif (message == 'nxt'):
             send(svar[nummer[i]])
             continue
 
