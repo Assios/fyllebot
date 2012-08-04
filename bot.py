@@ -784,10 +784,13 @@ while True:
          send(sporsmal[nummer[i]])
          while (count == i):
             if (checkAnswer(svar, nummer[i], message)):
+               print 'DONE'
                addPoints(user, 'quiz')
+               count = count + 1
                continue
-            elif (message == 'nxt'):
+            if (message == 'nxt'):
                send(svar[nummer[i]])
+               count = count + 1
                continue
 
       if (quizLvl == 1):
