@@ -43,4 +43,7 @@ def getAnswers(filen = 'answers.txt'):
 	return tempList
 
 def checkAnswer(answerList, count, answer):
-	return answer in answerList[count]
+	for svar in answerList[count]:
+		if svar in answer:
+			return True
+	return False
