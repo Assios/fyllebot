@@ -778,17 +778,17 @@ while True:
 
       for i in range(0, len(nummer)):
          answer = ''
-         print "Spørsmål nr. " + str(i+1) + ": "
-         print sporsmal[nummer[i]]
+         send("Spørsmål nr. " + str(i+1) + ": ")
+         send(sporsmal[nummer[i]])
          while (not checkAnswer(svar, nummer[i], answer.lower())) and (answer != 'nxt'):
             answer = raw_input('Skriv inn svar: ')
          if (checkAnswer(svar, nummer[i], answer.lower())):
             addPoints(user, 'quiz')
          elif (answer == 'nxt'):
-            print svar[nummer[i]]
+            send(svar[nummer[i]])
             continue
 
-   print getWinner(users)
+   send(getWinner(users))
 
 
    if ("count" in message):
