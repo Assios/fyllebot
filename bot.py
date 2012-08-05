@@ -808,14 +808,34 @@ while True:
          resetScore(users)
          quizLvl = 0
 
-
-
-
    if ("count" in message):
       try:
          count(message[6:len(message)])
       except:
          pass
+
+   if ('!guess' in message):
+      gjett = 1
+      count = 0
+      guess = (random.randint(0, 1000))
+      send('Gjett et tall mellom 0 og 1000')
+      while (gjett == 1):
+         send(10 - count + ' forsøk igjen.')
+         gjettemelding = ' '.join(data.split(' ')[3:]).lower().strip()[1:]
+         if (gjettemelding.isgidit()):
+            if (int(gjettemelding) != guess):
+               count+=1
+               if (count > 9):
+                  'For mange feilforsøk. Du tapte! :('
+               if int(gjettemelding) < guess:
+                  send('For lavt. Prøv igjen!')
+               elif int(gjettemelding) > guess:
+                  send('For høyt. Prøv igjen!')
+            else:
+               send('Riktig! :D')
+               gjett = 0
+
+
 
    if filmz() and ('!imdb' not in message):
       send(filmScore(filmReturn()))
