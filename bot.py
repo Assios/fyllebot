@@ -820,7 +820,6 @@ while True:
       guess = (random.randint(0, 1000))
       send('Gjett et tall mellom 0 og 1000')
       while (gjett == 1):
-         send(str(10 - count) + ' forsøk igjen.')
          gjettemelding = ' '.join(data.split(' ')[3:]).lower().strip()[1:]
          if (gjettemelding.isdigit()):
             if (int(gjettemelding) != guess):
@@ -829,8 +828,10 @@ while True:
                   'For mange feilforsøk. Du tapte! :('
                if int(gjettemelding) < guess:
                   send('For lavt. Prøv igjen!')
+                  send(str(10 - count) + ' forsøk igjen.')
                elif int(gjettemelding) > guess:
                   send('For høyt. Prøv igjen!')
+                  send(str(10 - count) + ' forsøk igjen.')
             else:
                send('Riktig! :D')
                gjett = 0
