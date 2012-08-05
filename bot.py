@@ -770,6 +770,11 @@ while True:
       filmLevel=0
       continue
 
+   if ('!printquiz' in message):
+      for brukere in users:
+         send(users[brukere] + str(users[brukere]['alltimequiz']))
+         
+
       #STARTQUIZ
    if ('!quiz' in message):
       quizLvl = 1
