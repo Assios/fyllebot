@@ -3,8 +3,6 @@
 
 import random
 
-from bot import *
-
 users = {'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}}
 
 #POENGSYSSTEM:
@@ -16,7 +14,7 @@ def getPoints(username, field):
 		return users[username][field]
 	except:
 		return -1
-		
+
 def resetScore(users):
 	for brukere in users:
 		users[brukere]['alltimequiz'] += users[brukere]['quiz']
@@ -58,6 +56,8 @@ def checkAnswer(answerList, count, answer):
 	return False
 
 def printQuiz(users):
-   strr=''
-   for brukere in users:
-      send(brukere + ': ' + str(users[brukere]['alltimequiz']) + ' poeng.')
+	strr=''
+	for brukere in users:
+		strr+=(brukere + ': ' + str(users[brukere]['alltimequiz'] + ' poeng. ')
+	return strr
+
