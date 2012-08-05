@@ -50,6 +50,10 @@ def getAnswers(filen = 'answers.txt'):
 
 def checkAnswer(answerList, count, answer):
 	for svar in answerList[count]:
-		if svar in answer:
+		if (svar == answer):
 			return True
 	return False
+
+def printQuiz(users):
+    for brukere in users:
+        return(users[brukere] + str(users[brukere]['alltimequiz']))

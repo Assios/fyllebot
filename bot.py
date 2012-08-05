@@ -771,9 +771,7 @@ while True:
       continue
 
    if ('!printquiz' in message):
-      for brukere in users:
-         send(users[brukere] + str(users[brukere]['alltimequiz']))
-         
+      send(printQuiz(users))
 
       #STARTQUIZ
    if ('!quiz' in message):
@@ -788,7 +786,10 @@ while True:
          send(sporsmal[nummer[i]])
          while (count == i):
             data = irc.recv(1024)
-            message = ' '.join(data.split(' ')[3:]).lower().strip()[1:]
+            msg = data.split(' ')
+            message = ' '.join(msg[3:]).lower().strip()[1:]
+            user = msg[0].split("!")
+            user = user[0].replace(":", "")
             print message
             for ans in svar[nummer[i]]:
                if ans in message:
