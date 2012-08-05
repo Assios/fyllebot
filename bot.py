@@ -822,7 +822,6 @@ while True:
       while (gjett == 1):
          data = irc.recv(1024)
          gjettemelding = ' '.join(data.split(' ')[3:]).lower().strip()[1:]
-         print gjettemelding
          if (gjettemelding.isdigit()):
             if (int(gjettemelding) != guess):
                count+=1

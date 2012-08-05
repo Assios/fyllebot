@@ -6,6 +6,10 @@ import random
 users = {'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}}
 
 #POENGSYSSTEM:
+
+def send(melding):
+   irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
+
 def addPoints(username, field):
 	users[username][field]+=1
 def getPoints(username, field):
@@ -57,4 +61,4 @@ def checkAnswer(answerList, count, answer):
 def printQuiz(users):
 	strr=''
 	for brukere in users:
-		send(brukere + ': ' + str(users[brukere]['alltimequiz']) + ' poeng.')
+		irc.(brukere + ': ' + str(users[brukere]['alltimequiz']) + ' poeng.')
