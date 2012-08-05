@@ -814,7 +814,7 @@ while True:
       except:
          pass
 
-   if ('!guess' in message and user=='assios'):
+   if ('!guess' in message):
       gjett = 1
       count = 0
       guess = (random.randint(0, 1000))
@@ -827,7 +827,8 @@ while True:
             if (int(gjettemelding) != guess):
                count+=1
                if (count > 9):
-                  'For mange feilforsøk. Du tapte! :('
+                  send('For mange feilforsøk. Du tapte! :(')
+                  gjett = 0
                if int(gjettemelding) < guess:
                   send('For lavt. Prøv igjen!')
                   send(str(10 - count) + ' forsøk igjen.')
