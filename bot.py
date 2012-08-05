@@ -808,11 +808,11 @@ while True:
          resetScore(users)
          quizLvl = 0
 
-   if ("count" in message):
+   '''if ("count" in message):
       try:
          count(message[6:len(message)])
       except:
-         pass
+         pass'''
 
    if ('!gjettelek' in message):
       gjett = 1
