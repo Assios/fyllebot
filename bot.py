@@ -790,7 +790,7 @@ while True:
                if ans in message:
                   print 'DONE'
                   addPoints(user, 'quiz')
-                  send('Score: ' + str((users[user]['quiz'])))
+                  send(user + ' scores!' + str((users[user]['quiz'])) + ' points in total.')
                   count = count + 1
                   continue
                if (message == 'nxt'):
