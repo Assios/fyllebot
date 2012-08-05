@@ -783,8 +783,7 @@ while True:
          send(sporsmal[nummer[i]])
          while (count == i):
             data = irc.recv(1024)
-            msg = data.split(' ')
-            message = ' '.join(msg[3:]).lower().strip()[1:]
+            message = ' '.join(data.split(' ')[3:]).lower().strip()[1:]
             print message
             for ans in svar[nummer[i]]:
                if ans in message:

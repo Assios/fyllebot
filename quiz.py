@@ -15,7 +15,10 @@ def getPoints(username, field):
 		return -1
 
 def resetScore(users):
-	users = {k:{o:[users[k][o],0]["quiz"==o] for o in users[k]} for k in users}
+	for brukere in users:
+		users[brukere]['alltimequiz'] = users[brukere]['quiz']
+		users[brukere]['quiz'] = 0
+
 
 def getWinner(users):
 	theuser = max(users, key=lambda x:users[x]['quiz'])
