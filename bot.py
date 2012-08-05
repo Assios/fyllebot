@@ -783,6 +783,9 @@ while True:
          send(sporsmal[nummer[i]])
          while (count == i):
             for ans in svar[nummer[i]]:
+               data = irc.recv(1024)
+               msg = data.split(' ')
+               message = ' '.join(msg[3:]).lower().strip()[1:]
                if ans in message:
                   print 'DONE'
                   addPoints(user, 'quiz')
