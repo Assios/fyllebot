@@ -772,6 +772,7 @@ while True:
 
    if ('!printquiz' in message):
       send(printQuiz(users))
+      continue
 
       #STARTQUIZ
    if ('!quiz' in message):
@@ -792,14 +793,13 @@ while True:
             user = user[0].replace(":", "")
             print message
             for ans in svar[nummer[i]]:
-               if ans in message:
-                  print 'DONE'
+               if (ans == message.strip()):
                   addPoints(user, 'quiz')
-                  send(user + ' scores!' + str((users[user]['quiz'])) + ' points in total.')
+                  send(user + ' scorer! ' + user + ' har ' + str((users[user]['quiz'])) + ' poeng.')
                   count = count + 1
                   continue
                if (message == 'nxt'):
-                  send(svar[nummer[i]])
+                  send(svar[nummer[i]][0])
                   count = count + 1
                   continue
 

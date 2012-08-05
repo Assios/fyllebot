@@ -16,7 +16,7 @@ def getPoints(username, field):
 
 def resetScore(users):
 	for brukere in users:
-		users[brukere]['alltimequiz'] = users[brukere]['quiz']
+		users[brukere]['alltimequiz'] += users[brukere]['quiz']
 		users[brukere]['quiz'] = 0
 
 

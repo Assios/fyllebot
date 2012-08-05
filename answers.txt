@@ -4,4 +4,4 @@ Beach Boys
 [5, fem, five]
 albania
 [gronn, gront, green]
-[Dolphin, a dolphin]
+[Delfin, En delfin, Dolphin, a dolphin]
