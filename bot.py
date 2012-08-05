@@ -800,7 +800,10 @@ while True:
 
       if (quizLvl == 1):
          send(getWinner(users))
+         resetScore(users)
          quizLvl = 0
+
+
 
 
    if ("count" in message):
