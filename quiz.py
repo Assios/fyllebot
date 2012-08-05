@@ -3,8 +3,9 @@
 
 import random
 
-users = {'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}}
+from bot import *
 
+users = {'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}}
 
 #POENGSYSSTEM:
 
@@ -15,10 +16,7 @@ def getPoints(username, field):
 		return users[username][field]
 	except:
 		return -1
-
-def send(melding):
-   irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
-
+		
 def resetScore(users):
 	for brukere in users:
 		users[brukere]['alltimequiz'] += users[brukere]['quiz']
