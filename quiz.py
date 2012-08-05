@@ -57,5 +57,4 @@ def checkAnswer(answerList, count, answer):
 def printQuiz(users):
 	strr=''
 	for brukere in users:
-		strr+=(brukere + str(users[brukere]['alltimequiz']) + '\n')
-	return strr
+		send(brukere + ': ' + str(users[brukere]['alltimequiz']) + ' poeng.')
