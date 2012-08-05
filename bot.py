@@ -822,7 +822,7 @@ while True:
       while (gjett == 1):
          send(str(10 - count) + ' forsøk igjen.')
          gjettemelding = ' '.join(data.split(' ')[3:]).lower().strip()[1:]
-         if (gjettemelding.isgidit()):
+         if (gjettemelding.isdigit()):
             if (int(gjettemelding) != guess):
                count+=1
                if (count > 9):
