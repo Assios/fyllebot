@@ -821,6 +821,7 @@ while True:
       send('Gjett et tall mellom 0 og 1000')
       while (gjett == 1):
          gjettemelding = ' '.join(data.split(' ')[3:]).lower().strip()[1:]
+         print gjettemelding
          if (gjettemelding.isdigit()):
             if (int(gjettemelding) != guess):
                count+=1
