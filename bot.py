@@ -784,14 +784,14 @@ while True:
          while (count == i):
             for ans in svar[nummer[i]]:
                if ans in message:
-               print 'DONE'
-               addPoints(user, 'quiz')
-               count = count + 1
-               continue
-            if (message == 'nxt'):
-               send(svar[nummer[i]])
-               count = count + 1
-               continue
+                  print 'DONE'
+                  addPoints(user, 'quiz')
+                  count = count + 1
+                  continue
+               if (message == 'nxt'):
+                  send(svar[nummer[i]])
+                  count = count + 1
+                  continue
 
       if (quizLvl == 1):
          send(getWinner(users))
