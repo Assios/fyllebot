@@ -814,12 +814,13 @@ while True:
       except:
          pass
 
-   if ('!guess' in message):
+   if ('!guess' in message and user=='assios'):
       gjett = 1
       count = 0
       guess = (random.randint(0, 1000))
       send('Gjett et tall mellom 0 og 1000')
       while (gjett == 1):
+         data = irc.recv(1024)
          gjettemelding = ' '.join(data.split(' ')[3:]).lower().strip()[1:]
          print gjettemelding
          if (gjettemelding.isdigit()):
