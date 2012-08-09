@@ -5,7 +5,6 @@ from __future__ import division
 import socket, random, re, string, time, datetime, os, urllib, shlex, urllib2, json, math
 from time import sleep
 from pprint import pprint
-#import BeautifulSoup
 from xml.dom.minidom import parseString
 
 network = 'irc.quakenet.org'
@@ -129,12 +128,12 @@ def returnURLs(message):
    lastUrl(urlen)
    return urlen
 
+
 def urlTitle(url):
-   soup = BeautifulSoup.BeautifulSoup(urllib.urlopen(url))
-   string = str(soup.title.string)
-   string = string.replace('&quot;', '\"')
-   string = string.replace('&#39;', '\'')
-   return string.strip().splitlines()[0]
+   filehandle = urllib.urlopen(url).read()
+   start = filehandle.find('<title>')
+   end = filehandle.find('</title>')
+   return filehandle[start:end][7:]
 
 def count(tall):
    tallet = int(tall)
@@ -395,17 +394,6 @@ def long(string):
    else:
       return "Ikke gyldig link, skløtte."
 
-def imdb(filmnavn):
-   ting = filmnavn
-   ting2 = ting[6:]
-   filehandle = urllib.urlopen('http://www.imdbapi.com/?t=' + ting2)
-   string=''
-   for lines in filehandle.readlines():
-      string+=lines
-   stringen = string.split('imdbRating')[1][3:6]
-   score = float(stringen)
-   return(str(score))
-
 def randomUser():
    try:
       tallet = random.randint(0, len(listOfUsers)-1)
@@ -650,11 +638,11 @@ while True:
       send('Din tur! Sjekk http://bash.org/?9322 for regler! Du skyter mot venstre.')
       pong = 1
 
-   try:
-      if ('!imdb' in message):
-         send(imdbNavn(message))
-   except:
-      send('Lol, gidder ikke si no om den filmen asss')
+   if ('!imdb' in message):
+      send(imdbInfo(message, 'score'))
+
+   if ('!plot' in message):
+      send(imdbInfo(message, 'plot'))
 
    try:
       if (shlex.split(message)[0]=='!op') and (admins()):
