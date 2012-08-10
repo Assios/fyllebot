@@ -22,7 +22,3 @@ def imdbInfo(filmnavn, mode):
          return(data["Title"] + ": " + data["Plot"])
    except:
       return('Fant ikke film.')
-
-def filmScore(filmen):
-   score = ['Verste filmen ever!', 'FILMEN SUGER!!!', 'Veldig dårlig film!', 'OK film da...', 'Grei film..', 'Ganske bra film :)', 'Bra film ass!! :D', 'VELDIG BRA FILM!!!', 'En av de beste filmene jeg har sett! :O']
-   return(score[imdben(filmen)-1])
