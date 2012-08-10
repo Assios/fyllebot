@@ -826,12 +826,6 @@ while True:
             else:
                send('Riktig! :D')
                gjett = 0
-
-
-
-   if filmz() and ('!imdb' not in message):
-      send(filmScore(filmReturn()))
-
       
    if ("!vær" in message):
       weather()
