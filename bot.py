@@ -763,7 +763,7 @@ while True:
       quizLvl = 1
       sporsmal = getQuestions()
       svar = getAnswers()
-      nummer = makeListOfNumbers(sporsmal, 15)
+      nummer = makeListOfNumbers(sporsmal, 10)
 
       for i in range(0, len(nummer)):
          count = i
