@@ -3,7 +3,16 @@
 
 import random
 
-users = {'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 'stiaje':{'quiz':0,'creds':0,'alltimequiz':0}, 'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}, 'chritv':{'quiz':0,'creds':0,'alltimequiz':0}}
+users = {
+		'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 
+		'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 
+		'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 
+		'stiaje':{'quiz':0,'creds':0,'alltimequiz':0}, 
+		'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}, 
+		'chritv':{'quiz':0,'creds':0,'alltimequiz':0}
+		'Oddweb':{'quiz':0,'creds':0,'alltimequiz':0}
+		'kjetiaun':{'quiz':0,'creds':0,'alltimequiz':0}
+		}
 
 #POENGSYSSTEM:
 

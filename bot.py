@@ -445,7 +445,7 @@ def film():
    return "\""+string+"\""
 
 def dickfilm():
-   if random.randint(0,2000) == 1337:
+   if random.randint(1000,2000) == 1337:
       return "The twilight saga"
       
    f = open('film.txt', 'r+')
@@ -455,11 +455,8 @@ def dickfilm():
       if (' ' in linje):
          string+=linje
    filmer = string.splitlines()
-   nr = random.randint(0, len(filmer)-1)
-   string = filmer[nr]
-   print string
+   string = filmer[random.randint(0, len(filmer)-1)]
    words = string.split(' ')
-   print words
    tall = random.randint(0, len(words)-1)
    if (words[tall] == 'The' or words[tall] == 'the'):
       tall=tall+1
@@ -473,7 +470,6 @@ def dickfilm():
          words[tall] = 'dicks'
       else:
          words[tall] = 'dick'
-   print words
    for i in range(0, len(words)):
       string2+= words[i]
       if (i < len(words)-1):
