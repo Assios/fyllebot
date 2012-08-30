@@ -14,7 +14,7 @@ users = {
 		'kjetiaun':{'quiz':0,'creds':0,'alltimequiz':0},
 		'juliejk':{'quiz':0,'creds':0,'alltimequiz':0},
 		'julie':{'quiz':0,'creds':0,'alltimequiz':0},
-		'Kronoz-':{'quiz':0,'creds':0,'alltimequiz':0}
+		'Kronoz-':{'quiz':0,'creds':0,'alltimequiz':0},
 		'fyllik19':{'quiz':0,'creds':0,'alltimequiz':0}
 		}
 
