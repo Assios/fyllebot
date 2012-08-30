@@ -9,11 +9,11 @@ users = {
 		'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 
 		'stiaje':{'quiz':0,'creds':0,'alltimequiz':0}, 
 		'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}, 
-		'chritv':{'quiz':0,'creds':0,'alltimequiz':0}
-		'Oddweb':{'quiz':0,'creds':0,'alltimequiz':0}
-		'kjetiaun':{'quiz':0,'creds':0,'alltimequiz':0}
-		'juliejk':{'quiz':0,'creds':0,'alltimequiz':0}
-		'julie':{'quiz':0,'creds':0,'alltimequiz':0}
+		'chritv':{'quiz':0,'creds':0,'alltimequiz':0},
+		'Oddweb':{'quiz':0,'creds':0,'alltimequiz':0},
+		'kjetiaun':{'quiz':0,'creds':0,'alltimequiz':0},
+		'juliejk':{'quiz':0,'creds':0,'alltimequiz':0},
+		'julie':{'quiz':0,'creds':0,'alltimequiz':0},
 		'Kronoz-':{'quiz':0,'creds':0,'alltimequiz':0}
 		}
 
