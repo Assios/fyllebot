@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import random
+'''import random
 
 users = {
 		'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 
@@ -17,8 +17,6 @@ users = {
 		'Kronoz-':{'quiz':0,'creds':0,'alltimequiz':0},
 		'fyllik19':{'quiz':0,'creds':0,'alltimequiz':0}
 		}
-
-#POENGSYSSTEM:
 
 def addPoints(username, field):
 	users[username][field]+=1
@@ -36,7 +34,7 @@ def resetScore(users):
 
 def getWinner(users):
 	theuser = max(users, key=lambda x:users[x]['quiz'])
-	return 'The winner is ' + theuser + ' with ' + str(users[theuser]['quiz']) + ' points.'
+	return 'Vinneren er ' + theuser + ' med ' + str(users[theuser]['quiz']) + ' poeng!'
 
 def makeListOfNumbers(questions, numberOfQuestions):
 	nums = range(len(questions))
@@ -72,4 +70,4 @@ def printQuiz(users):
 	strr=''
 	for brukere in users:
 		strr+=(brukere + ': ' + str(users[brukere]['alltimequiz']) + ' poeng. ')
-	return strr
+	return strr'''

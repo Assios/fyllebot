@@ -30,6 +30,64 @@ from quiz import *
 
 lastUrls = []
 
+#QUIZ START
+
+def addPoints(username, field):
+   users[username][field]+=1
+def getPoints(username, field):
+   try:
+      return users[username][field]
+   except:
+      return -1
+
+def resetScore(users):
+   for brukere in users:
+      users[brukere]['alltimequiz'] += users[brukere]['quiz']
+      users[brukere]['quiz'] = 0
+
+
+def getWinner(users):
+   theuser = max(users, key=lambda x:users[x]['quiz'])
+   return 'Vinneren er ' + theuser + ' med ' + str(users[theuser]['quiz']) + ' poeng!'
+
+def makeListOfNumbers(questions, numberOfQuestions):
+   nums = range(len(questions))
+   random.shuffle(nums)
+   return nums[:numberOfQuestions]
+
+def getQuestions(filen = 'questions.txt'):
+   return [line for line in open(filen, 'r')]
+
+def getAnswers(filen = 'answers.txt'):
+   f = open(filen, 'r+')
+   string = ''
+   for linje in f:
+      string+=linje
+   tempList = string.splitlines()
+   for i in range(0, len(tempList)):
+      if (('[' in tempList[i]) and (']' in tempList[i]) and (', ' in tempList[i])):
+         tempList[i] = tempList[i][1:-1]
+         tempList[i] = tempList[i].lower().split(', ')
+      else:
+         placeholder = []
+         placeholder.append(tempList[i].lower())
+         tempList[i] = placeholder
+   return tempList
+
+def checkAnswer(answerList, count, answer):
+   for svar in answerList[count]:
+      if (svar == answer):
+         return True
+   return False
+
+def printQuiz(users):
+   strr=''
+   for brukere in users:
+      strr+=(brukere + ': ' + str(users[brukere]['alltimequiz']) + ' poeng. ')
+   return strr
+
+#QUIZ END
+
 def array_multiplier(message):
    #if message.split("--")[-1]=="verbose":
       #verbose = True
@@ -495,6 +553,22 @@ def dehalfopUser(username):
 
 
 listOfUsers = {}
+
+users = {
+      'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 
+      'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 
+      'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 
+      'stiaje':{'quiz':0,'creds':0,'alltimequiz':0}, 
+      'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}, 
+      'chritv':{'quiz':0,'creds':0,'alltimequiz':0},
+      'Oddweb':{'quiz':0,'creds':0,'alltimequiz':0},
+      'kjetiaun':{'quiz':0,'creds':0,'alltimequiz':0},
+      'juliejk':{'quiz':0,'creds':0,'alltimequiz':0},
+      'julie':{'quiz':0,'creds':0,'alltimequiz':0},
+      'Kronoz-':{'quiz':0,'creds':0,'alltimequiz':0},
+      'fyllik19':{'quiz':0,'creds':0,'alltimequiz':0}
+      }
+
 dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lårdag", "Såndag"]
 dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
 
@@ -873,6 +947,7 @@ while True:
       send('ja?')
       brukerSvar = user;
       samtaleLvl = 1
+      continue
 
    if ('hvem' in message) and ('er' in message):
       send(['Jeg vil snakke med ' + randomUser() + '!', 'Hvorfor er ikke ' + randomUser() + ' her?', 'Hvafaeeeeen. ' + randomUser() + '!?!?!'][random.randint(0, 2)])
@@ -905,9 +980,6 @@ while True:
          if (len(message) < 22):
             send('Ler jentene av URLen din fordi den er for kort? Prøv !long <URL>')
             continue
-
-   if ("!random") in message:
-      send(randomGreet() +  ", " +  randomUser() + smiley)
 
    try: 
       if 'JOIN' in msg[1] and ('fyllebot' not in user):
