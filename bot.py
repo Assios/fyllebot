@@ -569,6 +569,8 @@ users = {
       'fyllik19':{'quiz':0,'creds':0,'alltimequiz':0}
       }
 
+users['test'] = {'quiz':0,'creds':0,'alltimequiz':0}
+
 if ('!printquiz' in message):
    printQuiz(users)
 
