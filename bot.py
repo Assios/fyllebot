@@ -833,10 +833,6 @@ while True:
       filmLevel=0
       continue
 
-   if ('!printquiz' in message):
-      send(printQuiz(users))
-      continue
-
       #STARTQUIZ
    if ('!quiz' in message):
       quizLvl = 1
@@ -904,6 +900,10 @@ while True:
       
    if ("!vær" in message):
       weather()
+
+   if ("!printquiz" in message):
+      send(printQuiz(users))
+      continue
 
    if ("!lastlink" in message):
       try:
