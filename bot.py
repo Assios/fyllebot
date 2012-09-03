@@ -571,9 +571,6 @@ users = {
 
 users['test'] = {'quiz':0,'creds':0,'alltimequiz':0}
 
-if ('!printquiz' in message):
-   printQuiz(users)
-
 dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lårdag", "Såndag"]
 dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
 
