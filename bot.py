@@ -555,9 +555,7 @@ def dehalfopUser(username):
 listOfUsers = {}
 
 users = {
-      'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 
-      'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 
-      'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 
+
       }
 
 def addUser(user):
