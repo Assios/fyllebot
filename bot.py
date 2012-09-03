@@ -558,18 +558,11 @@ users = {
       'assios':{'quiz':0,'creds':0,'alltimequiz':0}, 
       'aleksanb':{'quiz':0,'creds':0,'alltimequiz':0}, 
       'torcm':{'quiz':0,'creds':0,'alltimequiz':0}, 
-      'stiaje':{'quiz':0,'creds':0,'alltimequiz':0}, 
-      'sigveseb':{'quiz':0,'creds':0,'alltimequiz':0}, 
-      'chritv':{'quiz':0,'creds':0,'alltimequiz':0},
-      'Oddweb':{'quiz':0,'creds':0,'alltimequiz':0},
-      'kjetiaun':{'quiz':0,'creds':0,'alltimequiz':0},
-      'juliejk':{'quiz':0,'creds':0,'alltimequiz':0},
-      'julie':{'quiz':0,'creds':0,'alltimequiz':0},
-      'Kronoz-':{'quiz':0,'creds':0,'alltimequiz':0},
-      'fyllik19':{'quiz':0,'creds':0,'alltimequiz':0}
       }
 
-users['test'] = {'quiz':0,'creds':0,'alltimequiz':0}
+def addUser(user):
+   if user not in users:
+      users[user] = {'quiz':0,'creds':0,'alltimequiz':0}
 
 dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lårdag", "Såndag"]
 dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
@@ -605,6 +598,8 @@ while True:
          if (listOfUsers[i][0] == '@'):
             listOfUsers[i] = listOfUsers[i][1:]
       listOfUsers.remove('Q')
+      for i in range(0, len(listOfUsers)):
+         addUser(listOfUsers[i])
    except:
       pass
 
