@@ -555,8 +555,9 @@ def dehalfopUser(username):
 listOfUsers = {}
 
 users = {
-
+      'test' = {'quiz':0,'creds':0,'alltimequiz':0}
       }
+
 
 def addUser(user):
    if user not in users:
