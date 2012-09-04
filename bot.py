@@ -555,7 +555,8 @@ def dehalfopUser(username):
 listOfUsers = {}
 
 users = {
-      'test' = {'quiz':0,'creds':0,'alltimequiz':0}
+      'test':{'quiz':0,'creds':0,'alltimequiz':0},
+      'test2':{'quiz':0,'creds':0,'alltimequiz':0}
       }
 
 
