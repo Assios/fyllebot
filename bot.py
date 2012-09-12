@@ -7,7 +7,7 @@ from time import sleep
 from pprint import pprint
 from xml.dom.minidom import parseString
 
-network = 'irc.quakenet.org'
+network = 'irc.efnet.org'
 port = 6667
 irc = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 irc.connect ( ( network, port ) )
