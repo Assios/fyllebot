@@ -989,12 +989,12 @@ while True:
       send('Skriv !pong for å spille pong mot meg!' + smiley())
       continue
 
-   try:
-      if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('fyllebot' not in user):
-         send('Hadet bra, ' + user + smiley())
-         listOfUsers.remove(user)
-   except:
-      pass
+   #try:
+   #   if ('QUIT' in msg[1]) or ('PART' in msg[1]) and ('fyllebot' not in user):
+   #      send('Hadet bra, ' + user + smiley())
+   #      listOfUsers.remove(user)
+   #except:
+   #   pass
 
    try:
       if ('NICK' in msg[1]):
