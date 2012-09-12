@@ -113,7 +113,7 @@ def array_multiplier(message):
    for i in range(len(v1)):
       send("  "+str(final_array[i]))
 
-def stengetidpolet():
+'''def stengetidpolet():
     dato = str(datetime.datetime.now())
     aar = int(dato[0:4])
     maaned = int(dato[5:7])
@@ -143,7 +143,7 @@ def stengetidpolet():
       return ''
     if aapent==1:
         send (str(polsteng)+' timer og '+str(polmin) + 'min til stengetid')
-    return ''
+    return '''''
 
 def randomSupSvar():
    nr = random.randint(0, 7)
@@ -409,8 +409,8 @@ def Commands():
       send('Kalkulerer promille..')
       sleep(0.4)
       send('Din promille er: ' + str(round(random.uniform(1.02, 2.92), 3)))
-   if ('!polet' in message):
-      stengetidpolet()
+   '''if ('!polet' in message):
+      stengetidpolet()'''
    if ('!middag' == message):
       send(maat())
 
