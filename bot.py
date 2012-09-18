@@ -45,7 +45,6 @@ def resetScore(users):
       users[brukere]['alltimequiz'] += users[brukere]['quiz']
       users[brukere]['quiz'] = 0
 
-
 def getWinner(users):
    theuser = max(users, key=lambda x:users[x]['quiz'])
    return 'Vinneren er ' + theuser + ' med ' + str(users[theuser]['quiz']) + ' poeng!'
@@ -73,6 +72,25 @@ def getAnswers(filen = 'answers.txt'):
          placeholder.append(tempList[i].lower())
          tempList[i] = placeholder
    return tempList
+
+def mat():
+   today = datetime.date.today()
+   day = today.weekday()
+   dagz = ['ma', 'ti', 'on', 'to', 'fr']
+   try:
+      d = dagz[day]
+   except:
+      return 'Ikke noe mat i helgene ass!'
+   txt = urllib.urlopen('http://www.sit.no/rss.ap?thisId=36447&lang=0&' + d + '=on').read()
+   start = txt.find('[CDATA[')
+   end = txt.find(']]>')
+   txt = txt[start:end]
+   txt.replace('<br>', '')
+   txt.replace('<b>', '')
+   txt.replace('</b>', '')
+   return txt
+
+
 
 def checkAnswer(answerList, count, answer):
    for svar in answerList[count]:
@@ -564,7 +582,7 @@ def addUser(user):
    if user not in users:
       users[user] = {'quiz':0,'creds':0,'alltimequiz':0}
 
-dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lårdag", "Såndag"]
+dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"]
 dagstatus = ["HATER DET!", "Lenge til helg :(", "OK dag.", "i morgon år det freedaaag!", "YAYY HELGGG", "zbduhiWHF", "Er sykt klein ass"]
 
 samtaleLvl = 0
