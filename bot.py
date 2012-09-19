@@ -723,6 +723,9 @@ while True:
       send('Din tur! Sjekk http://bash.org/?9322 for regler! Du skyter mot venstre.')
       pong = 1
 
+   if ('!wewe' in message):
+      send(mat())
+
    if ('!imdb' in message):
       send(imdbInfo(message, 'score'))
 
