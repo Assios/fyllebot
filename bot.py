@@ -88,7 +88,9 @@ def mat():
    txt.replace('<br>', '')
    txt.replace('<b>', '')
    txt.replace('</b>', '')
-   return txt
+   for line in txt:
+      send(line)
+      sleep(0.3)
 
 
 
@@ -810,6 +812,9 @@ while True:
       now = datetime.datetime.now() 
       tiden = now.strftime("%I:%M %p")
       send('Klokka er ' + tiden + '!')
+
+   if ('!rune' == message):
+      send('rune er fargeblind')
 
    if ('!wiki' in message):
       send(wiki())   
