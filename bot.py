@@ -814,7 +814,10 @@ while True:
       send('Klokka er ' + tiden + '!')
 
    if ('!rune' == message):
-      send('rune er fargeblind')
+      if (user == 'runholm'):
+         send('er du fargeblind, rune?')
+      else:     
+         send(['rune er fargeblind', 'rune har en bachelor i origami'][random.randint(0, 1)])
 
    if ('!wiki' in message):
       send(wiki())   
