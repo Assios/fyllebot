@@ -735,8 +735,11 @@ while True:
 
    try:
       if (shlex.split(message)[0]=='!op') and (admins()):
-         opUser(shlex.split(message)[1])
+         opped = shlex.split(message)[1]
+         opUser(opped)
          send('With great power comes great responsibility!')
+         sleep(2)
+         send('Husk det, ' + opped + '!')
    except:
       pass
 
@@ -860,7 +863,7 @@ while True:
 
       #STARTQUIZ
    if ('!quiz' in message):
-      (kickUser(user, '!quiz-funksjonen er banna inntil videre.'))
+      send('Quizzen er temporært nede (er det et ord?)')
 
    if ('!gjettelek' in message):
       gjett = 1
