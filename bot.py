@@ -858,6 +858,10 @@ while True:
       filmLevel=0
       continue
 
+      #STARTQUIZ
+   if ('!quiz' in message):
+      (kickUser(user, '!quiz-funksjonen er banna inntil videre.'))
+
    if ('!gjettelek' in message):
       gjett = 1
       count = 0
@@ -919,9 +923,6 @@ while True:
       irc.send ( 'PRIVMSG ' + channel + ' :ingen liker deg heller, ' + user + '\r\n' )
       
    bursdag()
-
-   if ('!quiz' in message):
-      (kickUser(user, '!quiz-funksjonen er banna inntil videre.')
 
    if ((message.endswith('fyllebot?')) and (len(message)>10)) and (not filmz()):
       send('ER DRITA :D')
