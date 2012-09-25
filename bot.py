@@ -206,7 +206,6 @@ def returnURLs(message):
    lastUrl(urlen)
    return urlen
 
-
 def urlTitle(url):
    filehandle = urllib.urlopen(url).read()
    start = filehandle.find('<title>')
@@ -811,6 +810,10 @@ while True:
    if (('klokken' in message or 'klokka' in message) or ('tiden?' in message)):
       now = datetime.datetime.now() 
       tiden = now.strftime("%I:%M %p")
+      if (tiden[-2:]=='PM'):
+         tiden = str(int(tiden[:2])+12)+ ':' + tiden[3:5]
+      else:
+         tiden = tiden[:5]
       send('Klokka er ' + tiden + '!')
 
    if ('!rune' == message):
@@ -856,7 +859,8 @@ while True:
 
       #STARTQUIZ
    if ('!quiz' in message):
-      quizLvl = 1
+      (kickUser(user, '!quiz-funksjonen er banna inntil videre.')
+      '''quizLvl = 1
       sporsmal = getQuestions()
       svar = getAnswers()
       nummer = makeListOfNumbers(sporsmal, 10)
@@ -881,7 +885,7 @@ while True:
                if (message == 'nxt'):
                   send(svar[nummer[i]][0])
                   count = count + 1
-                  continue
+                  continue'''
 
       if (quizLvl == 1):
          send(getWinner(users))
