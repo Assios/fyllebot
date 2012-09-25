@@ -736,6 +736,7 @@ while True:
    try:
       if (shlex.split(message)[0]=='!op') and (admins()):
          opUser(shlex.split(message)[1])
+         send('With great power comes great responsibility!')
    except:
       pass
 
@@ -860,32 +861,6 @@ while True:
       #STARTQUIZ
    if ('!quiz' in message):
       (kickUser(user, '!quiz-funksjonen er banna inntil videre.')
-      '''quizLvl = 1
-      sporsmal = getQuestions()
-      svar = getAnswers()
-      nummer = makeListOfNumbers(sporsmal, 10)
-
-      for i in range(0, len(nummer)):
-         count = i
-         send("Spørsmål nr. " + str(i+1) + ": ")
-         send(sporsmal[nummer[i]])
-         while (count == i):
-            data = irc.recv(1024)
-            msg = data.split(' ')
-            message = ' '.join(msg[3:]).lower().strip()[1:]
-            user = msg[0].split("!")
-            user = user[0].replace(":", "")
-            print message
-            for ans in svar[nummer[i]]:
-               if (ans == message.strip()):
-                  addPoints(user, 'quiz')
-                  send(user + ' scorer! ' + user + ' har ' + str((users[user]['quiz'])) + ' poeng.')
-                  count = count + 1
-                  continue
-               if (message == 'nxt'):
-                  send(svar[nummer[i]][0])
-                  count = count + 1
-                  continue'''
 
       if (quizLvl == 1):
          send(getWinner(users))
