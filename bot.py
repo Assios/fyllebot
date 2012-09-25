@@ -862,17 +862,6 @@ while True:
    if ('!quiz' in message):
       (kickUser(user, '!quiz-funksjonen er banna inntil videre.')
 
-      if (quizLvl == 1):
-         send(getWinner(users))
-         resetScore(users)
-         quizLvl = 0
-
-   '''if ("count" in message):
-      try:
-         count(message[6:len(message)])
-      except:
-         pass'''
-
    if ('!gjettelek' in message):
       gjett = 1
       count = 0
