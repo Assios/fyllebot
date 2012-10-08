@@ -337,6 +337,14 @@ def calc(num1, num2, operator):
    elif (operator == '/'):
       return num1/num2
 
+def shit():
+   listeord = message.split(' ')
+   for word in range(0, len(listeord)):
+      word = listeord[word]
+      if word[-3:]=='ent':
+         nyttord = word[:-3]+'ang'
+         return('Mente du ' + nyttord + '?')
+
 def calculate(string):
    liste = []
    tall = []
@@ -588,7 +596,6 @@ users = {
       'test2':{'quiz':0,'creds':0,'alltimequiz':0}
       }
 
-
 def addUser(user):
    if user not in users:
       users[user] = {'quiz':0,'creds':0,'alltimequiz':0}
@@ -673,6 +680,11 @@ while True:
          pass
       send(thisURL)
       continue
+
+   try:
+      send(shit())
+   except:
+      pass
 
    if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
       firstURL = str(returnURLs(message).strip())
