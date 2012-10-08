@@ -529,7 +529,7 @@ def rune():
    filmer = string.splitlines()
    nr = random.randint(0, len(filmer)-1)
    string = filmer[nr]
-   return "\""+string+"\""
+   return string
 
 def dickfilm():
    if random.randint(1000,2000) == 1337:
