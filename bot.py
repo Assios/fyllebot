@@ -521,6 +521,16 @@ def film():
    string = filmer[nr]
    return "\""+string+"\""
 
+def rune():
+   f = open('rune.txt', 'r+')
+   string = ''
+   for linje in f:
+      string+=linje
+   filmer = string.splitlines()
+   nr = random.randint(0, len(filmer)-1)
+   string = filmer[nr]
+   return "\""+string+"\""
+
 def dickfilm():
    if random.randint(1000,2000) == 1337:
       return "The twilight saga"
@@ -824,7 +834,7 @@ while True:
       if (user == 'runholm'):
          send('er du fargeblind, rune?')
       else:     
-         send(['rune er fargeblind', 'rune har en bachelor i origami'][random.randint(0, 1)])
+         send(rune())
 
    if ('!wiki' in message):
       send(wiki())   
