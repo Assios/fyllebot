@@ -801,6 +801,21 @@ while True:
       except:
          pass
 
+   if ('primtall' in message):
+      send('Anta at p1=2, p2=3, < ... < pr er alle primtall.')
+      sleep(0.3)
+      send('La P = p1*p2*...*pr + 1')
+      sleep(0.5)
+      send('Nå er enten P et primtall eller ikke')
+      sleep(0.7)
+      send('Hvis P er et primtall, så er det høyere enn alle primtall')
+      sleep(0.6)
+      send('Hvis det ikke er et primtall, så er det delbart på et primtall p')
+      sleep(0.7)
+      send('Og p kan ikke være i P, for da deler det 1!')
+
+
+
    if (pong==1) and ('.' in message) and ('|' in message) and ('fyllebot' not in user):
       if (message[0] != '.'):
          send('DU TAPTE! :D')
