@@ -878,7 +878,8 @@ while True:
       send('Det er ' + dag[day] + ' i dag! ' + dagstatus[day])
 
    if ((('hvilken film' in message) or ('se film' in message) or (' film' in message and 'anbefal' in message) or (' film' in message and 'sett' in message) or ('hvilke film' in message)) and ('hva' not in message)):
-      send('Har du sett filmen ' + film() + '?' + smiley())
+      tempFilm = film()
+      send('Har du sett filmen ' + tempFilm + '?' + smiley())
       filmLevel=1
       continue
 
@@ -888,13 +889,18 @@ while True:
       filmLevel=2
       continue
 
+   if ('handle' in message and (filmLevel==2)):
+      send(imdbInfo('09'+tempFilm, 'plot'))
+      filmLevel=0
+      continue
+
    if yes() and (filmLevel==2):
       send(['Jeg likte den også', 'vil se den igjen ass, joinerru kino?'][random.randint(0,1)] + smiley())
       filmLevel=0
       continue
 
    if no() and (filmLevel==1):
-      send(['Du burde se den ass!', 'Den er braaa, men du burde ikke se traileren. Inneholder massse spoilers. HATER SPOILERS'][random.randint(0,1)] + smiley())
+      send(['Du burfilmlevelde se den ass!', 'Den er braaa, men du burde ikke se traileren. Inneholder massse spoilers. HATER SPOILERS'][random.randint(0,1)] + smiley())
       filmLevel=0
       continue
 
