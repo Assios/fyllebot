@@ -19,7 +19,7 @@ irc.send ( 'JOIN '+channel+'\r\n' )
 irc.send ( 'PRIVMSG '+channel+ ' :HEI ASS.\r\n' )
 
 def send(melding):
-   if random.randint(0, 4 == 2):
+   if random.randint(0, 4) == 2:
       try:
          irc.send ( 'PRIVMSG ' + channel + ' :' + melding[0].upper() + melding[1].upper() + melding[2:] + '\r\n' )
       except:
