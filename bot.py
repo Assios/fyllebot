@@ -19,7 +19,14 @@ irc.send ( 'JOIN '+channel+'\r\n' )
 irc.send ( 'PRIVMSG '+channel+ ' :HEI ASS.\r\n' )
 
 def send(melding):
-   irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
+   if random.randint(0, 4 == 2):
+      try:
+         irc.send ( 'PRIVMSG ' + channel + ' :' + melding[0].upper() + melding[1].upper() + melding[2:] + '\r\n' )
+      except:
+         irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
+   else:
+      irc.send ( 'PRIVMSG ' + channel + ' :' + melding + '\r\n' )
+
 def privsend(melding):
    irc.send('PRIVMSG ' + user + ' :' + melding + '\r\n')
 
@@ -133,37 +140,37 @@ def array_multiplier(message):
    for i in range(len(v1)):
       send("  "+str(final_array[i]))
 
-'''def stengetidpolet():
-    dato = str(datetime.datetime.now())
-    aar = int(dato[0:4])
-    maaned = int(dato[5:7])
-    dag = int(dato[8:10])
-    dato = datetime.date(aar, maaned, dag)
-    polet = [17, 17, 17, 18, 18, 15, 10000]
-    aapent = 1
-    poltid = polet[dato.weekday()]
-    tiden = str(datetime.datetime.now())
-    timer = int(tiden[11:13])+1
-    minutt = int(tiden[14:16])
-    if (dato.weekday() >= 0) and (dato.weekday() <= 3):
-        if timer<10:
-            aapent = 0
-            send('Polet er stengt. åpner om ' + str(10-timer) + ' timer og ' + str(59-minutt) + ' min')
-    elif (dato.weekday() == 4) or (dato.weekday() == 5):
-        if timer<9:
-            aapent = 0
-            send('Polet er stengt. åpner om ' + str(9-timer) + ' timer og ' + str(59-minutt) + ' min')
-    elif (dato.weekday() == 6):
-        aapent = 0
-        send('Polet er stengt i dag, sjekk barskapet')
-    polsteng = poltid - timer
-    polmin = 59-minutt
-    if polsteng < 0:
+def stengetidpolet():
+   dato = str(datetime.datetime.now())
+   aar = int(dato[0:4])
+   maaned = int(dato[5:7])
+   dag = int(dato[8:10])
+   dato = datetime.date(aar, maaned, dag)
+   polet = [17, 17, 17, 18, 18, 15, 10000]
+   aapent = 1
+   poltid = polet[dato.weekday()]
+   tiden = str(datetime.datetime.now())
+   timer = int(tiden[11:13])+1
+   minutt = int(tiden[14:16])
+   if (dato.weekday() >= 0) and (dato.weekday() <= 3):
+      if timer<10:
+         aapent = 0
+         send('Polet er stengt. åpner om ' + str(10-timer) + ' timer og ' + str(59-minutt) + ' min')
+   elif (dato.weekday() == 4) or (dato.weekday() == 5):
+      if timer<9:
+         aapent = 0
+         send('Polet er stengt. åpner om ' + str(9-timer) + ' timer og ' + str(59-minutt) + ' min')
+   elif (dato.weekday() == 6):
+      aapent = 0
+      send('Polet er stengt i dag, sjekk barskapet')
+   polsteng = poltid - timer
+   polmin = 59-minutt
+   if polsteng < 0:
       send('Polet er stengt for i dag :( Sjekk barskapet og prøv igjen i morra!')
       return ''
-    if aapent==1:
-        send (str(polsteng)+' timer og '+str(polmin) + 'min til stengetid')
-    return '''''
+   if aapent==1:
+      send (str(polsteng)+' timer og '+str(polmin) + 'min til stengetid')
+   return ''
 
 def randomSupSvar():
    nr = random.randint(0, 7)
@@ -436,8 +443,8 @@ def Commands():
       send('Kalkulerer promille..')
       sleep(0.4)
       send('Din promille er: ' + str(round(random.uniform(1.02, 2.92), 3)))
-   '''if ('!polet' in message):
-      stengetidpolet()'''
+   if ('!polet' in message):
+      stengetidpolet()
    if ('!middag' == message):
       send(maat())
 
