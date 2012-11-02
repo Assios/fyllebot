@@ -973,7 +973,7 @@ while True:
          pass
 
    if (('xd' in message.lower()) or ('xp' in message.lower()) or ('x)' in message.lower()) or ('x(' in message.lower())):
-      kicking(bruker, kickdict)
+      kicking(user, kickdict)
 
    if no() and (filmLevel==2):
       send(['WHATTHEFUCK? :C', 'Hadde tenkt å be deg med på kino, men IKKE Nå LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])
