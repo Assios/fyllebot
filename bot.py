@@ -61,6 +61,20 @@ def makeListOfNumbers(questions, numberOfQuestions):
    random.shuffle(nums)
    return nums[:numberOfQuestions]
 
+kickdict = {}
+
+def kicking(bruker, dictt):
+   if bruker not in dictt.keys():
+      dictt[bruker] = 1
+   else:
+      dictt[bruker]+=1
+   if dictt[bruker]==4:
+      kickuser(bruker, 'HAR BRUKT x-SMILEYS 4 GANGER!!!')
+      dictt[bruker] = 0
+   else:
+      send(bruker + ' skrev en x-smiley, og får en advarsel. ' + bruker + ' har til sammen ' + str(dictt[bruker]) + ' advarsler.')
+      send('Hvis du får 4 advarsler, så blir du kicka')
+
 def getQuestions(filen = 'questions.txt'):
    return [line for line in open(filen, 'r')]
 
@@ -958,6 +972,9 @@ while True:
       except:
          pass
 
+   if (('xd' in message.lower()) or ('xp' in message.lower) or ('x)' in message.lower()) or ('x(' in message.lower())):
+      kicking(bruker, kickdict)
+
    if no() and (filmLevel==2):
       send(['WHATTHEFUCK? :C', 'Hadde tenkt å be deg med på kino, men IKKE Nå LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])
       filmLevel=3
@@ -1030,8 +1047,8 @@ while True:
 
    try: 
       if 'JOIN' in msg[1] and ('fyllebot' not in user):
-         listOfUsers.append(user)
          send(user + ' joina fyllechat! VELKOMMEN, ' + user)
+         listOfUsers.append(user)
    except:
       pass
 
