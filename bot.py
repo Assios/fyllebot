@@ -972,7 +972,7 @@ while True:
       except:
          pass
 
-   if (('xd' in message.lower()) or ('xp' in message.lower) or ('x)' in message.lower()) or ('x(' in message.lower())):
+   if (('xd' in message.lower()) or ('xp' in message.lower()) or ('x)' in message.lower()) or ('x(' in message.lower())):
       kicking(bruker, kickdict)
 
    if no() and (filmLevel==2):
