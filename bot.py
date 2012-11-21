@@ -69,7 +69,7 @@ def kicking(bruker, dictt):
    else:
       dictt[bruker]+=1
    if dictt[bruker]==4:
-      kickuser(bruker, 'HAR BRUKT x-SMILEYS 4 GANGER!!!')
+      kickUser(bruker, 'HAR BRUKT x-SMILEYS 4 GANGER!!!')
       dictt[bruker] = 0
    else:
       send(bruker + ' skrev en x-smiley, og får en advarsel. ' + bruker + ' har til sammen ' + str(dictt[bruker]) + ' advarsler.')
