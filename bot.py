@@ -882,10 +882,7 @@ while True:
       if (user == 'runholm'):
          send('er du fargeblind, rune?')
       else:     
-         send(rune())
-
-   if ('!wiki' in message):
-      send(wiki())   
+         send(rune())  
 
    if ('!ukenummer' in message):
       send(ukenummer())
