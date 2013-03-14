@@ -715,7 +715,6 @@ while True:
             send('Det der er ikke en gyldig webside ass')
          else:
             send(tittelen)
-         continue
       except:
          pass
 
