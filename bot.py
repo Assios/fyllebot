@@ -707,7 +707,7 @@ while True:
    except:
       pass
 
-   if ('http://' in message) and not (user == 'fyllebot') and (finishedLoading == 1):
+   if ('http://' in message) and not (user == 'fyllebot') and not ('!msg' in message) and not (finishedLoading == 1):
       firstURL = str(returnURLs(message).strip())
       try:        
          tittelen = urlTitle(firstURL)
@@ -715,6 +715,7 @@ while True:
             send('Det der er ikke en gyldig webside ass')
          else:
             send(tittelen)
+         continue
       except:
          pass
 
