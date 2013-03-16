@@ -719,6 +719,18 @@ while True:
       except:
          pass
 
+   if ('https://' in message) and not (user == 'fyllebot') and not ('!msg' in message) and not (finishedLoading == 1):
+      firstURL = str(returnURLs(message).strip())
+      try:        
+         tittelen = urlTitle(firstURL)
+         if (tittelen == "Parallels Confixx"):
+            send('Det der er ikke en gyldig webside ass')
+         else:
+            send(tittelen)
+         continue
+      except:
+         pass
+
    #if (smallTalk == 1) and (user == brukerTalk):
    #   send(['jeg spiller pong, ' + user + ', der a? :D', 'Snart eksamen, JIPPI. Skjer der?', 'Skal vi spille pong, ' + user + '?'][random.randint(0,2)])
    #   smalltalk = 0
