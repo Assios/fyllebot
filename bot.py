@@ -592,7 +592,8 @@ def dickfilm():
          string2 += ' '
    return "\""+string2+"\""
 
-
+def checkName():
+   irc.send('NAME' + '\r\n')
 
 def deopUser(username):
     irc.send('MODE ' + channel + ' -o ' + username + '\r\n')
@@ -1021,6 +1022,12 @@ while True:
       brukerSvar = user;
       samtaleLvl = 1
       continue
+
+   if ('!names' in message):
+      checkName()
+
+   if ('Users' in message):
+      send('y')
 
    if ('hvem' in message) and ('er' in message):
       send(['Jeg vil snakke med ' + randomUser() + '!', 'Hvorfor er ikke ' + randomUser() + ' her?', 'Hvafaeeeeen. ' + randomUser() + '!?!?!'][random.randint(0, 2)])
