@@ -610,7 +610,6 @@ def halfopUser(username):
 def dehalfopUser(username):
 	irc.send('MODE ' + channel + ' -h ' + username + '\r\n')
 
-
 listOfUsers = {}
 
 users = {
@@ -1025,6 +1024,9 @@ while True:
 
    if ('!names' in message):
       checkName()
+      sleep(0.1)
+      userstring = message
+      print userstring
 
    if ('Users' in message):
       send('y')
