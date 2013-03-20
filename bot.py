@@ -1022,7 +1022,7 @@ while True:
       samtaleLvl = 1
       continue
 
-namestat = 0
+   namestat = 0
 
    if ('!names' in message):
       namestat = 1
