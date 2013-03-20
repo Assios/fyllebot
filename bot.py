@@ -1022,11 +1022,18 @@ while True:
       samtaleLvl = 1
       continue
 
+namestat = 0
+
    if ('!names' in message):
+      namestat = 1
       checkName()
-      sleep(0.1)
-      userstring = message
-      print userstring
+      if namestat==1:
+         if ('@' in message):
+            namestring = message
+
+   if ('testname' in message):
+      send(namestring)
+
 
    if ('Users' in message):
       send('y')
