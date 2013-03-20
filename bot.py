@@ -593,7 +593,7 @@ def dickfilm():
    return "\""+string2+"\""
 
 def checkName():
-   irc.send('NAMES' + channel + '\r\n')
+   irc.send('NAMES ' + channel + '\r\n')
 
 def deopUser(username):
     irc.send('MODE ' + channel + ' -o ' + username + '\r\n')
