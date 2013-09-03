@@ -57,7 +57,7 @@ Schindler's List
 American Psycho
 28 Days Later
 The Lord of the Rings: The Two Towers
-Léon
+Lï¿½on
 The Social Network
 Batman Begins
 Gladiator
@@ -108,3 +108,8 @@ Never say Never
 The Last samurai
 Intouchables
 Iron Sky
+Psycho
+Walk the Line
+Django Unchained
+For a Few Dollars More
+Shutter Island
