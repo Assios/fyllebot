@@ -474,6 +474,11 @@ def Commands():
    if ('!middag' == message):
       send(maat())
       
+   if ('!pingals' == message):
+      for i in range(0, 10):
+      	send('als')
+      	sleep(0.3)
+      
    if ('!splunk' == message):
    	send('Daft Splunk :P')
 
