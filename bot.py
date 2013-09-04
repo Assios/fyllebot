@@ -461,6 +461,9 @@ def Commands():
       stengetidpolet()
    if ('!middag' == message):
       send(maat())
+      
+   if ('!splunk' == message):
+   	send('Daft Splunk :P')
 
    if ('!beer' in message):
       beer()
