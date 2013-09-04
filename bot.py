@@ -74,6 +74,18 @@ def kicking(bruker, dictt):
    else:
       send(bruker + ' skrev en x-smiley, og får en advarsel. ' + bruker + ' har til sammen ' + str(dictt[bruker]) + ' advarsler.')
       send('Hvis du får 4 advarsler, så blir du kicka')
+      
+def kickingN(bruker, dictt):
+   if bruker not in dictt.keys():
+      dictt[bruker] = 1
+   else:
+      dictt[bruker]+=1
+   if dictt[bruker]==4:
+      kickUser(bruker, 'skrev nordnorsk dialekt 4 ganger!')
+      dictt[bruker] = 0
+   else:
+      send(bruker + ' skrev noe på nordnorsk dialekt, og får en advarsel. ' + bruker + ' har til sammen ' + str(dictt[bruker]) + ' advarsler.')
+      send('Hvis du får 4 advarsler, så blir du kicka')
 
 def getQuestions(filen = 'questions.txt'):
    return [line for line in open(filen, 'r')]
@@ -986,6 +998,9 @@ while True:
 
    if (('xd' in message.lower()) or ('xp' in message.lower()) or ('x)' in message.lower()) or ('x(' in message.lower())):
       kicking(user, kickdict)
+      
+   if (('blir å' in message.lower()) or ('værste' in message.lower()) or ('årntli' in message.lower()) or ('æ har' in message.lower())):
+      kickingN(user, kickdict)
 
    if no() and (filmLevel==2):
       send(['WHATTHEFUCK? :C', 'Hadde tenkt å be deg med på kino, men IKKE Nå LENGER NEI >:C', 'hvafaaaen. hvilke filmer liker dua?:c', 'omfg, du suger.'][random.randint(0,3)])
