@@ -478,6 +478,7 @@ def Commands():
    	pinged = shlex.split(message)[5:]
    	for i in range(0, 10):
    		send(pinged)
+   		sleep(0.3)
       
       
    if ('!splunk' == message):
