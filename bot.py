@@ -475,7 +475,7 @@ def Commands():
       send(maat())
       
    if message[0:5]=='!ping':
-   	pinged = shlex.split(message)[5:]
+   	pinged = shlex.split(message)[0][5:]
    	for i in range(0, 10):
    		send(pinged)
    		sleep(0.3)
