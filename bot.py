@@ -474,10 +474,11 @@ def Commands():
    if ('!middag' == message):
       send(maat())
       
-   if ('!pingals' == message):
-      for i in range(0, 10):
-      	send('als')
-      	sleep(0.3)
+   if message[0:5]=='!ping':
+   	pinged = shlex.split(message)[5:]
+   	for i in range(0, 10):
+   		send(pinged)
+      
       
    if ('!splunk' == message):
    	send('Daft Splunk :P')
