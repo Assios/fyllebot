@@ -165,15 +165,6 @@ def array_multiplier(message):
    send("___RESULTAT___")
    for i in range(len(v1)):
       send("  "+str(final_array[i]))
-      
-def valgtid():
-   tiden = str(datetime.datetime.now())
-   timer = int(tiden[11:13])+1
-   minutt = int(tiden[14:16])
-   if timer==0 and minutt < 1:
-   	send('VALGLOKALENE HAR STENGT')
-   else:
-   	send('Valglokalene STENGER OM ' + str(21-timer) + ' timer og ' + str(59-minutt) + ' min!')
 
 def stengetidpolet():
    dato = str(datetime.datetime.now())
@@ -488,10 +479,6 @@ def Commands():
    	for i in range(0, 10):
    		send(pinged)
    		sleep(0.3)
-   		
-   if ('!valg' == message):
-   	valgtid()
-      
       
    if ('!splunk' == message):
    	send('Daft Splunk :P')
