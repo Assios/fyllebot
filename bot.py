@@ -170,7 +170,10 @@ def valgtid():
    tiden = str(datetime.datetime.now())
    timer = int(tiden[11:13])+1
    minutt = int(tiden[14:16])
-   send('Valglokalene STENGER OM ' + str(21-timer) + ' timer og ' + str(59-minutt) + ' min!')
+   if timer==0 and minutt < 1:
+   	send('VALGLOKALENE HAR STENGT')
+   else:
+   	send('Valglokalene STENGER OM ' + str(21-timer) + ' timer og ' + str(59-minutt) + ' min!')
 
 def stengetidpolet():
    dato = str(datetime.datetime.now())
