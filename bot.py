@@ -722,7 +722,7 @@ while True:
 
    if ('!kaffe' in message):
       kaffejson = abakaffe()
-      if kaffejson["status"]:
+      if kaffejson["coffee"]["status"]:
          send("Kaffetraktern er PÅ :D")
       else:
          send("Kaffen er av ass!")
