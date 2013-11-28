@@ -64,7 +64,7 @@ def makeListOfNumbers(questions, numberOfQuestions):
 kickdict = {}
 
 def abakaffe(kaffeurl = "http://kaffe.abakus.no/api/status"):
-   json_data = urllib.urlopen(url)
+   json_data = urllib.urlopen(kaffeurl)
    data = json.load(json_data)
    json_data.close()
    return data
