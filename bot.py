@@ -720,12 +720,12 @@ while True:
       brukerTalk = user
       continue
 
-   if ('!kaffe' in message):
+   if ('kaffe' in message):
       kaffejson = abakaffe()
       if kaffejson["coffee"]["status"]:
          send("Kaffetraktern er PÅ :D")
       else:
-         send("Kaffen er av ass!")
+         send("Kaffetraktern på kontoret er av ass!")
 
    if ('!youtube' in message):
       thisURL = youtube()
