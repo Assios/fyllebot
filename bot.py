@@ -63,6 +63,10 @@ def makeListOfNumbers(questions, numberOfQuestions):
 
 kickdict = {}
 
+def abakaffe(kaffeurl = "http://kaffe.abakus.no/api/status"):
+
+
+
 def kicking(bruker, dictt):
    if bruker not in dictt.keys():
       dictt[bruker] = 1
@@ -983,9 +987,6 @@ while True:
             else:
                send('Riktig! :D')
                gjett = 0
-      
-   if ("!vær" in message):
-      weather()
 
    if ("!printquiz" in message):
       send(printQuiz(users))
