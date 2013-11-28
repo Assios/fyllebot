@@ -64,8 +64,10 @@ def makeListOfNumbers(questions, numberOfQuestions):
 kickdict = {}
 
 def abakaffe(kaffeurl = "http://kaffe.abakus.no/api/status"):
-
-
+   json_data = urllib.urlopen(url)
+   data = json.load(json_data)
+   json_data.close()
+   return data
 
 def kicking(bruker, dictt):
    if bruker not in dictt.keys():
@@ -717,6 +719,13 @@ while True:
       smallTalk = 1
       brukerTalk = user
       continue
+
+   if ('!kaffe' in message):
+      kaffejson = abakaffe()
+      if kaffejson["status"]:
+         send("Kaffetraktern er PÅ :D")
+      else:
+         send("Kaffen er av ass!")
 
    if ('!youtube' in message):
       thisURL = youtube()
