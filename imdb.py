@@ -8,8 +8,12 @@ def imdbInfo(filmnavn, mode):
    if (filmnavn[0:2] == '09'):
       filmnavn = filmnavn[2:]
    else:
-      ting = filmnavn
-      ting2 = ting[6:]
+      if ('gone girl' in filmnavn):
+          ting = 'tt2267998';
+          ting2 = ting[6:]
+      else:
+          ting = filmnavn
+          ting2 = ting[6:]
    if ('the room' == ting2.strip()):
       return ('Filmen \"The Room\" fra 2003 har scoren 3.3. Scoren burde vært lavere.')
    json_data= urllib.urlopen('http://www.imdbapi.com/?t=' + ting2)
